@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Sezac.master.cs" Inherits="SEZAC.Sezac" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>SEZAC</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+<link rel="stylesheet" href="sezacss.css" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="jquery" runat="server"></asp:ScriptManager>
+    <div id="header">
+        <div class="wrap">
+            <div class="logo">
+                <center>
+                    <asp:Image ImageUrl="~/images/logo.jpg" ID="logosezac" runat="server" />
+                </center>
+            </div>
+            
+        </div>
+        <div class="divison">
+                <img src="images/topbar.png" width="1800" height="24" />
+        </div>
+    </div>
+    <div id="container">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">        
+        </asp:ContentPlaceHolder>
+    </div>
+        <div id="footer">
+            <div class="wrap">
+                <img src="images/foobar.png" width="1800" height="24" />
+            </div>
+    </div>
+
+
+    </form>
+</body>
+</html>
