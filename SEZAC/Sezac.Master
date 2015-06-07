@@ -8,8 +8,11 @@
     <title>SEZAC</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/bjqs-1.3.min.js"></script>
 <link rel="stylesheet" href="sezacss.css" type="text/css" />
 </head>
+
 <body>
     <form id="form1" runat="server">
     <asp:ScriptManager ID="jquery" runat="server"></asp:ScriptManager>
