@@ -6,11 +6,6 @@ namespace Sezac.Persistencia.Entidades
 	{
 		#region Propiedades
 
-		public string AplicacionKeyId
-        {
-            get;
-            set;
-        }
 		public string BaseDatos
         {
             get;
