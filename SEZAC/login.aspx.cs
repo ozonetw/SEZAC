@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sezac.Control;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace SEZAC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Datos datos = new Datos();
+            datos.Validar("nancy","123");
         }
     }
 }
