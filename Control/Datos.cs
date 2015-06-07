@@ -1,12 +1,8 @@
 ﻿using Sezac.Persistencia.Comun;
 using Sezac.Persistencia.Entidades;
 using Sezac.Persistencia.Reglas;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sezac.Control
 {
