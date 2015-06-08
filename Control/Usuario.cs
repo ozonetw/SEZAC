@@ -4,6 +4,7 @@ using Sezac.Persistencia.Reglas;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 
 namespace Sezac.Control
 {
@@ -36,6 +37,21 @@ namespace Sezac.Control
         #endregion
 
         #region Metodos
+
+		public byte[] CargarImagen(string rutaArchivo)
+		{
+			byte[] imagen = null;
+
+			using(FileStream archivo = new FileStream(rutaArchivo, FileMode.Open, FileAccess.Read))
+			{
+				using(BinaryReader lector = new BinaryReader(archivo))
+				{
+					imagen = lector.ReadBytes((int)archivo.Length);
+				}
+			}
+
+			return imagen;
+		}
 
 		public bool InsertarUsuario(Entidades.Usuario usuario)
 		{
