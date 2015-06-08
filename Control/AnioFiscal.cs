@@ -42,7 +42,7 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-				Comando = "INSERT INTO aniofiscal (anio) VALUES (" + anioFiscal + ")",
+				Comando = "INSERT INTO aniofiscal (anio) VALUES (" + anioFiscal.Anio + ")",
                 Tipo = Definiciones.TipoSentencia.NoQuery,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
