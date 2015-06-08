@@ -3,9 +3,9 @@ using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SEZAC
+namespace Sezac.IU
 {
-    public partial class login : Page
+    public partial class Login : Page
     {
         #region Eventos
 
@@ -14,7 +14,7 @@ namespace SEZAC
             Login1.Focus();
         }
 
-        protected void Login1_Authenticate(object sender, System.Web.UI.WebControls.AuthenticateEventArgs e)
+        protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
         {
             Usuario usuario = new Usuario();
 
@@ -33,7 +33,7 @@ namespace SEZAC
             switch (usuario.Tipo)
             {
                 case global::Sezac.Control.Comun.Definiciones.TipoUsuario.Administrador:
-                    Server.Transfer("Admin_Home.aspx");
+                    Response.Redirect("AdminHome.aspx", true);
                     break;
                 case global::Sezac.Control.Comun.Definiciones.TipoUsuario.Encargado:
                     break;
@@ -46,7 +46,7 @@ namespace SEZAC
 
         protected void Login1_LoginError(object sender, EventArgs e)
         {
-			((Login)sender).FailureText = "Usuario no v&aacute;lido";
+			((global::System.Web.UI.WebControls.Login)sender).FailureText = "Usuario no v&aacute;lido";
         }
 
         #endregion

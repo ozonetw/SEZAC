@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
-namespace SEZAC
+namespace Sezac.IU
 {
-    public partial class Sezac : System.Web.UI.MasterPage
+    public partial class Template : MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

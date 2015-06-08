@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Sezac.Persistencia.Reglas
 {
-	public class Planificador
+	public class Scheduler
 	{
 		#region Metodos
 

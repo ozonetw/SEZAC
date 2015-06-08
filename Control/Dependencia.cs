@@ -11,7 +11,7 @@ namespace Sezac.Control
         #region Atributos
 
         Conexion _conexion;
-        Planificador _planificador;
+        Scheduler _planificador;
 
         #endregion
 
@@ -29,7 +29,7 @@ namespace Sezac.Control
 
                 #endregion
             };
-            _planificador = new Planificador();
+            _planificador = new Scheduler();
         }
 
         #endregion

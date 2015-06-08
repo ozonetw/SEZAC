@@ -62,7 +62,7 @@
     <Compile Include="Reglas\ICliente.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Reglas\Planificador.cs">
+    <Compile Include="Reglas\Scheduler.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

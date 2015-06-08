@@ -12,7 +12,7 @@ namespace Sezac.Control
         #region Atributos
 
         Conexion _conexion;
-        Planificador _planificador;
+        Scheduler _planificador;
 
         #endregion
 
@@ -24,13 +24,13 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-                Nombre = "SAZEC",
+                Nombre = "SEZAC",
                 Tipo = Definiciones.TipoConexion.NombreConexion,
                 TipoCliente = Definiciones.TipoCliente.MySql
 
                 #endregion
             };
-            _planificador = new Planificador();
+            _planificador = new Scheduler();
         }
 
         #endregion
