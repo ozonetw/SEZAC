@@ -126,8 +126,8 @@ namespace Sezac.Control
 
                 dependencias.Add(new Entidades.Dependencia()
                     {
-                        Id = int.Parse(resultado.Rows[indice]["DependenciaId"].ToString()),
-                        Descripcion = resultado.Rows[indice]["Nombe"].ToString()
+                        Id = int.Parse(resultado.Rows[indice]["Id"].ToString()),
+                        Descripcion = resultado.Rows[indice]["Nombre"].ToString()
                     }
                 );
 
