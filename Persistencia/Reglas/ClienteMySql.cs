@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿//using MySql.Data.MySqlClient;
 using Sezac.Persistencia.Comun;
 using Sezac.Persistencia.Entidades;
 using System;
@@ -6,16 +6,17 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 
+/*
 namespace Sezac.Persistencia.Reglas
 {
 	internal class ClienteMySql : Cliente, ICliente
 	{
 		#region Atributos
 
-		private MySqlDataAdapter _adaptadorDatos;
-		private MySqlCommand _comando;
-		private MySqlConnection _conexion;
-		private MySqlTransaction _transaccion;
+		//private MySqlDataAdapter _adaptadorDatos;
+		//private MySqlCommand _comando;
+		//private MySqlConnection _conexion;
+		//private MySqlTransaction _transaccion;
 		
 		#endregion
 
@@ -242,3 +243,4 @@ namespace Sezac.Persistencia.Reglas
 		#endregion
 	}
 }
+*/

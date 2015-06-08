@@ -58,6 +58,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminAniosFiscales.aspx" />
+    <Content Include="AdminDependencias.aspx" />
+    <Content Include="AdminEncargados.aspx" />
     <Content Include="Admin_Home.aspx" />
     <Content Include="images\b1.jpg" />
     <Content Include="images\b2.jpg" />
@@ -93,6 +96,27 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminAniosFiscales.aspx.cs">
+      <DependentUpon>AdminAniosFiscales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAniosFiscales.aspx.designer.cs">
+      <DependentUpon>AdminAniosFiscales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDependencias.aspx.cs">
+      <DependentUpon>AdminDependencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDependencias.aspx.designer.cs">
+      <DependentUpon>AdminDependencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminEncargados.aspx.cs">
+      <DependentUpon>AdminEncargados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminEncargados.aspx.designer.cs">
+      <DependentUpon>AdminEncargados.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin_Home.aspx.cs">
       <DependentUpon>Admin_Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -123,7 +147,6 @@
       <DependentUpon>Sezac.Master</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

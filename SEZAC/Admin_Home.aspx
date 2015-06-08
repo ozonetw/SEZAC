@@ -9,6 +9,7 @@
         <asp:MenuItem Text="Salir |" NavigateUrl="#"></asp:MenuItem>
     </Items>
 </asp:Menu>
+    <center>
     <div id="container">
   
       <h2></h2>
@@ -18,9 +19,9 @@
 
         <!-- start Basic Jquery Slider -->
         <ul class="bjqs">
-          <li><img src="images/b1.jpg" title="Automatically generated caption"></li>
-          <li><img src="images/b2.jpg" title="Automatically generated caption"></li>
-          <li><img src="images/b3.jpg" title="Automatically generated caption"></li>
+          <li><img src="images/b1.jpg" title=""></li>
+          <li><img src="images/b2.jpg" title=""></li>
+          <li><img src="images/b3.jpg" title=""></li>
         </ul>
         <!-- end Basic jQuery Slider -->
 
@@ -59,5 +60,7 @@
       </script>
 
     </div>
+    </center>
+    
  
 </asp:Content>
