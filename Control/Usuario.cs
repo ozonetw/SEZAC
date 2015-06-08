@@ -69,12 +69,12 @@ namespace Sezac.Control
                 #endregion
             );
 
-            return true;
+            return resultado.Rows.Count > 0;
         }
 
         public bool CrearDependencia(string nombre)
         {
-            string insertar = "INSERT INTO `sezac`.`dependencia` (`Nombre`) VALUES('"+nombre+"')";
+            string insertar = "INSERT INTO `sezac`.`dependencia` (`Nombre`) VALUES('" + nombre + "')";
             return true;
         }
 
