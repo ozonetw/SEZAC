@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sezac.IU {
+namespace SEZAC {
     
     
-    public partial class Login {
+    public partial class login {
         
         /// <summary>
         /// Login1 control.
