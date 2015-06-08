@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="SEZAC.login" MasterPageFile="~/Sezac.Master"%>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" ID="loginform" runat="server">    
-    <table border="1" style="width: 100%;">
+    <table border="0" style="width: 100%;">
         <tr>
             <td style="width: 50%;">&nbsp;</td>
             <td style="text-align: center;">
