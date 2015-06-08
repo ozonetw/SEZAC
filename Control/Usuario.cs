@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Sezac.Control
 {
-    public class Datos
+    public class Usuario
     {
         #region Atributos
 
@@ -18,7 +18,7 @@ namespace Sezac.Control
 
         #region Constructor
 
-        public Datos()
+        public Usuario()
         {
             _cifrado = new Cifrado(Definiciones.TipoCifrado.AES);
             _conexion = new Conexion()
@@ -44,13 +44,25 @@ namespace Sezac.Control
 
         #region Metodos
 
-        public bool Validar(string usuario, string contrasenia)
+        public Entidades.Usuario ObtenerUsuario(string login)
+        {
+            Entidades.Usuario usuario = new Entidades.Usuario()
+            {
+                #region Inicializar
+
+                #endregion
+            };
+
+            return usuario;
+        }
+
+        public bool Validar(string login, string password)
         {
             Sentencia sentencia = new Sentencia()
             {
                 #region Inicializar
 
-                TextoComando = "SELECT * FROM sezac.usuario where Usuario = '" + usuario + "' AND Contrasenia = '" + contrasenia + "'",
+                TextoComando = "SELECT * FROM sezac.usuario where Usuario = '" + login + "' AND Contrasenia = '" + password + "'",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoManejadorTransaccion = Definiciones.TipoManejadorTransaccion.NoTransaccion,
@@ -61,7 +73,7 @@ namespace Sezac.Control
             DataTable resultado = (DataTable)_planificador.Servir(
                 #region Ejecutar
 
-                conexion, new List<Sentencia>() 
+                _conexion, new List<Sentencia>() 
                 { 
                     sentencia
                 }

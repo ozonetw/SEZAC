@@ -7,7 +7,7 @@
     <ProjectGuid>{86123BE5-23B2-41BD-8639-BEBA5E133EA4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Control</RootNamespace>
+    <RootNamespace>Sezac.Control</RootNamespace>
     <AssemblyName>Control</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -37,6 +37,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comun\Definiciones.cs" />
+    <Compile Include="Entidades\Usuario.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
