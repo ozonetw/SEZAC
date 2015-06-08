@@ -1,11 +1,11 @@
 ﻿using Sezac.Control;
 using System;
-using System.Web.Security;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace SEZAC
 {
-    public partial class login : System.Web.UI.Page
+    public partial class login : Page
     {
         #region Eventos
 
@@ -22,6 +22,8 @@ namespace SEZAC
 
             if (e.Authenticated)
                 Session["Usuario"] = usuario.ObtenerUsuario(Login1.UserName);
+            else
+                Session["Usuario"] = null;
         }
 
         protected void Login1_LoggedIn(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace SEZAC
             switch (usuario.Tipo)
             {
                 case global::Sezac.Control.Comun.Definiciones.TipoUsuario.Administrador:
-                    Server.TransferRequest("Admin_Home.aspx");
+                    Server.Transfer("Admin_Home.aspx");
                     break;
                 case global::Sezac.Control.Comun.Definiciones.TipoUsuario.Encargado:
                     break;
