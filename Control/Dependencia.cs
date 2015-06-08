@@ -43,7 +43,7 @@ namespace Sezac.Control
                 #region Inicializar
 
 				Comando = "SELECT * FROM sezac.dependencia WHERE UPPER(nombre)='" + nombreDependencia.ToUpper() + "'",
-                Tipo = Definiciones.TipoSentencia.NoQuery,
+                Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
                 TipoResultado = Definiciones.TipoResultado.Entero

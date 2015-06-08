@@ -27,6 +27,7 @@
             <br />
             <asp:Button ID="Button1" runat="server" Text="Guardar" OnClick="Button1_Click" />
         </div>
+        <asp:Label ID="Label2" runat="server" Text="Label" ForeColor="Red"></asp:Label>
     </div>
 
 

@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminDependencias.aspx.cs" Inherits="SEZAC.AdminDependencias" MasterPageFile="~/Sezac.Master"%>
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" ID="AdminDep" runat="server">
-<asp:Menu runat="server" Orientation="Horizontal" BackColor="#669900" ForeColor="White" Width="1300px" Font-Size="Large" Font-Underline="True" RenderingMode="List" Font-Names="Tahoma">
+    <asp:Menu runat="server" Orientation="Horizontal" BackColor="#669900" ForeColor="White" Width="1300px" Font-Size="Large" Font-Underline="True" RenderingMode="List" Font-Names="Tahoma">
     <Items>
         <asp:MenuItem Text="Inicio |" NavigateUrl="~/Admin_Home.aspx"></asp:MenuItem>
         <asp:MenuItem Text="Dependencias |" NavigateUrl="#"></asp:MenuItem>
