@@ -37,6 +37,193 @@ namespace Sezac.Control
 
         #region Metodos
 
+		public bool InsertarUsuario(Entidades.Usuario usuario)
+		{
+			Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+				Parametros = new List<Parametro>(),
+				Tipo = Definiciones.TipoSentencia.NoQuery,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Entero
+
+                #endregion
+            };
+
+			#region Establecer comando
+
+			switch (usuario.Tipo)
+			{
+				case Comun.Definiciones.TipoUsuario.Encargado:
+					sentencia.Comando = "INSERT INTO sezac.usuario (usuario,contrasenia,nombres,apellidopaterno,apellidomaterno,imagen,tipousuarioid,dependenciaid) VALUES (@Usuario,@Contrasenia,@Nombre,@ApellidoPaterno,@ApellidoMaterno,@Imagen,@TipoUsuario,@Dependencia)";
+					#region Parametros
+					
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Usuario",
+							Tipo = DbType.String,
+							Valor = usuario.Login
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Contrasenia",
+							Tipo = DbType.String,
+							Valor = usuario.Contrasenia
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Nombre",
+							Tipo = DbType.String,
+							Valor = usuario.Nombre
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@ApellidoPaterno",
+							Tipo = DbType.String,
+							Valor = usuario.ApellidoPaterno
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@ApellidoMaterno",
+							Tipo = DbType.String,
+							Valor = usuario.ApellidoMaterno
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Imagen",
+							Tipo = DbType.Binary,
+							Valor = usuario.Imagen
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@TipoUsuario",
+							Tipo = DbType.Int32,
+							Valor = (int)usuario.Tipo
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Dependencia",
+							Tipo = DbType.Int32,
+							Valor = usuario.Dependencia.Id
+						}
+					);
+
+					#endregion
+					break;
+				case Comun.Definiciones.TipoUsuario.Beneficiario:
+					sentencia.Comando = "INSERT INTO sezac.beneficiario (rfc,nombres,apellidopaterno,apellidomaterno,contrasenia,correo,imagen,tipousuarioid,estatusbeneficiarioid) VALUES (@Rfc,@Nombre,@ApellidoPaterno,@ApellidoMaterno,@Contrasenia,@Correo,@Imagen,@TipoUsuario,@Estatus)";
+					#region Parametros
+					
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Rfc",
+							Tipo = DbType.String,
+							Valor = usuario.Login
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Nombre",
+							Tipo = DbType.String,
+							Valor = usuario.Nombre
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@ApellidoPaterno",
+							Tipo = DbType.String,
+							Valor = usuario.ApellidoPaterno
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@ApellidoMaterno",
+							Tipo = DbType.String,
+							Valor = usuario.ApellidoMaterno
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Contrasenia",
+							Tipo = DbType.String,
+							Valor = usuario.Contrasenia
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Correo",
+							Tipo = DbType.String,
+							Valor = usuario.Correo
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Imagen",
+							Tipo = DbType.Binary,
+							Valor = usuario.Imagen
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@TipoUsuario",
+							Tipo = DbType.Int32,
+							Valor = (int)usuario.Tipo
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Estatus",
+							Tipo = DbType.Int32,
+							Valor = (int)usuario.Estatus
+						}
+					);
+
+					#endregion
+					break;
+				default:
+					break;
+			}
+
+			#endregion
+			_planificador.Despachar(
+                #region Inicializar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
+            return true;
+		}
+
         public Entidades.Usuario ObtenerUsuario(string login)
         {
             Entidades.Usuario usuario = new Entidades.Usuario();
@@ -44,7 +231,9 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-                Comando = "SELECT u.*,d.nombre as dependencia FROM sezac.usuario u LEFT JOIN sezac.dependencia d ON d.id=u.dependenciaid WHERE u.Usuario='" + login + "'",
+				Comando = "SELECT u.*,d.nombre AS Dependencia,'' AS Correo,0 AS Estatus FROM sezac.usuario u LEFT JOIN sezac.dependencia d ON d.id=u.dependenciaid WHERE u.Usuario='" + login + "' " +
+				          "UNION " +
+						  "SELECT rfc AS Usuario,contrasenia,nombres,apellidopaterno,apellidomaterno,imagen,tipousuarioid,0 AS DependenciaId,'' AS Dependencia,correo,estatusbeneficiarioid AS Estatus FROM sezac.beneficiario WHERE rfc='" + login + "'",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
@@ -71,6 +260,8 @@ namespace Sezac.Control
 
                 usuario.ApellidoMaterno = resultado.Rows[indice]["ApellidoMaterno"].ToString();
                 usuario.ApellidoPaterno = resultado.Rows[indice]["ApellidoPaterno"].ToString();
+				usuario.Correo = resultado.Rows[indice]["Correo"].ToString();
+				usuario.Estatus = (Comun.Definiciones.TipoEstatus)int.Parse(resultado.Rows[indice]["Estatus"].ToString());
                 usuario.Dependencia = new Entidades.Dependencia()
                 {
                     Id = (resultado.Rows[indice]["DependenciaId"] == DBNull.Value) ? 0 : int.Parse(resultado.Rows[indice]["DependenciaId"].ToString()),
