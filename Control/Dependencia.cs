@@ -10,7 +10,6 @@ namespace Sezac.Control
     {
         #region Atributos
 
-        Cifrado _cifrado;
         Conexion _conexion;
         Planificador _planificador;
 
@@ -20,20 +19,13 @@ namespace Sezac.Control
 
         public Dependencia()
         {
-            _cifrado = new Cifrado(Definiciones.TipoCifrado.AES);
             _conexion = new Conexion()
             {
                 #region Inicializar
 
-                BaseDatos = "sezac",
-                Credenciales = new Credenciales()
-                {
-                    Usuario = "root",
-                    Contrasenia = _cifrado.Cifrar("root"),
-                    Cifrado = _cifrado
-                },
-                Servidor = "localhost",
-                Tipo = Definiciones.TipoConexion.CredencialesExplicitas,
+                Nombre = "SEZAC",
+                Tipo = Definiciones.TipoConexion.NombreConexion,
+                TipoCliente = Definiciones.TipoCliente.MySql
 
                 #endregion
             };
@@ -56,15 +48,15 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-                TextoComando = "SELECT * FROM sezac.dependencia WHERE id=COALESCE(" + ((id == 0) ? "NULL" : id.ToString()) + ",id)",
+                Comando = "SELECT * FROM sezac.dependencia WHERE id=COALESCE(" + ((id == 0) ? "NULL" : id.ToString()) + ",id)",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
-                TipoManejadorTransaccion = Definiciones.TipoManejadorTransaccion.NoTransaccion,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
                 TipoResultado = Definiciones.TipoResultado.Conjunto
 
                 #endregion
             };
-            DataTable resultado = (DataTable)_planificador.Servir(
+            DataTable resultado = (DataTable)_planificador.Despachar(
                 #region Inicializar
 
                 _conexion, new List<Sentencia>() 
@@ -74,6 +66,8 @@ namespace Sezac.Control
 
                 #endregion
             );
+
+            #region Recuperar registros
 
             for (int indice = 0; indice < resultado.Rows.Count; indice++)
             {
@@ -89,6 +83,7 @@ namespace Sezac.Control
                 #endregion
             }
 
+            #endregion
             return dependencias;
         }
 

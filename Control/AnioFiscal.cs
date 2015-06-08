@@ -10,7 +10,6 @@ namespace Sezac.Control
     {
         #region Atributos
 
-        Cifrado _cifrado;
         Conexion _conexion;
         Planificador _planificador;
 
@@ -20,20 +19,13 @@ namespace Sezac.Control
 
         public AnioFiscal()
         {
-            _cifrado = new Cifrado(Definiciones.TipoCifrado.AES);
             _conexion = new Conexion()
             {
                 #region Inicializar
 
-                BaseDatos = "sezac",
-                Credenciales = new Credenciales()
-                {
-                    Usuario = "root",
-                    Contrasenia = _cifrado.Cifrar("root"),
-                    Cifrado = _cifrado
-                },
-                Servidor = "localhost",
-                Tipo = Definiciones.TipoConexion.CredencialesExplicitas,
+                Nombre = "SAZEC",
+                Tipo = Definiciones.TipoConexion.NombreConexion,
+                TipoCliente = Definiciones.TipoCliente.MySql
 
                 #endregion
             };
@@ -56,15 +48,15 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-                TextoComando = "SELECT * FROM sezac.aniofiscal WHERE anio=COALESCE(" + ((anio == 0) ? "NULL" : anio.ToString()) + ",anio)",
+                Comando = "SELECT * FROM sezac.aniofiscal WHERE anio=COALESCE(" + ((anio == 0) ? "NULL" : anio.ToString()) + ",anio)",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
-                TipoManejadorTransaccion = Definiciones.TipoManejadorTransaccion.NoTransaccion,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
                 TipoResultado = Definiciones.TipoResultado.Conjunto
 
                 #endregion
             };
-            DataTable resultado = (DataTable)_planificador.Servir(
+            DataTable resultado = (DataTable)_planificador.Despachar(
                 #region Inicializar
 
                 _conexion, new List<Sentencia>() 
@@ -74,6 +66,8 @@ namespace Sezac.Control
 
                 #endregion
             );
+
+            #region Recuperar registros
 
             for (int indice = 0; indice < resultado.Rows.Count; indice++)
             {
@@ -88,6 +82,7 @@ namespace Sezac.Control
                 #endregion
             }
 
+            #endregion
             return anioFiscal;
         }
 

@@ -36,11 +36,6 @@ namespace Sezac.Control.Entidades
             get;
             set;
         }
-        public string Password
-        {
-            get;
-            set;
-        }
         public Definiciones.TipoUsuario Tipo
         {
             get;

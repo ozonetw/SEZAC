@@ -11,7 +11,6 @@ namespace Sezac.Control
     {
         #region Atributos
 
-        Cifrado _cifrado;
         Conexion _conexion;
         Planificador _planificador;
 
@@ -21,20 +20,13 @@ namespace Sezac.Control
 
         public Usuario()
         {
-            _cifrado = new Cifrado(Definiciones.TipoCifrado.AES);
             _conexion = new Conexion()
             {
                 #region Inicializar
 
-                BaseDatos = "sezac",
-                Credenciales = new Credenciales()
-                {
-                    Usuario = "root",
-                    Contrasenia = _cifrado.Cifrar("root"),
-                    Cifrado = _cifrado
-                },
-                Servidor = "localhost",
-                Tipo = Definiciones.TipoConexion.CredencialesExplicitas,
+                Nombre = "SAZEC",
+                Tipo = Definiciones.TipoConexion.NombreConexion,
+                TipoCliente = Definiciones.TipoCliente.MySql
 
                 #endregion
             };
@@ -52,15 +44,15 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-                TextoComando = "SELECT u.*,d.nombre as dependencia FROM sezac.usuario u LEFT JOIN sezac.dependencia d ON d.id=u.dependenciaid WHERE u.Usuario='" + login + "'",
+                Comando = "SELECT u.*,d.nombre as dependencia FROM sezac.usuario u LEFT JOIN sezac.dependencia d ON d.id=u.dependenciaid WHERE u.Usuario='" + login + "'",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
-                TipoManejadorTransaccion = Definiciones.TipoManejadorTransaccion.NoTransaccion,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
                 TipoResultado = Definiciones.TipoResultado.Conjunto
 
                 #endregion
             };
-            DataTable resultado = (DataTable)_planificador.Servir(
+            DataTable resultado = (DataTable)_planificador.Despachar(
                 #region Inicializar
 
                 _conexion, new List<Sentencia>() 
@@ -70,6 +62,8 @@ namespace Sezac.Control
 
                 #endregion
             );
+
+            #region Recuperar información
 
             for (int indice = 0; indice < resultado.Rows.Count; indice++)
             {
@@ -90,6 +84,7 @@ namespace Sezac.Control
                 #endregion
             }
 
+            #endregion
             return usuario;
         }
 
@@ -99,15 +94,15 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-                TextoComando = "SELECT * FROM sezac.usuario WHERE Usuario='" + login + "' AND Contrasenia='" + password + "'",
+                Comando = "SELECT * FROM sezac.usuario WHERE Usuario='" + login + "' AND Contrasenia='" + password + "'",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
-                TipoManejadorTransaccion = Definiciones.TipoManejadorTransaccion.NoTransaccion,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
                 TipoResultado = Definiciones.TipoResultado.Conjunto
 
                 #endregion
             };
-            DataTable resultado = (DataTable)_planificador.Servir(
+            DataTable resultado = (DataTable)_planificador.Despachar(
                 #region Ejecutar
 
                 _conexion, new List<Sentencia>() 
