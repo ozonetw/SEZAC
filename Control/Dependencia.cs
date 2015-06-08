@@ -42,7 +42,7 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-				Comando = "INSERT INTO dependencias (nombre) VALUES (" + dependencia.Descripcion + ")",
+				Comando = "INSERT INTO dependencia (Nombre) VALUES ('" + dependencia.Descripcion + "')",
                 Tipo = Definiciones.TipoSentencia.NoQuery,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,

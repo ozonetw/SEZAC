@@ -5,7 +5,7 @@ using O = Sezac.Control;
 
 namespace SEZAC
 {
-    public partial class AdminAniosFiscales : Page
+    public partial class AdminAniosFiscales : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +23,8 @@ namespace SEZAC
 				};
 
 				oAnioFiscal.InsertarAnioFiscal(eAnioFiscal);
-			}
+                
+            }
 			catch(Exception)
 			{
 
