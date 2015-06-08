@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comun\Definiciones.cs" />
+    <Compile Include="Entidades\Dependencia.cs" />
     <Compile Include="Entidades\Usuario.cs">
       <SubType>Code</SubType>
     </Compile>

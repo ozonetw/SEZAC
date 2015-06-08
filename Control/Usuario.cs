@@ -1,6 +1,7 @@
 ﻿using Sezac.Persistencia.Comun;
 using Sezac.Persistencia.Entidades;
 using Sezac.Persistencia.Reglas;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -46,12 +47,48 @@ namespace Sezac.Control
 
         public Entidades.Usuario ObtenerUsuario(string login)
         {
-            Entidades.Usuario usuario = new Entidades.Usuario()
+            Entidades.Usuario usuario = new Entidades.Usuario();
+            Sentencia sentencia = new Sentencia()
             {
                 #region Inicializar
 
+                TextoComando = "SELECT * FROM sezac.usuario where Usuario = '" + login + "'",
+                Tipo = Definiciones.TipoSentencia.Query,
+                TipoComando = CommandType.Text,
+                TipoManejadorTransaccion = Definiciones.TipoManejadorTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Conjunto
+
                 #endregion
             };
+            DataTable resultado = (DataTable)_planificador.Servir(
+                #region Ejecutar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
+
+            for (int indice = 0; indice < resultado.Rows.Count; indice++)
+            {
+                #region Establecer valores
+
+                usuario.ApellidoMaterno = resultado.Rows[indice]["ApellidoMaterno"].ToString();
+                usuario.ApellidoPaterno = resultado.Rows[indice]["ApellidoPaterno"].ToString();
+                usuario.Dependencia = new Entidades.Dependencia()
+                {
+                    Id = (resultado.Rows[indice]["DependenciaId"] == DBNull.Value) ? 0 : int.Parse(resultado.Rows[indice]["DependenciaId"].ToString()),
+                    Descripcion = resultado.Rows[indice]["Dependencia"].ToString()
+                };
+                usuario.Imagen = (resultado.Rows[indice]["Imagen"] == DBNull.Value) ? null : (byte[])resultado.Rows[indice]["Imagen"];
+                usuario.Login = login;
+                usuario.Nombre = resultado.Rows[indice]["Nombres"].ToString();
+                usuario.Tipo = (Comun.Definiciones.TipoUsuario)int.Parse(resultado.Rows[indice]["TipoUsuarioId"].ToString());
+
+                #endregion
+            }
 
             return usuario;
         }
@@ -82,24 +119,6 @@ namespace Sezac.Control
             );
 
             return resultado.Rows.Count > 0;
-        }
-
-        public bool CrearDependencia(string nombre)
-        {
-            string insertar = "INSERT INTO `sezac`.`dependencia` (`Nombre`) VALUES('" + nombre + "')";
-            return true;
-        }
-
-        public bool AltaBeneficiario(string[] datos, byte[] foto)
-        {
-            string insertar = "INSERT INTO `sezac`.`beneficiario` (`RFC`, `Nombres`, `ApellidoPaterno`, `ApellidoMaterno`, `Correo`, `Imagen`, `TipoUsuarioId`, `EstatusBeneficiarioId`) VALUES('" + datos[0] + "', '" + datos[1] + "', '" + datos[2] + "', '" + datos[3] + "', '" + datos [4] + "', " + foto + ", '3', '1')";
-            return true;
-        }
-
-        public bool AltaAnioFiscal(int anio)
-        {
-            string insertar = "INSERT INTO `sezac`.`aniofiscal` (`Anio`) VALUES('" + anio + "')";
-            return true;
         }
 
         #endregion
