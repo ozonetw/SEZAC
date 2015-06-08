@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminHome.aspx.cs" Inherits="Sezac.IU.AdminHome" MasterPageFile="~/Sezac.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Sezac.IU.Admin.Default" MasterPageFile="~/Sezac.Master" %>
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" ID="adminhomeform" runat="server">
 	<asp:Menu runat="server" Orientation="Horizontal" BackColor="#669900" ForeColor="White" Width="1300px" Font-Size="Large" Font-Underline="True" RenderingMode="List" Font-Names="Tahoma">
 		<Items>
-			<asp:MenuItem Text="Inicio |" NavigateUrl="~/AdminHome.aspx"></asp:MenuItem>
+			<asp:MenuItem Text="Inicio |" NavigateUrl="~/Admin/Default.aspx"></asp:MenuItem>
 			<asp:MenuItem Text="Dependencias |" NavigateUrl="#"></asp:MenuItem>
 			<asp:MenuItem Text="Encargados |" NavigateUrl="#"></asp:MenuItem>
 			<asp:MenuItem Text="Años Fiscales |" NavigateUrl="#"></asp:MenuItem>
@@ -20,11 +20,11 @@
 			<!-- start Basic Jquery Slider -->
 			<ul class="bjqs">
 				<li>
-					<img src="images/b1.jpg" title="Automatically generated caption" /></li>
+					<img src="../images/b1.jpg" title="Automatically generated caption" /></li>
 				<li>
-					<img src="images/b2.jpg" title="Automatically generated caption" /></li>
+					<img src="../images/b2.jpg" title="Automatically generated caption" /></li>
 				<li>
-					<img src="images/b3.jpg" title="Automatically generated caption" /></li>
+					<img src="../images/b3.jpg" title="Automatically generated caption" /></li>
 			</ul>
 			<!-- end Basic jQuery Slider -->
 

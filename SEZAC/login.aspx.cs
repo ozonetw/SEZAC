@@ -1,5 +1,6 @@
 ﻿using Sezac.Control;
 using System;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -28,20 +29,7 @@ namespace Sezac.IU
 
         protected void Login1_LoggedIn(object sender, EventArgs e)
         {
-            global::Sezac.Control.Entidades.Usuario usuario = (global::Sezac.Control.Entidades.Usuario)Session["Usuario"];
-
-            switch (usuario.Tipo)
-            {
-                case global::Sezac.Control.Comun.Definiciones.TipoUsuario.Administrador:
-                    Response.Redirect("AdminHome.aspx", true);
-                    break;
-                case global::Sezac.Control.Comun.Definiciones.TipoUsuario.Encargado:
-                    break;
-                case global::Sezac.Control.Comun.Definiciones.TipoUsuario.Beneficiario:
-                    break;
-                default:
-                    break;
-            }
+			FormsAuthentication.RedirectFromLoginPage(((global::System.Web.UI.WebControls.Login)sender).UserName, false);
         }
 
         protected void Login1_LoginError(object sender, EventArgs e)
