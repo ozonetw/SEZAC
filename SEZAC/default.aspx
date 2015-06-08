@@ -1,3 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="SEZAC._default"  MasterPageFile="~/Sezac.Master"%>
-<asp:Content ID="default_content" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Sezac.IU.Default" MasterPageFile="~/Sezac.Master" %>
+
+<asp:Content ContentPlaceHolderID="ContentPlaceHolder1" ID="loginform" runat="server">
 </asp:Content>

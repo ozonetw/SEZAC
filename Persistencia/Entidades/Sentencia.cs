@@ -8,12 +8,12 @@ namespace Sezac.Persistencia.Entidades
 	{
 		#region Propiedades
 
-		public List<Parametro> Parametros
+        public string Comando
         {
             get;
             set;
         }
-		public string TextoComando
+		public List<Parametro> Parametros
         {
             get;
             set;
@@ -33,7 +33,7 @@ namespace Sezac.Persistencia.Entidades
             get;
             set;
         }
-		public Definiciones.TipoManejadorTransaccion TipoManejadorTransaccion
+		public Definiciones.TipoTransaccion TipoTransaccion
         {
             get;
             set;
