@@ -22,8 +22,7 @@
             <asp:Label ID="Label1" runat="server" Text="Año Fiscal:"></asp:Label>
         </div>
         <div class="col_b">
-            <asp:DropDownList ID="DropDownList1" runat="server">
-            </asp:DropDownList>
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             <br />
             <br />
             <asp:Button ID="Button1" runat="server" Text="Guardar" />
