@@ -53,6 +53,50 @@ namespace Sezac.Control
 			return imagen;
 		}
 
+		public bool ExisteUsuario(string login, Comun.Definiciones.TipoUsuario tipoUsario)
+        {
+			Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+                Tipo = Definiciones.TipoSentencia.Query,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Entero
+
+                #endregion
+            };
+
+			#region Establecer comando
+
+			switch (tipoUsario)
+			{
+				case Comun.Definiciones.TipoUsuario.Encargado:
+					sentencia.Comando = "SELECT * FROM sezac.usuario WHERE UPPER(usuario)='" + login.ToUpper() + "'";
+					break;
+				case Comun.Definiciones.TipoUsuario.Beneficiario:
+					sentencia.Comando = "SELECT * FROM sezac.beneficiario WHERE UPPER(rfc)='" + login.ToUpper() + "'";
+					break;
+				default:
+					break;
+			}
+
+			#endregion
+
+			DataTable resultado = (DataTable)_planificador.Despachar(
+                #region Ejecutar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
+
+            return resultado.Rows.Count > 0;
+        }
+
 		public bool InsertarUsuario(Entidades.Usuario usuario)
 		{
 			Sentencia sentencia = new Sentencia()
