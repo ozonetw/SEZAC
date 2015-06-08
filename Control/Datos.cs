@@ -8,26 +8,44 @@ namespace Sezac.Control
 {
     public class Datos
     {
-        public bool Validar(string usuario, string contrasenia)
+        #region Atributos
+
+        Cifrado _cifrado;
+        Conexion _conexion;
+        Planificador _planificador;
+
+        #endregion
+
+        #region Constructor
+
+        public Datos()
         {
-            Cifrado cifrado = new Cifrado(Definiciones.TipoCifrado.AES);
-            Conexion conexion = new Conexion()
+            _cifrado = new Cifrado(Definiciones.TipoCifrado.AES);
+            _conexion = new Conexion()
             {
-                #region Inicializar 
+                #region Inicializar
 
                 BaseDatos = "sezac",
                 Credenciales = new Credenciales()
                 {
                     Usuario = "root",
-                    Contrasenia = cifrado.Cifrar("root"),
-                    Cifrado = cifrado
+                    Contrasenia = _cifrado.Cifrar("root"),
+                    Cifrado = _cifrado
                 },
                 Servidor = "localhost",
                 Tipo = Definiciones.TipoConexion.CredencialesExplicitas,
 
                 #endregion
             };
-            Planificador planificador = new Planificador();
+            _planificador = new Planificador();
+        }
+
+        #endregion
+
+        #region Metodos
+
+        public bool Validar(string usuario, string contrasenia)
+        {
             Sentencia sentencia = new Sentencia()
             {
                 #region Inicializar
@@ -40,7 +58,7 @@ namespace Sezac.Control
 
                 #endregion
             };
-            DataTable resultado = (DataTable)planificador.Servir(
+            DataTable resultado = (DataTable)_planificador.Servir(
                 #region Ejecutar
 
                 conexion, new List<Sentencia>() 
@@ -71,5 +89,7 @@ namespace Sezac.Control
             string insertar = "INSERT INTO `sezac`.`aniofiscal` (`Anio`) VALUES('" + anio + "')";
             return true;
         }
+
+        #endregion
     }
 }
