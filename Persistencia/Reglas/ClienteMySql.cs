@@ -1,4 +1,4 @@
-﻿//using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Sezac.Persistencia.Comun;
 using Sezac.Persistencia.Entidades;
 using System;
@@ -6,29 +6,25 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 
-/*
 namespace Sezac.Persistencia.Reglas
 {
 	internal class ClienteMySql : Cliente, ICliente
 	{
 		#region Atributos
 
-		//private MySqlDataAdapter _adaptadorDatos;
-		//private MySqlCommand _comando;
-		//private MySqlConnection _conexion;
-		//private MySqlTransaction _transaccion;
+		private MySqlDataAdapter _adaptadorDatos;
+		private MySqlCommand _comando;
+		private MySqlConnection _conexion;
+		private MySqlTransaction _transaccion;
 		
 		#endregion
 
 		#region Constructor
 
 		internal ClienteMySql(Conexion conexion)
-			: base((conexion.Tipo == Definiciones.TipoConexion.CredencialesExplicitas)
-				? "server=" + conexion.Servidor + ";user id=" + conexion.Credenciales.Usuario + ";password=" + conexion.Credenciales.Cifrado.Descifrar(conexion.Credenciales.Contrasenia) + ";database=" + conexion.BaseDatos + ";pooling=false;"
-				: ((conexion.Tipo == Definiciones.TipoConexion.NombreConexion)
+			: base((conexion.Tipo == Definiciones.TipoConexion.NombreConexion)
 				? ConfigurationManager.ConnectionStrings[conexion.Nombre].ConnectionString
 				: string.Empty)
-			)
 		{
 
 		}
@@ -73,10 +69,10 @@ namespace Sezac.Persistencia.Reglas
 				_comando = new MySqlCommand();
 				_comando.Connection = _conexion;
 				_comando.CommandType = sentencia.TipoComando;
-				_comando.CommandText = sentencia.TextoComando;
+				_comando.CommandText = sentencia.Comando;
 				_comando.CommandTimeout = 0;
 
-				if (sentencia.TipoManejadorTransaccion == Definiciones.TipoManejadorTransaccion.IniciarTransaccion)
+				if (sentencia.TipoTransaccion == Definiciones.TipoTransaccion.Iniciar)
 					_transaccion = _conexion.BeginTransaction(IsolationLevel.ReadCommitted);
 					
 				if (sentencia.Parametros != null)
@@ -186,7 +182,7 @@ namespace Sezac.Persistencia.Reglas
 							resultado = EjecutarNoQuery();
 						}
 
-						if (sentencia[sentencia.Count - 1].TipoManejadorTransaccion == Definiciones.TipoManejadorTransaccion.FinalizarTransaccion)
+						if (sentencia[sentencia.Count - 1].TipoTransaccion == Definiciones.TipoTransaccion.Finalizar)
 							_transaccion.Commit();
 
 						break;
@@ -218,7 +214,7 @@ namespace Sezac.Persistencia.Reglas
 			catch (Exception ex)
 			{
 
-				if (sentencia[sentencia.Count - 1].TipoManejadorTransaccion == Definiciones.TipoManejadorTransaccion.FinalizarTransaccion)
+				if (sentencia[sentencia.Count - 1].TipoTransaccion == Definiciones.TipoTransaccion.Finalizar)
 					_transaccion.Rollback();
 
 				throw new Exception(ex.Message, ex);
@@ -243,4 +239,3 @@ namespace Sezac.Persistencia.Reglas
 		#endregion
 	}
 }
-*/
