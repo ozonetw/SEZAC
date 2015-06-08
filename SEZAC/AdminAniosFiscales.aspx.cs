@@ -23,7 +23,7 @@ namespace SEZAC
 				};
 
 				oAnioFiscal.InsertarAnioFiscal(eAnioFiscal);
-                
+                Label2.Text = "Año guardado exitosaente";
             }
 			catch(Exception)
 			{
