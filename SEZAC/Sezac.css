@@ -1,39 +1,35 @@
-﻿.wrap {
+﻿.wrap 
+{
     position: relative;
     margin:0 auto;
     width:900px;
 }
-
-#divison{
+#divison
+{
     position:fixed;
     bottom:0;
     z-index:999999;
     left: 900%;
-
 }
-
-#header, #footer{
+#header, #footer
+{
     width:100%;
     float:left;
-
 }
-
-#footer{
+#footer
+{
     position:fixed;
     bottom:0;
     z-index:999999;
     left: -50%;
-
 }
-
-#header {
+#header 
+{
   
 }
-
-#content{
+#content
+{
     margin-top:100px;
     float:left;
     width:900px;
-
 }
-
