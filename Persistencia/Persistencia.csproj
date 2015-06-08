@@ -53,16 +53,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reglas\Cifrado.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Reglas\Cliente.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Reglas\ClienteMySql.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Reglas\ICifrado.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Reglas\ICliente.cs">

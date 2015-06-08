@@ -6,32 +6,7 @@ namespace Sezac.Persistencia.Entidades
 	{
 		#region Propiedades
 
-		public string BaseDatos
-        {
-            get;
-            set;
-        }
-		public Credenciales Credenciales
-        {
-            get;
-            set;
-        }
-		public string IdServicio
-        {
-            get;
-            set;
-        }
 		public string Nombre
-        {
-            get;
-            set;
-        }
-		public string Puerto
-        {
-            get;
-            set;
-        }
-		public string Servidor
         {
             get;
             set;

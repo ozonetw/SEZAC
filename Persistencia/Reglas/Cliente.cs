@@ -28,7 +28,7 @@ namespace Sezac.Persistencia.Reglas
 		protected abstract object EjecutarEscalar();
 		protected abstract int EjecutarNoQuery();
 		protected abstract DataTable EjecutarQuery();
-		protected abstract object ObtenerParametro(string nombreParametro);
+        protected abstract object ObtenerParametro(string nombreParametro);
 
 		#endregion
 	}

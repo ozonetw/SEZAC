@@ -4,26 +4,19 @@
 	{
 		#region Enumeraciones
 
-        public enum TipoCifrado 
-        { 
-			AES,
-			MD5,
-			SHA1
-		};
         public enum TipoCliente
         {
             MySql
         };
         public enum TipoConexion
         {
-            CredencialesExplicitas,
             NombreConexion
         };
-		public enum TipoManejadorTransaccion 
+		public enum TipoTransaccion 
         { 
-			ContinuarTransaccion, 
-			FinalizarTransaccion, 
-			IniciarTransaccion, 
+			Continuar, 
+			Finalizar, 
+			Iniciar, 
 			NoTransaccion 
 		};
 		public enum TipoResultado 

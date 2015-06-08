@@ -1,18 +1,10 @@
-﻿using Sezac.Persistencia.Reglas;
-using System.Runtime.Serialization;
-
-namespace Sezac.Persistencia.Entidades
+﻿namespace Sezac.Persistencia.Entidades
 {
 	public class Credenciales
 	{
 		#region Propiedades
 
-		public Cifrado Cifrado 
-        { 
-            get; 
-            set; 
-        }
-		public byte[] Contrasenia
+		public string Contrasenia
         {
             get;
             set;

@@ -8,7 +8,6 @@ namespace Sezac.Persistencia.Reglas
 		#region Metodos
 
 		object Ejecutar(List<Sentencia> sentencia);
-		bool Validar();
 
 		#endregion
 	}
