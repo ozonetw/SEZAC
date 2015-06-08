@@ -52,7 +52,7 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-                TextoComando = "SELECT * FROM sezac.usuario where Usuario = '" + login + "'",
+                TextoComando = "SELECT u.*,d.nombre as dependencia FROM sezac.usuario u LEFT JOIN sezac.dependencia d ON d.id=u.dependenciaid WHERE u.Usuario='" + login + "'",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoManejadorTransaccion = Definiciones.TipoManejadorTransaccion.NoTransaccion,
@@ -61,7 +61,7 @@ namespace Sezac.Control
                 #endregion
             };
             DataTable resultado = (DataTable)_planificador.Servir(
-                #region Ejecutar
+                #region Inicializar
 
                 _conexion, new List<Sentencia>() 
                 { 
@@ -99,7 +99,7 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-                TextoComando = "SELECT * FROM sezac.usuario where Usuario = '" + login + "' AND Contrasenia = '" + password + "'",
+                TextoComando = "SELECT * FROM sezac.usuario WHERE Usuario='" + login + "' AND Contrasenia='" + password + "'",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoManejadorTransaccion = Definiciones.TipoManejadorTransaccion.NoTransaccion,
