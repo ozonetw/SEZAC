@@ -38,6 +38,29 @@ namespace Sezac.Control
 
         public bool InsertarDependencia(Entidades.Dependencia dependencia)
         {
+			Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+				Comando = "INSERT INTO dependencias (nombre) VALUES (" + dependencia.Descripcion + ")",
+                Tipo = Definiciones.TipoSentencia.NoQuery,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Entero
+
+                #endregion
+            };
+
+            _planificador.Despachar(
+                #region Inicializar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
             return true;
         }
 
