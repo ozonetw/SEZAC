@@ -36,8 +36,59 @@ namespace Sezac.Control
 
         #region Metodos
 
+		public bool ExisteDependencia(string nombreDependencia)
+        {
+			Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+				Comando = "SELECT * FROM sezac.dependencia WHERE UPPER(nombre)='" + nombreDependencia.ToUpper() + "'",
+                Tipo = Definiciones.TipoSentencia.Query,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Entero
+
+                #endregion
+            };
+			DataTable resultado = (DataTable)_planificador.Despachar(
+                #region Ejecutar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
+
+            return resultado.Rows.Count > 0;
+        }
+
         public bool InsertarDependencia(Entidades.Dependencia dependencia)
         {
+			Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+				Comando = "INSERT INTO sezac.dependencia (nombre) VALUES ('" + dependencia.Descripcion + "')",
+                Tipo = Definiciones.TipoSentencia.NoQuery,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Entero
+
+                #endregion
+            };
+
+            _planificador.Despachar(
+                #region Inicializar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
             return true;
         }
 
@@ -75,8 +126,8 @@ namespace Sezac.Control
 
                 dependencias.Add(new Entidades.Dependencia()
                     {
-                        Id = int.Parse(resultado.Rows[indice]["DependenciaId"].ToString()),
-                        Descripcion = resultado.Rows[indice]["Nombe"].ToString()
+                        Id = int.Parse(resultado.Rows[indice]["Id"].ToString()),
+                        Descripcion = resultado.Rows[indice]["Nombre"].ToString()
                     }
                 );
 

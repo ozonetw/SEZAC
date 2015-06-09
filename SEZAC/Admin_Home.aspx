@@ -3,9 +3,9 @@
 <asp:Menu runat="server" Orientation="Horizontal" BackColor="#669900" ForeColor="White" Width="1300px" Font-Size="Large" Font-Underline="True" RenderingMode="List" Font-Names="Tahoma">
     <Items>
         <asp:MenuItem Text="Inicio |" NavigateUrl="~/Admin_Home.aspx"></asp:MenuItem>
-        <asp:MenuItem Text="Dependencias |" NavigateUrl="#"></asp:MenuItem>
-        <asp:MenuItem Text="Encargados |" NavigateUrl="#"></asp:MenuItem>
-        <asp:MenuItem Text="Años Fiscales |" NavigateUrl="#"></asp:MenuItem>
+        <asp:MenuItem Text="Dependencias |" NavigateUrl="~/AdminDependencias.aspx"></asp:MenuItem>
+        <asp:MenuItem Text="Encargados |" NavigateUrl="~/AdminEncargados.aspx"></asp:MenuItem>
+        <asp:MenuItem Text="Años Fiscales |" NavigateUrl="~/AdminAniosFiscales.aspx"></asp:MenuItem>
         <asp:MenuItem Text="Salir |" NavigateUrl="#"></asp:MenuItem>
     </Items>
 </asp:Menu>

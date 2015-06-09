@@ -16,11 +16,26 @@ namespace Sezac.Control.Entidades
             get;
             set;
         }
+		public string Contrasenia
+		{
+			get;
+			set;
+		}
+		public string Correo
+		{
+			get;
+			set;
+		}
         public Dependencia Dependencia
         {
             get;
             set;
         }
+		public Definiciones.TipoEstatus Estatus
+		{
+			get;
+			set;
+		}
         public byte[] Imagen
         {
             get;

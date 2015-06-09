@@ -10,6 +10,12 @@
 			Encargado,
 			Beneficiario
 		};
+		public enum TipoEstatus
+		{
+			SinAsignar,
+			Activo,
+			Vetado
+		};
 
 		#endregion
 	}

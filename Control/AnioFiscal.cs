@@ -38,6 +38,29 @@ namespace Sezac.Control
 
         public bool InsertarAnioFiscal(Entidades.AnioFiscal anioFiscal)
         {
+			Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+				Comando = "INSERT INTO sezac.aniofiscal (anio) VALUES (" + anioFiscal.Anio + ")",
+                Tipo = Definiciones.TipoSentencia.NoQuery,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Entero
+
+                #endregion
+            };
+
+            _planificador.Despachar(
+                #region Inicializar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
             return true;
         }
 
