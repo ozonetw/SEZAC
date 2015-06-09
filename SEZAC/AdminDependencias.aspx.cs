@@ -25,7 +25,8 @@ namespace SEZAC
                 {
                     Descripcion = Text1.Value
                 };
-                if (oDependencia.ExisteDependencia(eDependencia.Descripcion)){
+                if (oDependencia.ExisteDependencia(eDependencia.Descripcion))
+                {
                     Label2.Text = "Ya Existe";
                 }
                 else

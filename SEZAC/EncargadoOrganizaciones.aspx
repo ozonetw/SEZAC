@@ -27,7 +27,7 @@
         <div class="col_a">
             <asp:Label Text="Nombre: " runat="server"></asp:Label>
             <br />
-            <asp:Label Text="Programa: " runat="server"></asp:Label>
+            <asp:Label Text="Nombre Organizacio: " runat="server"></asp:Label>
             <br />
         </div>
         <div class="col_b">
@@ -36,7 +36,7 @@
             <asp:DropDownList id="programas_drop" runat="server"></asp:DropDownList>
             <br />
             <br />
-            <asp:Button text="Guardar" runat="server"/>
+            <asp:Button text="Guardar" runat="server" OnClick="Unnamed4_Click"/>
         </div>
     </div>
     <!-- Confirmation Footer -->
@@ -49,7 +49,7 @@
         <br />
         <br />
         <br />
-        <asp:Label Text="Empty" runat="server"></asp:Label>
+        <asp:Label ID="CorfirmarOrg" Text="" runat="server"></asp:Label>
     </div>
 
 

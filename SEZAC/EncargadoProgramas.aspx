@@ -38,16 +38,17 @@
             <asp:Label Text="Año Fiscal" runat="server"></asp:Label>
         </div>
         <div class="col_b">
-            <asp:TextBox runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBoxPrograma" runat="server"></asp:TextBox>
             <br />
-            <asp:DropDownList runat="server" Height="25px" Width="126px"></asp:DropDownList>
+            <asp:DropDownList runat="server" ID="DropDownList1" Height="25px" Width="126px" ></asp:DropDownList>
             <br />
-            <asp:TextBox runat="server"></asp:TextBox>
             <br />
-            <asp:DropDownList runat="server" Height="25px" Width="126px"></asp:DropDownList>
+            <asp:DropDownList runat="server" ID="DropDowList2" Height="25px" Width="126px" ></asp:DropDownList>
             <br />
-            <asp:Button Text="Guardar" runat="server" Width="126px"/>
+            <asp:Button Text="Guardar" runat="server" Width="126px" OnClick="Unnamed10_Click"/>
         </div>
+
+        <asp:Label ID="Programa" runat="server" Text="Label"></asp:Label>
 
     </div>
 </asp:Content>
