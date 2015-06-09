@@ -321,7 +321,7 @@ namespace Sezac.Control
                 usuario.ApellidoMaterno = resultado.Rows[indice]["ApellidoMaterno"].ToString();
                 usuario.ApellidoPaterno = resultado.Rows[indice]["ApellidoPaterno"].ToString();
 				usuario.Correo = resultado.Rows[indice]["Correo"].ToString();
-				usuario.Estatus = (Comun.Definiciones.TipoEstatus)int.Parse(resultado.Rows[indice]["Estatus"].ToString());
+				usuario.Estatus = (Comun.Definiciones.TipoEstatusBeneficiario)int.Parse(resultado.Rows[indice]["Estatus"].ToString());
                 usuario.Dependencia = new Entidades.Dependencia()
                 {
                     Id = (resultado.Rows[indice]["DependenciaId"] == DBNull.Value) ? 0 : int.Parse(resultado.Rows[indice]["DependenciaId"].ToString()),
