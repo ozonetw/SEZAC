@@ -99,7 +99,7 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-                Comando = "SELECT * FROM sezac.programa WHERE id=COALESCE(" + ((id == 0) ? "NULL" : id.ToString()) + ",id)",
+				Comando = "SELECT p.*,d.nombre AS Dependencia FROM sezac.programa p,sezac.dependencia d WHERE d.id=p.dependenciaid AND p.id=COALESCE(" + ((id == 0) ? "NULL" : id.ToString()) + ",p.id)",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
