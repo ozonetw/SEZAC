@@ -36,6 +36,34 @@ namespace Sezac.Control
 
         #region Metodos
 
+		public bool ExisteAnioFiscal(int anio)
+        {
+			Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+				Comando = "SELECT * FROM sezac.aniofiscal WHERE anio=" + anio,
+                Tipo = Definiciones.TipoSentencia.Query,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Entero
+
+                #endregion
+            };
+			DataTable resultado = (DataTable)_planificador.Despachar(
+                #region Ejecutar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
+
+            return resultado.Rows.Count > 0;
+        }
+
         public bool InsertarAnioFiscal(Entidades.AnioFiscal anioFiscal)
         {
 			Sentencia sentencia = new Sentencia()
