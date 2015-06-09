@@ -142,9 +142,56 @@ p.bjqs-caption{
 
 .col_b{
     float:right;
-    width:694px;  
+    width:1019px;  
 }
 
 .top_header{
     text-decoration: underline;
 }
+
+.top_bar_en{
+    text-decoration:underline;
+
+}
+
+.col_one{
+    float:left;
+    width:24%;
+}
+
+.col_two{
+    display:inline-block;
+    width: 27%;
+}
+
+.col_three{
+    float:right;
+    width:45%;
+}
+
+.ception_a{
+    float:left;
+    width:33%;
+}
+
+.ception_b{
+    display:inline-block;
+    width: 33%;
+}
+
+.ception_c{
+    float:right;
+    width:33%;
+}
+
+#eh_content {
+    padding: 20px;
+    overflow:hidden;
+}
+.col {
+    float:left;
+    width:22%;
+    margin-right: 4%;
+}
+.col-4 {margin-right:0;}
+

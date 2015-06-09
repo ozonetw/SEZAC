@@ -62,9 +62,20 @@
     <Content Include="AdminDependencias.aspx" />
     <Content Include="AdminEncargados.aspx" />
     <Content Include="Admin_Home.aspx" />
+    <Content Include="BeneficiarioHome.aspx" />
+    <Content Include="EncargadoBeneficiarios.aspx" />
+    <Content Include="EncargadoBuscar.aspx" />
+    <Content Include="EncargadoEncargados.aspx" />
+    <Content Include="EncargadoEvaluar.aspx" />
+    <Content Include="EncargadoHistorial.aspx" />
+    <Content Include="EncargadoHome.aspx" />
+    <Content Include="EncargadoOrganizaciones.aspx" />
+    <Content Include="EncargadoProgramas.aspx" />
+    <Content Include="EncargadoVetados.aspx" />
     <Content Include="images\b1.jpg" />
     <Content Include="images\b2.jpg" />
     <Content Include="images\b3.jpg" />
+    <Content Include="images\loop.png" />
     <Content Include="js\bjqs-1.3.js" />
     <Content Include="js\bjqs-1.3.min.js" />
     <Content Include="js\libs\jquery.secret-source.min.js" />
@@ -124,12 +135,82 @@
     <Compile Include="Admin_Home.aspx.designer.cs">
       <DependentUpon>Admin_Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BeneficiarioHome.aspx.cs">
+      <DependentUpon>BeneficiarioHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BeneficiarioHome.aspx.designer.cs">
+      <DependentUpon>BeneficiarioHome.aspx</DependentUpon>
+    </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncargadoBeneficiarios.aspx.cs">
+      <DependentUpon>EncargadoBeneficiarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncargadoBeneficiarios.aspx.designer.cs">
+      <DependentUpon>EncargadoBeneficiarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncargadoBuscar.aspx.cs">
+      <DependentUpon>EncargadoBuscar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncargadoBuscar.aspx.designer.cs">
+      <DependentUpon>EncargadoBuscar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncargadoEncargados.aspx.cs">
+      <DependentUpon>EncargadoEncargados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncargadoEncargados.aspx.designer.cs">
+      <DependentUpon>EncargadoEncargados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncargadoEvaluar.aspx.cs">
+      <DependentUpon>EncargadoEvaluar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncargadoEvaluar.aspx.designer.cs">
+      <DependentUpon>EncargadoEvaluar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncargadoHistorial.aspx.cs">
+      <DependentUpon>EncargadoHistorial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncargadoHistorial.aspx.designer.cs">
+      <DependentUpon>EncargadoHistorial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncargadoHome.aspx.cs">
+      <DependentUpon>EncargadoHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncargadoHome.aspx.designer.cs">
+      <DependentUpon>EncargadoHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncargadoOrganizaciones.aspx.cs">
+      <DependentUpon>EncargadoOrganizaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncargadoOrganizaciones.aspx.designer.cs">
+      <DependentUpon>EncargadoOrganizaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncargadoProgramas.aspx.cs">
+      <DependentUpon>EncargadoProgramas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncargadoProgramas.aspx.designer.cs">
+      <DependentUpon>EncargadoProgramas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncargadoVetados.aspx.cs">
+      <DependentUpon>EncargadoVetados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncargadoVetados.aspx.designer.cs">
+      <DependentUpon>EncargadoVetados.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
