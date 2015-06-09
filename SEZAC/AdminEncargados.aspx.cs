@@ -26,21 +26,38 @@ namespace SEZAC
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            O.Usuario oUsuario = new O.Usuario();
-            E.Usuario eUsuario = new E.Usuario()
+            try
             {
-                ApellidoPaterno = Text2.Value,
-                ApellidoMaterno = Text3.Value,
-                Contrasenia = Password1.Value,
-                Dependencia = new E.Dependencia()
+                O.Usuario oUsuario = new O.Usuario();
+                E.Usuario eUsuario = new E.Usuario()
                 {
-                    Id = int.Parse(DropDownList1.SelectedItem.Value)
-                },
-                Imagen = (FileUpload1.HasFile) ? FileUpload1.FileBytes : null,
-                Login = Text4.Value,
-                Nombre = Text1.Value,
-                Tipo = O.Comun.Definiciones.TipoUsuario.Encargado
-            };
+                    ApellidoPaterno = Text2.Value,
+                    ApellidoMaterno = Text3.Value,
+                    Contrasenia = Password1.Value,
+                    Dependencia = new E.Dependencia()
+                    {
+                        Id = int.Parse(DropDownList1.SelectedItem.Value)
+                    },
+                    Imagen = (FileUpload1.HasFile) ? FileUpload1.FileBytes : null,
+                    Login = Text4.Value,
+                    Nombre = Text1.Value,
+                    Tipo = O.Comun.Definiciones.TipoUsuario.Encargado
+                };
+                if (oUsuario.ExisteUsuario(eUsuario.Login, eUsuario.Tipo))
+                {
+                    Confirmar.Text = "El encargado ya existe";
+                }
+                else
+                {
+                    oUsuario.InsertarUsuario(eUsuario);
+                    Confirmar.Text = "El encargado se creo exitosamente";
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            
 
             
         }
