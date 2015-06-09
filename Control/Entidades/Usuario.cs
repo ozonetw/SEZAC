@@ -31,7 +31,7 @@ namespace Sezac.Control.Entidades
             get;
             set;
         }
-		public Definiciones.TipoEstatus Estatus
+		public Definiciones.TipoEstatusBeneficiario Estatus
 		{
 			get;
 			set;

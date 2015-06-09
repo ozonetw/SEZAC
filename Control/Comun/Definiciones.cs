@@ -4,17 +4,27 @@
 	{
 		#region Enumeraciones
 
+		public enum TipoEstatusBeneficiario
+		{
+			SinAsignar,
+			Activo,
+			Vetado
+		};
+		public enum TipoEstatusPrograma
+		{
+			NoCompletado,
+			Completado
+		};
+		public enum TipoHistorial
+		{
+			Beneficiario,
+			Organizacion
+		};
         public enum TipoUsuario
         { 
 			Administrador = 1,
 			Encargado,
 			Beneficiario
-		};
-		public enum TipoEstatus
-		{
-			SinAsignar,
-			Activo,
-			Vetado
 		};
 
 		#endregion

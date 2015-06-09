@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Sezac.Control
 {
-    public class AnioFiscal
+    public class Programa
     {
         #region Atributos
 
@@ -17,7 +17,7 @@ namespace Sezac.Control
 
         #region Constructor
 
-        public AnioFiscal()
+        public Programa()
         {
             _conexion = new Conexion()
             {
@@ -36,13 +36,13 @@ namespace Sezac.Control
 
         #region Metodos
 
-		public bool ExisteAnioFiscal(int anio)
+		public bool ExistePrograma(string nombrePrograma)
         {
 			Sentencia sentencia = new Sentencia()
             {
                 #region Inicializar
 
-				Comando = "SELECT * FROM sezac.aniofiscal WHERE anio=" + anio,
+				Comando = "SELECT * FROM sezac.programa WHERE UPPER(nombre)='" + nombrePrograma.ToUpper() + "'",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
@@ -64,14 +64,14 @@ namespace Sezac.Control
             return resultado.Rows.Count > 0;
         }
 
-        public bool InsertarAnioFiscal(Entidades.AnioFiscal anioFiscal)
-        {
+		public bool InsertarPrograma(Entidades.Programa programa)
+		{
 			Sentencia sentencia = new Sentencia()
             {
                 #region Inicializar
 
-				Comando = "INSERT INTO sezac.aniofiscal (anio) VALUES (" + anioFiscal.Anio + ")",
-                Tipo = Definiciones.TipoSentencia.NoQuery,
+				Comando = "INSERT INTO sezac.programa (nombre,dependenciaid,aniofiscal) VALUES ('" + programa.Descripcion + "',"+ programa.Dependencia.Id + "," + programa.AnioFiscal.Anio + ")",
+				Tipo = Definiciones.TipoSentencia.NoQuery,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
                 TipoResultado = Definiciones.TipoResultado.Entero
@@ -79,7 +79,7 @@ namespace Sezac.Control
                 #endregion
             };
 
-            _planificador.Despachar(
+			_planificador.Despachar(
                 #region Inicializar
 
                 _conexion, new List<Sentencia>() 
@@ -90,16 +90,16 @@ namespace Sezac.Control
                 #endregion
             );
             return true;
-        }
+		}
 
-        public List<Entidades.AnioFiscal> ObtenerAnioFiscal(int anio)
+        public List<Entidades.Programa> ObtenerPrograma(int id)
         {
-            List<Entidades.AnioFiscal> anioFiscal = new List<Entidades.AnioFiscal>();
+            List<Entidades.Programa> programas = new List<Entidades.Programa>();
             Sentencia sentencia = new Sentencia()
             {
                 #region Inicializar
 
-                Comando = "SELECT * FROM sezac.aniofiscal WHERE anio=COALESCE(" + ((anio == 0) ? "NULL" : anio.ToString()) + ",anio)",
+				Comando = "SELECT p.*,d.nombre AS Dependencia FROM sezac.programa p,sezac.dependencia d WHERE d.id=p.dependenciaid AND p.id=COALESCE(" + ((id == 0) ? "NULL" : id.ToString()) + ",p.id)",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
@@ -124,9 +124,20 @@ namespace Sezac.Control
             {
                 #region Establecer valores
 
-                anioFiscal.Add(new Entidades.AnioFiscal()
+                programas.Add(new Entidades.Programa()
                     {
-                        Anio = int.Parse(resultado.Rows[indice]["Anio"].ToString())
+						Id = int.Parse(resultado.Rows[indice]["Id"].ToString()),
+						Descripcion = resultado.Rows[indice]["Nombre"].ToString(),
+						Estatus = (Comun.Definiciones.TipoEstatusPrograma)int.Parse(resultado.Rows[indice]["Estatus"].ToString()),
+						Dependencia = new Entidades.Dependencia()
+						{
+							Id = int.Parse(resultado.Rows[indice]["DependenciaId"].ToString()),
+							Descripcion = resultado.Rows[indice]["Dependencia"].ToString()
+						},
+						AnioFiscal = new Entidades.AnioFiscal()
+						{
+							Anio = int.Parse(resultado.Rows[indice]["AnioFiscal"].ToString())
+						}
                     }
                 );
 
@@ -134,9 +145,9 @@ namespace Sezac.Control
             }
 
             #endregion
-            return anioFiscal;
+            return programas;
         }
-
-        #endregion
+        
+		#endregion
     }
 }
