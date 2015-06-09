@@ -128,6 +128,7 @@ namespace Sezac.Control
                     {
 						Id = int.Parse(resultado.Rows[indice]["Id"].ToString()),
 						Descripcion = resultado.Rows[indice]["Nombre"].ToString(),
+						Estatus = (Comun.Definiciones.TipoEstatusPrograma)int.Parse(resultado.Rows[indice]["Estatus"].ToString()),
 						Dependencia = new Entidades.Dependencia()
 						{
 							Id = int.Parse(resultado.Rows[indice]["DependenciaId"].ToString()),

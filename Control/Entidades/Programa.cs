@@ -1,4 +1,6 @@
-﻿namespace Sezac.Control.Entidades
+﻿using Sezac.Control.Comun;
+
+namespace Sezac.Control.Entidades
 {
     public class Programa
     {
@@ -10,6 +12,11 @@
 			set;
 		}
 		public Dependencia Dependencia
+		{
+			get;
+			set;
+		}
+		public Definiciones.TipoEstatusPrograma Estatus
 		{
 			get;
 			set;
