@@ -40,12 +40,14 @@
     <Compile Include="Comun\Definiciones.cs" />
     <Compile Include="AnioFiscal.cs" />
     <Compile Include="Entidades\AnioFiscal.cs" />
+    <Compile Include="Entidades\Organizacion.cs" />
     <Compile Include="Entidades\Programa.cs" />
     <Compile Include="Entidades\Dependencia.cs" />
     <Compile Include="Entidades\Usuario.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Dependencia.cs" />
+    <Compile Include="Organizacion.cs" />
     <Compile Include="Programa.cs">
       <SubType>Code</SubType>
     </Compile>
