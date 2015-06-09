@@ -1,66 +1,50 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Admin_Home.aspx.cs" Inherits="SEZAC.Admin_Home" MasterPageFile="~/Sezac.Master"%>
-<asp:Content ContentPlaceHolderID="ContentPlaceHolder1" ID="adminhomeform" runat="server">
-<asp:Menu runat="server" Orientation="Horizontal" BackColor="#669900" ForeColor="White" Width="1300px" Font-Size="Large" Font-Underline="True" RenderingMode="List" Font-Names="Tahoma">
-    <Items>
-        <asp:MenuItem Text="Inicio |" NavigateUrl="~/Admin_Home.aspx"></asp:MenuItem>
-        <asp:MenuItem Text="Dependencias |" NavigateUrl="~/AdminDependencias.aspx"></asp:MenuItem>
-        <asp:MenuItem Text="Encargados |" NavigateUrl="~/AdminEncargados.aspx"></asp:MenuItem>
-        <asp:MenuItem Text="Años Fiscales |" NavigateUrl="~/AdminAniosFiscales.aspx"></asp:MenuItem>
-        <asp:MenuItem Text="Salir |" NavigateUrl="#"></asp:MenuItem>
-    </Items>
-</asp:Menu>
-    <center>
-    <div id="container">
-  
-      <h2></h2>
-
-      <!--  Outer wrapper for presentation only, this can be anything you like -->
-      <div id="banner-fade">
-
-        <!-- start Basic Jquery Slider -->
-        <ul class="bjqs">
-          <li><img src="images/b1.jpg" title=""></li>
-          <li><img src="images/b2.jpg" title=""></li>
-          <li><img src="images/b3.jpg" title=""></li>
-        </ul>
-        <!-- end Basic jQuery Slider -->
-
-      </div>
-      <!-- End outer wrapper -->
-
-      <script class="secret-source">
-        jQuery(document).ready(function($) {
-
-          $('#banner-fade').bjqs({
-            height      : 320,
-            width       : 620,
-            responsive  : true
-          });
-
-        });
-      </script>
-      
-
-      </div>
-      <!-- End outer wrapper -->
-      
-      <!-- attach the plug-in to the slider parent element and adjust the settings as required -->
-      <script class="secret-source">
-        jQuery(document).ready(function($) {
-          
-          $('#banner-slide').bjqs({
-            animtype      : 'slide',
-            height        : 320,
-            width         : 620,
-            responsive    : true,
-            randomstart   : true
-          });
-          
-        });
-      </script>
-
-    </div>
-    </center>
-    
- 
+<asp:Content ContentPlaceHolderID="navholder" ID="AdminMenu" runat="server">
+    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Sezac</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="Admin_Home.aspx" target="_self">Inicio</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dependencias</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="AdminDependencias.aspx" target="_self">Crear</a></li>
+                            <li><a href="AdminDependenciasListado.aspx" target="_self">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Encargados</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="AdminEncargados.aspx" target="_self">Crear</a></li>
+                            <li><a href="AdminEncargadosListado.aspx" target="_self">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Años Fiscales</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="AdminAniosFiscales.aspx" target="_self">Crear</a></li>
+                            <li><a href="AdminAniosFiscalesListado.aspx">Listado</a></li>
+                        </ul>
+                    </li>                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
+                    <li><a target="_blank">Salir</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</asp:Content>
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderR" ID="adminhomeform" runat="server">
+    <div>
+        <p class="lead">Bienvenido Administrador, selecciona la tarea a realizar del menu en la barra superior.</p>
+    </div> 
 </asp:Content>

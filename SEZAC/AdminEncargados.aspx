@@ -1,91 +1,134 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminEncargados.aspx.cs" Inherits="SEZAC.AdminEncargados" MasterPageFile="~/Sezac.Master"%>
-<asp:Content ContentPlaceHolderID="ContentPlaceHolder1" ID="Encargados" runat="server">
-    <asp:Menu runat="server" Orientation="Horizontal" BackColor="#669900" ForeColor="White" Width="1300px" Font-Size="Large" Font-Underline="True" RenderingMode="List" Font-Names="Tahoma">
-    <Items>
-        <asp:MenuItem Text="Inicio |" NavigateUrl="~/Admin_Home.aspx"></asp:MenuItem>
-        <asp:MenuItem Text="Dependencias |" NavigateUrl="#"></asp:MenuItem>
-        <asp:MenuItem Text="Encargados |" NavigateUrl="#"></asp:MenuItem>
-        <asp:MenuItem Text="Años Fiscales |" NavigateUrl="#"></asp:MenuItem>
-        <asp:MenuItem Text="Salir |" NavigateUrl="#"></asp:MenuItem>
-    </Items>
-</asp:Menu>
-    <div class="top_header">
-        Inicio>Encargados
+<asp:Content ContentPlaceHolderID="navholder" ID="AdminMenu" runat="server">
+    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Sezac</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="Admin_Home.aspx" target="_self">Inicio</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dependencias</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="AdminDependencias.aspx" target="_self">Crear</a></li>
+                            <li><a href="AdminDependenciasListado.aspx" target="_self">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Encargados</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="AdminEncargados.aspx" target="_self">Crear</a></li>
+                            <li><a href="AdminEncargadosListado.aspx" target="_self">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Años Fiscales</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="AdminAniosFiscales.aspx" target="_self">Crear</a></li>
+                            <li><a href="AdminAniosFiscalesListado.aspx">Listado</a></li>
+                        </ul>
+                    </li>                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
+                    <li><a target="_blank">Salir</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</asp:Content>
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderR" ID="Encargados" runat="server">
+    <div>
+        <p class="lead">
+            Administrador > Alta de Encargados.
+        </p>
+        <p>
+            Por favor ingrese los datos del encargado a registrar.
+        </p>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <form class="form-horizontal">
+  <fieldset>
+    <legend>Imagen</legend>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Fotografía</label>
+      <div class="col-lg-10">
+        <asp:Image ID="foto" runat="server" />
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-10">
+            <asp:FileUpload id="fotoUp" runat="server" />
+        </div>
+    </div>    
+  </fieldset>
+</form>
+            </div>
+            <div class="col-lg-5">
+                <form class="form-horizontal">
+                      <fieldset>
+                        <legend>Datos</legend>
+                          <div class="form-group">
+                              <label for="inputName" class="col-lg-2 control-label">Nombre</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputName" placeholder="Nombre" />
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="inputPaterno" class="col-lg-2 control-label">Apellido Paterno</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputPaterno" placeholder="Apellido Paterno" />
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="inputMaterno" class="col-lg-2 control-label">Apellido Materno</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputMaterno" placeholder="Apellido Materno" />
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="inputUser" class="col-lg-2 control-label">Usuario</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputUser" placeholder="Usuario" />
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                              <div class="col-lg-10">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Password" />
+                                </div>
+                          </div>
+                        <div class="form-group">
+                          <label for="select" class="col-lg-2 control-label">Dep.</label>
+                          <div class="col-lg-10">
+                            <select class="form-control" id="select">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-2">
+                            <button type="reset" class="btn btn-default">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </form>
+            </div>
+        </div>
 
-<div class="main">
-    <asp:Image ID="Image1" runat="server" />
-    <br />
-    <asp:FileUpload ID="FileUpload1" runat="server" Height="16px" Width="229px" />
-
-
-</div>
-<div class="auto-style1">
-    <asp:Label ID="Label1" runat="server" Text="Nombre: "></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id="Text1" runat="server" type="text" /><br />
-    <asp:Label ID="Label2" runat="server" Text="Apellido Paterno:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id="Text2" runat="server" type="text" /><br />
-    <asp:Label ID="Label3" runat="server" Text="Apellido Materno:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id="Text3" runat="server" type="text" /><br />
-    <asp:Label ID="Label4" runat="server" Text="Usuario:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id="Text4" runat="server" type="text" /><br />
-    <asp:Label ID="Label5" runat="server" Text="Contraseña:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id="Password1" runat="server" type="password" /><br />
-    <asp:Label ID="Label6" runat="server" Text="Dependencia:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:DropDownList ID="DropDownList1" runat="server">
-    </asp:DropDownList>
-    <br />
-    <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Button ID="Button1" runat="server" Text="Guardar" Width="86px" OnClick="Button1_Click" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <br />
-    <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Label ID="Confirmar" runat="server" Text="" ForeColor="Red"></asp:Label>
-    &nbsp;&nbsp;&nbsp;
-
-</div>
-
-
-
-    <br />
-    <br />
-
-
-
+    </div>
 </asp:Content>
-
-<asp:Content ID="Content1" runat="server" contentplaceholderid="head">
-    <style type="text/css">
-        #Text1 {
-            width: 182px;
-        }
-        #Text2 {
-            width: 182px;
-        }
-        #Text3 {
-            width: 182px;
-        }
-        #Text4 {
-            width: 182px;
-        }
-        #Password1 {
-            width: 182px;
-        }
-        .auto-style1 {
-            float: right;
-            width: 733px;
-            text-align: left;
-            margin-left: 80px;
-        }
-    </style>
-</asp:Content>
-
 

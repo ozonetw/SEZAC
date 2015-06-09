@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminDependencias.aspx.cs" Inherits="SEZAC.AdminDependencias" MasterPageFile="~/Sezac.Master"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminDependenciasListado.aspx.cs" Inherits="SEZAC.AdminDependenciasListado" MasterPageFile="~/Sezac.Master" %>
 <asp:Content ContentPlaceHolderID="navholder" ID="AdminMenu" runat="server">
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,18 +43,23 @@
         </div>
     </nav>
 </asp:Content>
-<asp:Content ContentPlaceHolderID="ContentPlaceHolderR" ID="AdminDep" runat="server">
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderR" runat="server">
     <div>
         <p class="lead">
-            Administrador > Creación de Dependencias.
+            Administrador > Listado de dependencias.
         </p>
     </div>
-    <div class="form-group">
-        <label class="control-label" for="focusedInput">Nombre:</label>
-        <input class="form-control" id="focusedInput" type="text" value="Por favor, ingrese el nombre de la dependencia a crear." />
+    <div>
+        <p>
+        </p>
     </div>
     <div>
-        <button type="submit" class="btn btn-primary">Confirmar</button>
+        <asp:GridView ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false">
+            <Columns>
+                <asp:BoundField DataField="id" HeaderText="ID" />
+                <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+            </Columns>
+        </asp:GridView>
     </div>
+
 </asp:Content>
- 

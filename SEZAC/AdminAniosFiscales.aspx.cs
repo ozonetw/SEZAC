@@ -19,11 +19,11 @@ namespace SEZAC
 				O.AnioFiscal oAnioFiscal = new O.AnioFiscal();
 				E.AnioFiscal eAnioFiscal = new E.AnioFiscal()
 				{
-					Anio = int.Parse(TextBox1.Text)
+					//Anio = int.Parse(TextBox1.Text)
 				};
 
 				oAnioFiscal.InsertarAnioFiscal(eAnioFiscal);
-                Label2.Text = "Año guardado exitosaente";
+                //Label2.Text = "Año guardado exitosaente";
             }
 			catch(Exception)
 			{
