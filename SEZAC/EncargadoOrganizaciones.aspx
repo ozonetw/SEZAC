@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoOrganizaciones.aspx.cs" Inherits="SEZAC.EncargadoOrganizaciones" MasterPageFile="~/Sezac.Master"%>
-<asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
 <asp:Content ID="scripts" ContentPlaceHolderID="head" runat="server">
     <script>
         function borrar(componente) {
@@ -7,6 +6,7 @@
         }
     </script>
 </asp:Content>
+<asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
@@ -55,7 +55,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
-                    <li><asp:LinkButton Text="Salir" runat="server" ID="btnsalir"></asp:LinkButton></li>
+                    <li><asp:LinkButton Text="Salir" runat="server" ID="btnsalir" OnClick="btnsalir_Click"></asp:LinkButton></li>
                 </ul>
             </div>
         </div>

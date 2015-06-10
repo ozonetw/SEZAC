@@ -51,11 +51,6 @@ namespace Sezac.Control.Entidades
             get;
             set;
         }
-		public int OrganizacionId
-		{
-			get;
-			set;
-		}
         public Definiciones.TipoUsuario Tipo
         {
             get;

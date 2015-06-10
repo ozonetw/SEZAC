@@ -209,6 +209,35 @@ namespace Sezac.Control
 			return true;
 		}
 
+		public bool InscribirEnOrganizacion(int organizacionId, string rfc)
+		{
+			Sentencia sentencia = new Sentencia()
+			{
+				#region Inicializar
+
+				Comando = "INSERT INTO sezac.organizacionesbeneficiarios (organizacionid,beneficiariorfc) VALUES (" + organizacionId + ",'" + rfc + "')",
+				Tipo = Definiciones.TipoSentencia.NoQuery,
+				TipoComando = CommandType.Text,
+				TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+				TipoResultado = Definiciones.TipoResultado.Entero
+
+				#endregion
+			};
+
+			_planificador.Despachar(
+				#region Inicializar
+
+				_conexion, 
+				new List<Sentencia>() 
+				{
+					sentencia
+				}
+
+				#endregion
+			);
+            return true;
+		}
+
 		public List<Entidades.Evaluacion> ObtenerDatosEvaluacion(string item, Comun.Definiciones.TipoParametroBusqueda tipoParametroBusqueda)
         {
 

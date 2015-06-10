@@ -1,17 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace SEZAC
 {
-    public partial class EncargadoVetados : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+	public partial class EncargadoVetados : Page
+	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
 
-        }
-    }
+		}
+
+		protected void btnsalir_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				FormsAuthentication.SignOut();
+				FormsAuthentication.RedirectToLoginPage();
+			}
+			catch
+			{
+				throw;
+			}
+		}
+	}
 }
