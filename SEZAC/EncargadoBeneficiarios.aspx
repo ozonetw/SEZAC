@@ -1,4 +1,25 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoBeneficiarios.aspx.cs" Inherits="SEZAC.EncargadoBeneficiarios" MasterPageFile="~/Sezac.Master" %>
+<asp:Content ID="scripts" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function imagePreview(input)
+        {
+            if (input.files && input.files[0]) {
+                var fildr = new FileReader();
+                fildr.onload = function (e)
+                {
+                    $('#imgPre').attr('src', e.target.result)
+                }
+                fildr.readAsDataURL(input.files[0]);
+            }
+        }
+        function removeImage() {
+            $('#imgPre').attr('src', this.removeImage)
+        }
+        function borrar(componente) {
+            componente.value = "";
+        }
+    </script>
+</asp:Content>
 <asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -76,44 +97,51 @@
     </div>
     <div class="form-group">
         <div class="col-lg-10">
-            <asp:FileUpload id="fotoUp" runat="server" />
+            <asp:FileUpload id="fotoUp" runat="server" onchange ="imagePreview(this);"/>
+            <img id ="imgPre" />
         </div>
     </div>    
   </fieldset>
 </form>
             </div>
             <div class="col-lg-5">
-                <form class="form-horizontal">
+                <div class="form-horizontal">
                       <fieldset>
                         <legend>Datos</legend>
                           <div class="form-group">
                               <label for="inputRFC" class="col-lg-2 control-label">R.F.C</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputRFC" placeholder="Registro federal de causantes" />
+                                <input type="text" runat="server" class="form-control" id="inputRFC" placeholder="Registro federal de causantes" />
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="inputName" class="col-lg-2 control-label">Nombre</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputName" placeholder="Nombre" />
+                                <input type="text" runat="server" class="form-control" id="inputName" placeholder="Nombre" />
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="inputPaterno" class="col-lg-2 control-label">Apellido Paterno</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputPaterno" placeholder="Apellido Paterno" />
+                                <input type="text" runat="server" class="form-control" id="inputPaterno" placeholder="Apellido Paterno" />
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="inputMaterno" class="col-lg-2 control-label">Apellido Materno</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputMaterno" placeholder="Apellido Materno" />
+                                <input type="text" runat="server" class="form-control" id="inputMaterno" placeholder="Apellido Materno" />
                               </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                              <div class="col-lg-10">
+                                <input type="password" runat="server" class="form-control" id="pass1" placeholder="Password" />
+                             </div>
                           </div>
                           <div class="form-group">
                               <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputEmail" placeholder="Email" />
+                                <input type="text" runat="server" class="form-control" id="inputEmail" placeholder="Email" />
                              </div>
                           </div>
                         <div class="panel panel-default">
@@ -121,7 +149,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <select class="form-control" id="selectOrg">
+                                        <select class="form-control" runat="server" id="selectOrg">
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -134,14 +162,19 @@
                         </div>
                         <div class="form-group">
                           <div class="col-lg-10 col-lg-offset-2">
-                            <button type="reset" class="btn btn-default">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                            <button type="submit" runat="server" class="btn btn-primary" onserverclick="Unnamed_ServerClick" onclick="removeImage();">Confirmar</button>
                           </div>
                         </div>
                       </fieldset>
-                    </form>
-            </div>
+                    </div>
+                    <div>
+                        <p>
+                            <br />
+                                <label class="control-label text-success" runat="server" id="Mensaje"></label>
+                            <br />
+                        </p>
+                    </div>
+                    </div>
         </div>
-
     </div>
 </asp:Content>
