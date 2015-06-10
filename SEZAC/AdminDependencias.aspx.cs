@@ -18,7 +18,7 @@ namespace SEZAC
 
         protected void btnDependencias_Click(object sender, EventArgs e)
         {
-           // Label2.Text = "";
+            Mensaje.InnerText = "";
             try{
                 O.Dependencia oDependencia = new O.Dependencia();
                 E.Dependencia eDependencia = new E.Dependencia()
@@ -27,12 +27,12 @@ namespace SEZAC
                 };
                 if (oDependencia.ExisteDependencia(eDependencia.Descripcion))
                 {
-               //     Label2.Text = "Ya Existe";
+                    Mensaje.InnerText = "Ya Existe";
                 }
                 else
                 {
                     oDependencia.InsertarDependencia(eDependencia);
-                    //Label2.Text = "La Dependencia fue creada exitosamente";
+                    Mensaje.InnerText = "La Dependencia fue creada exitosamente";
                 }     
             }
             catch(Exception)

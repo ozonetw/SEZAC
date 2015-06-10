@@ -69,6 +69,18 @@
         <label class="control-label" for="focusedInput">Nombre:</label>
         <input class="form-control" id="focusedInput" type="text" value="Por favor, ingrese el nombre de el programa a crear." />
     </div>
+    <div class="form-group">
+        <label for="select" class="col-lg-2 control-label">Dep.</label>
+            <div class="col-lg-10">
+                <select class="form-control" runat="server" id="select">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                </select>
+             </div>
+                        </div>
     <div>
         <button type="submit" class="btn btn-primary">Confirmar</button>
     </div>

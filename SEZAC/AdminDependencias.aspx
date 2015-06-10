@@ -1,4 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminDependencias.aspx.cs" Inherits="SEZAC.AdminDependencias" MasterPageFile="~/Sezac.Master"%>
+<asp:Content ID="scripts" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function borrar(componente)
+        {
+            componente.value = "";
+        }
+    </script>
+</asp:Content>
 <asp:Content ContentPlaceHolderID="navholder" ID="AdminMenu" runat="server">
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -51,10 +59,15 @@
     </div>
     <div class="form-group">
         <label class="control-label" for="focusedInput">Nombre:</label>
-        <input class="form-control" runat="server" id="dependencia" type="text" value="Por favor, ingrese el nombre de la dependencia a crear." />
+        <input class="form-control" runat="server" id="dependencia" type="text" value="Por favor, ingrese el nombre de la dependencia a crear." onfocus="javascript:borrar(this);"/>
     </div>
     <div>
-        <button type="submit"runat="server" id="btnDependencias"class="btn btn-primary">Confirmar</button>
+        <button type="submit" runat="server" id="btnDependencias" onserverclick="btnDependencias_Click">Confirmar</button>
+    </div>
+    <div>
+        <br/>
+        <label runat="server" class="control-label text-success" id="Mensaje"></label>
+        <br/>
     </div>
 </asp:Content>
  
