@@ -56,6 +56,7 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="EncargadoBeneficiarios.aspx" target="_self">Crear</a></li>
                             <li><a href="EncargadoHistorial.aspx">Historial</a></li>
+                            <li><a href="EncargadoBeneficiarioOrganizacion.aspx">Asignación</a></li>
                             <li><a href="EncargadoEvaluar.aspx">Evaluación</a></li>
                             <li><a href="EncargadoVetados.aspx">Vetados</a></li>
                         </ul>
@@ -86,7 +87,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
-                <div class="form-horizontal">
+                <form class="form-horizontal">
   <fieldset>
     <legend>Imagen</legend>
     <div class="form-group">
@@ -102,7 +103,7 @@
         </div>
     </div>    
   </fieldset>
-</div>
+</form>
             </div>
             <div class="col-lg-5">
                 <div class="form-horizontal">
@@ -150,16 +151,14 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <select class="form-control" runat="server" id="selectOrg">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
+                                            <option>1</option>                                            
                                         </select>
                                     </div>
                                     <div class="col-md-4"><a href="#" class="btn btn-primary btn-lg">>></a></div>
-                                    <div class="col-md-4"><textarea class="form-control" runat="server" rows="3" id="textArea" readonly style="margin-left: -60px; margin-right: 0px; width: 180px;"></textarea></div>
+                                    <div class="col-md-4"><textarea class="form-control" rows="3" id="textArea" style="margin-left: -60px; margin-right: 0px; width: 180px;"></textarea></div>
                                 </div>
                             </div>
-                        </div>                       
+                        </div>
                         <div class="form-group">
                           <div class="col-lg-10 col-lg-offset-2">
                             <button type="submit" runat="server" class="btn btn-primary" onserverclick="Unnamed_ServerClick" onclick="removeImage();">Confirmar</button>
@@ -169,7 +168,6 @@
                     </div>
                     <div>
                         <p>
-                            <br />
                             <br />
                                 <label class="control-label text-success" runat="server" id="Mensaje"></label>
                             <br />
