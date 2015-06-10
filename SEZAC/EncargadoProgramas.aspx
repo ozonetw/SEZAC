@@ -1,4 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoProgramas.aspx.cs" Inherits="SEZAC.EncargadoProgramas" MasterPageFile="~/Sezac.Master"%>
+<asp:Content ID="scripts" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function borrar(componente)
+        {
+            componente.value = "";
+        }
+    </script>
+</asp:Content>
 <asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -61,7 +69,7 @@
     </div>
     <div class="form-group">
         <label class="control-label" for="focusedInput">Nombre:</label>
-        <input class="form-control" runat="server" id="inputPrograma" type="text" value="Por favor, ingrese el nombre de el programa a crear." />
+        <input class="form-control" runat="server" id="inputPrograma" type="text" value="Por favor, ingrese el nombre de el programa a crear." onfocus="javascript:borrar(this);"/>
     </div>
         <div class="form-group">
         <label for="select" class="col-lg-2 control-label">Dependencia</label>
