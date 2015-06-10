@@ -43,6 +43,9 @@
     <Compile Include="Comun\Definiciones.cs" />
     <Compile Include="AnioFiscal.cs" />
     <Compile Include="Entidades\AnioFiscal.cs" />
+    <Compile Include="Entidades\Evaluacion.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Entidades\Historial.cs" />
     <Compile Include="Entidades\Organizacion.cs" />
     <Compile Include="Entidades\Programa.cs" />
