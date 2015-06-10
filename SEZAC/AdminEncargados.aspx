@@ -1,5 +1,25 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="true" CodeBehind="AdminEncargados.aspx.cs" Inherits="SEZAC.AdminEncargados" MasterPageFile="~/Sezac.Master" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminEncargados.aspx.cs" Inherits="SEZAC.AdminEncargados" MasterPageFile="~/Sezac.Master" %>
+<asp:Content ID="scripts" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function imagePreview(input)
+        {
+            if (input.files && input.files[0]) {
+                var fildr = new FileReader();
+                fildr.onload = function (e)
+                {
+                    $('#imgPre').attr('src', e.target.result)
+                }
+                fildr.readAsDataURL(input.files[0]);
+            }
+        }
+        function removeImage() {
+            $('#imgPre').attr('src', this.removeImage)
+        }
+        function borrar(componente) {
+            componente.value = "";
+        }
+    </script>
+</asp:Content>
 <asp:Content ContentPlaceHolderID="navholder" ID="AdminMenu" runat="server">
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -58,7 +78,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
-                <form class="form-horizontal">
+                <div class="form-horizontal">
                     <fieldset>
                         <legend>Imagen</legend>
                         <div class="form-group">
@@ -69,38 +89,39 @@
                         </div>
                         <div class="form-group">
                             <div class="col-lg-10">
-                                <asp:FileUpload ID="fotoUp" runat="server" />
+                                <asp:FileUpload ID="fotoUp" runat="server" onchange ="imagePreview(this);" />
+                                <img id ="imgPre" />
                             </div>
                         </div>
                     </fieldset>
-                </form>
+                </div>
             </div>
             <div class="col-lg-5">
-                <form  class="form-horizontal">
+                <div  class="form-horizontal">
                     <fieldset>
                         <legend>Datos</legend>
                         <div class="form-group">
-                            <label for="inputName" class="col-lg-2 control-label">Nombre</label>
+                            <label for="inputName" class="col-lg-2 control-label" onfocus="javascript:borrar(this);">Nombre</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" runat="server" id="inputName" placeholder="Nombre" />
+                                <input type="text" class="form-control" runat="server" id="inputName" placeholder="Nombre" onfocus="javascript:borrar(this);"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPaterno" class="col-lg-2 control-label">Apellido Paterno</label>
+                            <label for="inputPaterno" class="col-lg-2 control-label">Apellido Paterno </label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" runat="server" id="inputPaterno" placeholder="Apellido Paterno" />
+                                <input type="text" class="form-control" runat="server" id="inputPaterno" placeholder="Apellido Paterno" onfocus="javascript:borrar(this);"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputMaterno" class="col-lg-2 control-label">Apellido Materno</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" runat="server" id="inputMaterno" placeholder="Apellido Materno" />
+                                <input type="text" class="form-control" runat="server" id="inputMaterno" placeholder="Apellido Materno" onfocus="javascript:borrar(this);"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputUser" class="col-lg-2 control-label">Usuario</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" runat="server" id="inputUser" placeholder="Usuario" />
+                                <input type="text" class="form-control" runat="server" id="inputUser" placeholder="Usuario" onfocus="javascript:borrar(this);"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -122,18 +143,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                
-                                <asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-primary" Text="Confirmar" onserverclick="btnConfirmar_Click" Width="118px"/>
-                                <button runat="server"  type="submit" class="btn btn-default" id="Cancelar" onserverclick="Button1_Click">Cancelar</button>
-
-                                
+                            <div class="col-lg-10 col-lg-offset-2">                                
+                                <button runat="server"  type="submit" class="btn btn-default" id="Cancelar" onserverclick="Button1_Click" onclick="removeImage();">Confirmar</button>      
                             </div>
                         </div>
                     </fieldset>
-                </form>
-                 <button runat="server" type="submit" class="btn btn-default" id="Button1" onserverclick="Button1_Click">Cancelar</button>
-                 
+                </div>
             </div>
         </div>
 
