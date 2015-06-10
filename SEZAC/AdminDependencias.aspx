@@ -51,10 +51,10 @@
     </div>
     <div class="form-group">
         <label class="control-label" for="focusedInput">Nombre:</label>
-        <input class="form-control" id="focusedInput" type="text" value="Por favor, ingrese el nombre de la dependencia a crear." />
+        <input class="form-control" runat="server" id="dependencia" type="text" value="Por favor, ingrese el nombre de la dependencia a crear." />
     </div>
     <div>
-        <button type="submit" class="btn btn-primary">Confirmar</button>
+        <button type="submit"runat="server" id="btnDependencias"class="btn btn-primary">Confirmar</button>
     </div>
 </asp:Content>
  

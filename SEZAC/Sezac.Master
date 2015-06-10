@@ -56,7 +56,7 @@
         <div>
 		<asp:ContentPlaceHolder ID="ContentPlaceHolderR" runat="server">
 		</asp:ContentPlaceHolder>
-		</div>        
+		</div> 
         <hr />
         <div class="row">
             <div class="col-xs-12">

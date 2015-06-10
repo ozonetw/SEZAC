@@ -16,50 +16,47 @@ namespace SEZAC
             if (!IsPostBack)
             {
                 O.Dependencia oDependencia = new O.Dependencia();
-
-                //DropDownList1.DataSource = oDependencia.ObtenerDependencia(0);
-                //DropDownList1.DataTextField = "Descripcion";
-                //DropDownList1.DataValueField = "Id";
-                //DropDownList1.DataBind();
+                select.DataSource = oDependencia.ObtenerDependencia(0);
+                select.DataTextField = "Descripcion";
+                select.DataValueField = "Id";
+                select.DataBind();
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnConfirmar_Click(object sender, EventArgs e)
         {
+            Mensaje.InnerText = "";
             try
             {
                 O.Usuario oUsuario = new O.Usuario();
                 E.Usuario eUsuario = new E.Usuario()
                 {
-                    //ApellidoPaterno = Text2.Value,
-                    //ApellidoMaterno = Text3.Value,
-                    //Contrasenia = Password1.Value,
-                    //Dependencia = new E.Dependencia()
-                    //{
-                    //    Id = int.Parse(DropDownList1.SelectedItem.Value)
-                    //},
-                    //Imagen = (FileUpload1.HasFile) ? FileUpload1.FileBytes : null,
-                    //Login = Text4.Value,
-                    //Nombre = Text1.Value,
+                    ApellidoPaterno = inputPaterno.Value,
+                    ApellidoMaterno = inputMaterno.Value,
+                    Contrasenia = inputPassword.Value,
+                    Dependencia = new E.Dependencia()
+                    {
+                        Id = int.Parse(select.Value)
+                    },
+                    Imagen = (fotoUp.HasFile) ? fotoUp.FileBytes : null,
+                    Login = inputUser.Value,
+                    Nombre = inputName.Value,
                     Tipo = O.Comun.Definiciones.TipoUsuario.Encargado
                 };
                 if (oUsuario.ExisteUsuario(eUsuario.Login, eUsuario.Tipo))
                 {
-                    //Confirmar.Text = "El encargado ya existe";
+                    Mensaje.InnerText = "El encargado ya existe";
                 }
                 else
                 {
                     oUsuario.InsertarUsuario(eUsuario);
-                    //Confirmar.Text = "El encargado se creo exitosamente";
+                    Mensaje.InnerText = "El encargado se creo exitosamente";
                 }
             }
             catch (Exception)
             {
 
             }
-            
-
-            
         }
     }
 }
