@@ -199,29 +199,28 @@ namespace Sezac.Control
 
 		public bool InsertarUsuario(Entidades.Usuario usuario)
 		{
-			List<Sentencia> sentencias = new List<Sentencia>();
+			Sentencia sentencia = new Sentencia()
+			{
+				#region Inicializar
+
+				Parametros = new List<Parametro>(),
+				Tipo = Definiciones.TipoSentencia.NoQuery,
+				TipoComando = CommandType.Text,
+				TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+				TipoResultado = Definiciones.TipoResultado.Entero
+
+				#endregion
+			};
 
 			#region Establecer comando
 
 			switch (usuario.Tipo)
 			{
 				case Comun.Definiciones.TipoUsuario.Encargado:
-					sentencias.Add(new Sentencia()
-						{
-							#region Inicializar
-							Comando = "INSERT INTO sezac.usuario (usuario,contrasenia,nombres,apellidopaterno,apellidomaterno,imagen,tipousuarioid,dependenciaid) VALUES (@Usuario,@Contrasenia,@Nombre,@ApellidoPaterno,@ApellidoMaterno,@Imagen,@TipoUsuario,@Dependencia)",
-							Parametros = new List<Parametro>(),
-							Tipo = Definiciones.TipoSentencia.NoQuery,
-							TipoComando = CommandType.Text,
-							TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
-							TipoResultado = Definiciones.TipoResultado.Entero
-
-							#endregion
-						}
-					);
+					sentencia.Comando = "INSERT INTO sezac.usuario (usuario,contrasenia,nombres,apellidopaterno,apellidomaterno,imagen,tipousuarioid,dependenciaid) VALUES (@Usuario,@Contrasenia,@Nombre,@ApellidoPaterno,@ApellidoMaterno,@Imagen,@TipoUsuario,@Dependencia)";
 					#region Parametros
 					
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@Usuario",
@@ -229,7 +228,7 @@ namespace Sezac.Control
 							Valor = usuario.Login
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@Contrasenia",
@@ -237,7 +236,7 @@ namespace Sezac.Control
 							Valor = usuario.Contrasenia
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@Nombre",
@@ -245,7 +244,7 @@ namespace Sezac.Control
 							Valor = usuario.Nombre
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@ApellidoPaterno",
@@ -253,7 +252,7 @@ namespace Sezac.Control
 							Valor = usuario.ApellidoPaterno
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@ApellidoMaterno",
@@ -261,7 +260,7 @@ namespace Sezac.Control
 							Valor = usuario.ApellidoMaterno
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@Imagen",
@@ -269,7 +268,7 @@ namespace Sezac.Control
 							Valor = usuario.Imagen
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@TipoUsuario",
@@ -277,7 +276,7 @@ namespace Sezac.Control
 							Valor = (int)usuario.Tipo
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@Dependencia",
@@ -289,34 +288,10 @@ namespace Sezac.Control
 					#endregion
 					break;
 				case Comun.Definiciones.TipoUsuario.Beneficiario:
-					sentencias.Add(new Sentencia()
-						{
-							#region Inicializar
-							Comando = "INSERT INTO sezac.beneficiario (rfc,nombres,apellidopaterno,apellidomaterno,contrasenia,correo,imagen,tipousuarioid,estatusbeneficiarioid) VALUES (@Rfc,@Nombre,@ApellidoPaterno,@ApellidoMaterno,@Contrasenia,@Correo,@Imagen,@TipoUsuario,@Estatus)",
-							Parametros = new List<Parametro>(),
-							Tipo = Definiciones.TipoSentencia.NoQuery,
-							TipoComando = CommandType.Text,
-							TipoTransaccion = Definiciones.TipoTransaccion.Iniciar,
-							TipoResultado = Definiciones.TipoResultado.Entero
-
-							#endregion
-						}
-					);
-					sentencias.Add(new Sentencia()
-						{
-							#region Inicializar
-							Comando = "INSERT INTO sezac.organizacionesbeneficiarios (organizacionid,beneficiariorfc) VALUES (" + usuario.OrganizacionId + ",'" + usuario.Login + "')",
-							Tipo = Definiciones.TipoSentencia.NoQuery,
-							TipoComando = CommandType.Text,
-							TipoTransaccion = Definiciones.TipoTransaccion.Finalizar,
-							TipoResultado = Definiciones.TipoResultado.Entero
-
-							#endregion
-						}
-					);
+					sentencia.Comando = "INSERT INTO sezac.beneficiario (rfc,nombres,apellidopaterno,apellidomaterno,contrasenia,correo,imagen,tipousuarioid,estatusbeneficiarioid) VALUES (@Rfc,@Nombre,@ApellidoPaterno,@ApellidoMaterno,@Contrasenia,@Correo,@Imagen,@TipoUsuario,@Estatus)";
 					#region Parametros
 					
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@Rfc",
@@ -324,7 +299,7 @@ namespace Sezac.Control
 							Valor = usuario.Login
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@Nombre",
@@ -332,7 +307,7 @@ namespace Sezac.Control
 							Valor = usuario.Nombre
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@ApellidoPaterno",
@@ -340,7 +315,7 @@ namespace Sezac.Control
 							Valor = usuario.ApellidoPaterno
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@ApellidoMaterno",
@@ -348,7 +323,7 @@ namespace Sezac.Control
 							Valor = usuario.ApellidoMaterno
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@Contrasenia",
@@ -356,7 +331,7 @@ namespace Sezac.Control
 							Valor = usuario.Contrasenia
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@Correo",
@@ -364,7 +339,7 @@ namespace Sezac.Control
 							Valor = usuario.Correo
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@Imagen",
@@ -372,7 +347,7 @@ namespace Sezac.Control
 							Valor = usuario.Imagen
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@TipoUsuario",
@@ -380,7 +355,7 @@ namespace Sezac.Control
 							Valor = (int)usuario.Tipo
 						}
 					);
-					sentencias[0].Parametros.Add(new Parametro()
+					sentencia.Parametros.Add(new Parametro()
 						{
 							Direccion = ParameterDirection.Input,
 							Nombre = "@Estatus",
@@ -396,7 +371,17 @@ namespace Sezac.Control
 			}
 
 			#endregion
-			_planificador.Despachar(_conexion, sentencias);
+			_planificador.Despachar(
+				#region Inicializar
+
+				_conexion, 
+				new List<Sentencia>() 
+				{
+					sentencia
+				}
+
+				#endregion
+			);
             return true;
 		}
 
