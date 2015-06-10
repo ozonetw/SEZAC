@@ -55,7 +55,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
-                    <li><a target="_blank">Salir</a></li>
+                    <li><asp:LinkButton Text="Salir" runat="server" ID="btnsalir"></asp:LinkButton></li>
                 </ul>
             </div>
         </div>
@@ -73,7 +73,7 @@
     </div>
         <div class="form-group">
         <label for="select" class="col-lg-2 control-label">Dependencia</label>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <select class="form-control" runat="server" id="selectDependencia">
                     <option>1</option>
                     <option>2</option>
@@ -84,7 +84,7 @@
             </div>
     </div>
     <div class="form-group">
-        <label for="select" class="col-lg-2 control-label">Añio Fiscal.</label>
+        <label for="select" class="col-lg-2 control-label">Año Fiscal.</label>
             <div class="col-lg-10">
                 <select class="form-control" runat="server" id="selectAño">
                     <option>1</option>

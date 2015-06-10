@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoHistorial.aspx.cs" Inherits="SEZAC.EncargadoHistorial" MasterPageFile="~/Sezac.Master" %>
 <asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
-   <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
             <div class="navbar-header">
@@ -47,7 +47,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
-                    <li><a target="_blank">Salir</a></li>
+                    <li><asp:LinkButton Text="Salir" runat="server" ID="btnsalir"></asp:LinkButton></li>
                 </ul>
             </div>
         </div>
@@ -71,23 +71,23 @@
                 </div>
             </div>
             <br />
+            <div class="form-group">
+                <label for="select" class="col-lg-2 control-label">Datos</label>                
+            </div>
+            <div>
+                <div class="col-md-2">
+            <p>
+                <select class="form-control" id="select_datos">
+                    <option>R.F.C</option>
+                    <option>Nombre</option>
+                    <option>Apellido</option>
+                    <option>Organización</option>
+                </select>
+            </p>
+        </div>
+            </div>
             <br />
             <br />
-            <div class="panel panel-default">                            
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <label class="col-lg-3">RFC/Nombre</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control" id="inputDefault"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="#" class="btn btn-primary">Buscar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
         </fieldset>
     </form>
     <div>

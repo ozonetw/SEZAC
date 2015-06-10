@@ -13,30 +13,30 @@ namespace SEZAC {
     public partial class EncargadoBuscar {
         
         /// <summary>
-        /// Control buscaList.
+        /// Control LoginName1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList buscaList;
+        protected global::System.Web.UI.WebControls.LoginName LoginName1;
         
         /// <summary>
-        /// Control buscaGrid.
+        /// Control btnsalir.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView buscaGrid;
+        protected global::System.Web.UI.WebControls.LinkButton btnsalir;
         
         /// <summary>
-        /// Control buscaSearch.
+        /// Control programaGrid.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox buscaSearch;
+        protected global::System.Web.UI.WebControls.GridView programaGrid;
     }
 }

@@ -22,22 +22,22 @@ namespace SEZAC {
         protected global::System.Web.UI.WebControls.LoginName LoginName1;
         
         /// <summary>
-        /// Control inputOrganizacion.
+        /// Control btnsalir.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputOrganizacion;
+        protected global::System.Web.UI.WebControls.LinkButton btnsalir;
         
         /// <summary>
-        /// Control selectPrograma.
+        /// Control programas_d.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect selectPrograma;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect programas_d;
         
         /// <summary>
         /// Control Mensaje.

@@ -1,12 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoOrganizaciones.aspx.cs" Inherits="SEZAC.EncargadoOrganizaciones" MasterPageFile="~/Sezac.Master"%>
-<asp:Content ID="scripts" ContentPlaceHolderID="head" runat="server">
-    <script>
-        function borrar(componente)
-        {
-            componente.value = "";
-        }
-    </script>
-</asp:Content>
 <asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -55,7 +47,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
-                    <li><a target="_blank">Salir</a></li>
+                    <li><asp:LinkButton Text="Salir" runat="server" ID="btnsalir"></asp:LinkButton></li>
                 </ul>
             </div>
         </div>
@@ -69,22 +61,22 @@
     </div>
     <div class="form-group">
         <label class="control-label" for="focusedInput">Nombre:</label>
-        <input class="form-control" runat="server" id="inputOrganizacion" type="text" value="Por favor, ingrese el nombre de la organización." onfocus="javascript:borrar(this);"/>
+        <input class="form-control" runat="server" id="inputOrganizacion" type="text" value="Por favor, ingrese el nombre de la organización." />
     </div>
     <div class="form-group">
         <label class="control-label" for="focusedInput">Programa:</label>
-        <select class="form-control" runat="server" id="selectPrograma">
+        <select class="form-control" id="programas_d" runat="server">
             <option>Seleccione el programa aplicable de la lista.</option>
             <option>2</option>
             <option>3</option>
         </select>
     </div>
     <div>
-        <button type="submit" runat="server" onserverclick="Unnamed4_Click" class="btn btn-primary">Confirmar</button>
+        <button type="submit" class="btn btn-primary">Confirmar</button>
     </div>
     <div>
-        <br />
-            <label class="control-label text-success" runat="server" id="Mensaje"></label>
-        <br />
+        <br/>
+        <label runat="server" class="control-label text-success" id="Mensaje"></label>
+        <br/>
     </div>
 </asp:Content>
