@@ -12,14 +12,6 @@ namespace SEZAC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                O.Organizacion oOrganizacion = new O.Organizacion();
-                selectOrg.DataSource = oOrganizacion.ObtenerOrganizacion(0);
-                selectOrg.DataTextField = "Descripcion";
-                selectOrg.DataValueField = "Id";
-                selectOrg.DataBind();
-            }
         }
 
         protected void Unnamed_ServerClick(object sender, EventArgs e)
@@ -34,24 +26,20 @@ namespace SEZAC
                     ApellidoMaterno = inputMaterno.Value,
                     Contrasenia = pass1.Value,
                     Correo = inputEmail.Value,
-                    // = new E.Dependencia()
-                    //{
-                      //  Id = int.Parse(select.Value)
-                    //},
                     Estatus = O.Comun.Definiciones.TipoEstatusBeneficiario.Activo,
                     Imagen = (fotoUp.HasFile) ? fotoUp.FileBytes : null,
                     Login = inputRFC.Value,
                     Nombre = inputName.Value,
-                    Tipo = O.Comun.Definiciones.TipoUsuario.Beneficiario
+                    Tipo = O.Comun.Definiciones.TipoUsuario.Beneficiario 
                 };
                 if (oUsuario.ExisteUsuario(eUsuario.Login, eUsuario.Tipo))
                 {
-                    Mensaje.InnerText = "El encargado ya existe";
+                    Mensaje.InnerText = "El beneficiario ya existe";
                 }
                 else
                 {
                     oUsuario.InsertarUsuario(eUsuario);
-                    Mensaje.InnerText = "El encargado se creo exitosamente";
+                    Mensaje.InnerText = "El beneficiario se creo exitosamente";
                 }
             }
             catch (Exception)

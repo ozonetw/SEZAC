@@ -86,7 +86,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
-                <form class="form-horizontal">
+                <div class="form-horizontal">
   <fieldset>
     <legend>Imagen</legend>
     <div class="form-group">
@@ -102,7 +102,7 @@
         </div>
     </div>    
   </fieldset>
-</form>
+</div>
             </div>
             <div class="col-lg-5">
                 <div class="form-horizontal">
@@ -156,10 +156,10 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4"><a href="#" class="btn btn-primary btn-lg">>></a></div>
-                                    <div class="col-md-4"><textarea class="form-control" rows="3" id="textArea" readonly style="margin-left: -60px; margin-right: 0px; width: 180px;"></textarea></div>
+                                    <div class="col-md-4"><textarea class="form-control" runat="server" rows="3" id="textArea" readonly style="margin-left: -60px; margin-right: 0px; width: 180px;"></textarea></div>
                                 </div>
                             </div>
-                        </div>
+                        </div>                       
                         <div class="form-group">
                           <div class="col-lg-10 col-lg-offset-2">
                             <button type="submit" runat="server" class="btn btn-primary" onserverclick="Unnamed_ServerClick" onclick="removeImage();">Confirmar</button>
@@ -169,6 +169,7 @@
                     </div>
                     <div>
                         <p>
+                            <br />
                             <br />
                                 <label class="control-label text-success" runat="server" id="Mensaje"></label>
                             <br />
