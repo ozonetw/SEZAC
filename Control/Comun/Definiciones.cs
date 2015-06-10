@@ -20,6 +20,13 @@
 			Beneficiario,
 			Organizacion
 		};
+		public enum TipoParametroBeneficiario
+		{
+			RFC,
+			Nombre,
+			ApellidoPaterno,
+			ApellidoMaterno
+		};
         public enum TipoUsuario
         { 
 			Administrador = 1,
