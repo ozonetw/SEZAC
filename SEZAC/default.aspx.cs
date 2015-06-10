@@ -23,8 +23,10 @@ namespace Sezac.IU
 						Response.Redirect("Admin_Home.aspx", true);
 						break;
 					case Definiciones.TipoUsuario.Encargado:
+						Response.Redirect("EncargadoHome.aspx", true);
 						break;
 					case Definiciones.TipoUsuario.Beneficiario:
+						Response.Redirect("BeneficiarioHome.aspx", true);
 						break;
 					default:
 						break;

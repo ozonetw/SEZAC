@@ -18,20 +18,17 @@
                     <li class="active"><a href="Admin_Home.aspx" target="_self">Inicio</a></li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dependencias</a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="AdminDependencias.aspx" target="_self">Crear</a></li>
-                            <li><a href="AdminDependenciasListado.aspx" target="_self">Listado</a></li>
+                            <li><a href="AdminDependencias.aspx" target="_self">Crear</a></li>                            
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Encargados</a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="AdminEncargados.aspx" target="_self">Crear</a></li>
-                            <li><a href="AdminEncargadosListado.aspx" target="_self">Listado</a></li>
+                            <li><a href="AdminEncargados.aspx" target="_self">Crear</a></li>                            
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Años Fiscales</a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="AdminAniosFiscales.aspx" target="_self">Crear</a></li>
-                            <li><a href="AdminAniosFiscalesListado.aspx">Listado</a></li>
+                            <li><a href="AdminAniosFiscales.aspx" target="_self">Crear</a></li>                            
                         </ul>
                     </li>                    
                 </ul>
