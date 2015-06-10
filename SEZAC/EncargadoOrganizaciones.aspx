@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoOrganizaciones.aspx.cs" Inherits="SEZAC.EncargadoOrganizaciones" MasterPageFile="~/Sezac.Master"%>
 <asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
-   <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
             <div class="navbar-header">
@@ -47,7 +47,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
-                    <li><a target="_blank">Salir</a></li>
+                    <li><asp:LinkButton Text="Salir" runat="server" ID="btnsalir"></asp:LinkButton></li>
                 </ul>
             </div>
         </div>
@@ -65,7 +65,7 @@
     </div>
     <div class="form-group">
         <label class="control-label" for="focusedInput">Programa:</label>
-        <select class="form-control" id="select">
+        <select class="form-control" id="programas_d" runat="server">
             <option>Seleccione el programa aplicable de la lista.</option>
             <option>2</option>
             <option>3</option>
@@ -73,5 +73,10 @@
     </div>
     <div>
         <button type="submit" class="btn btn-primary">Confirmar</button>
+    </div>
+    <div>
+        <br/>
+        <label runat="server" class="control-label text-success" id="Mensaje"></label>
+        <br/>
     </div>
 </asp:Content>

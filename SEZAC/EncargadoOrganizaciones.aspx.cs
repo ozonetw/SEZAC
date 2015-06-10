@@ -15,16 +15,16 @@ namespace SEZAC
             if (!IsPostBack)
             {
                 O.Programa oPrograma = new O.Programa();
-                programas_drop.DataSource = oPrograma.ObtenerPrograma(0);
-                programas_drop.DataValueField = "Id";
-                programas_drop.DataTextField= "Descripcion";
-                programas_drop.DataBind();
+                programas_d.DataSource = oPrograma.ObtenerPrograma(0);
+                programas_d.DataValueField = "Id";
+                programas_d.DataTextField= "Descripcion";
+                programas_d.DataBind();
             }
         }
 
         protected void Unnamed4_Click(object sender, EventArgs e)
         {
-            CorfirmarOrg.Text = "";
+            Mensaje.InnerText= "";
             try
             {
                 O.Organizacion oOrganizacion = new O.Organizacion();
@@ -32,18 +32,18 @@ namespace SEZAC
                 {
                     Programa = new E.Programa
                     {
-                        Id = int.Parse(programas_drop.SelectedItem.Value)
+                        Id = int.Parse(programas_d.Value)
                     },
-                    Descripcion = programas_tb.Text
+                    //Descripcion = programas_tb.Text
                 };
                 if (oOrganizacion.ExisteOrganizacion(eOrganizacion.Descripcion))
                 {
-                    CorfirmarOrg.Text = "ya existe la organizacion";
+                    Mensaje.InnerText = "ya existe la organizacion";
                 }
                 else
                 {
                     oOrganizacion.InsertarOrganizacion(eOrganizacion);
-                    CorfirmarOrg.Text = "La organizacion se ha creado exitosamente";
+                    Mensaje.InnerText = "La organizacion se ha creado exitosamente";
                 }
 
             }

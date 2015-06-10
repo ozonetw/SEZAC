@@ -57,7 +57,7 @@
                     <li><a>Bievenido,
                         <asp:LoginName ID="LoginName1" runat="server" />
                     </a></li>
-                    <li><a target="_blank">Salir</a></li>
+                    <li><asp:LinkButton Text="Salir" runat="server" ID="btnsalir"></asp:LinkButton></li>
                 </ul>
             </div>
         </div>
