@@ -1,90 +1,152 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoEvaluar.aspx.cs" Inherits="SEZAC.EncargadoEvaluar" MasterPageFile="~/Sezac.Master"%>
-<asp:Content ContentPlaceHolderID="ContentPlaceHolder1" ID="oversoul" runat="server">
-    <!-- Menu-->
-    <div class="menu_en">
-        <asp:Menu runat="server" Orientation="Horizontal" BackColor="#669900" ForeColor="White" Width="1300px" Font-Size="Large" Font-Underline="true" RenderingMode="List" Font-Names="Tahoma">
-        <Items>
-            <asp:MenuItem Text="Inico |" NavigateUrl="~/Admin_Home.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Programas |" NavigateUrl="#"></asp:MenuItem>
-            <asp:MenuItem Text="Encargados |" NavigateUrl="#"></asp:MenuItem>
-            <asp:MenuItem Text="Organizaciones |" NavigateUrl="#"></asp:MenuItem>
-            <asp:MenuItem Text="Beneficiarios |" NavigateUrl="#"></asp:MenuItem>
-            <asp:MenuItem Text="Historial |" NavigateUrl="#"></asp:MenuItem>
-            <asp:MenuItem Text="Evaluacion |" NavigateUrl="#"></asp:MenuItem>
-            <asp:MenuItem Text="Vetados |" NavigateUrl="#"></asp:MenuItem>
-            <asp:MenuItem Text="Busqueda |" NavigateUrl="#"></asp:MenuItem>
-            <asp:MenuItem Text="Salir |" NavigateUrl="#"></asp:MenuItem>
-        </Items>
-        </asp:Menu>
-    </div>
-    <!--Barra para la bienvenida de usuario y posicion en el mapa-->
-    <div class="top_bar_en">
-        <div>
-            Inicio > Evaluación de Beneficiarios
-        </div>
-    </div>
-    <!--contenido-->
-    <div class="contenido_ee">
-        <div class="col col-1">
-            <asp:Label Text="Campo: " runat="server"></asp:Label>
-        </div>
-        <div class="col col-2">
-            <asp:DropDownList id="bDatosDrop" runat="server"></asp:DropDownList>
-            <br />
-            <div class="benedatos">
-                <asp:Label Text="RFC" runat="server"></asp:Label>
-                <br />
-                <asp:Label Text="Nombre" runat="server"></asp:Label>
-                <br />
-                <asp:Label Text="Apellido Paterno" runat="server"></asp:Label>
-                <br />
-                <asp:Label Text="Apellido Materno" runat="server"></asp:Label>
-                <br />
-                <asp:Label Text="Correo Electronico" runat="server"></asp:Label>
-                <br />
-                <asp:Label Text="Organizacion(es)" runat="server"></asp:Label>
-                <br />
-                <asp:Label Text="Programa(s)" runat="server"></asp:Label>
-                <br />
-                <asp:Label Text="Estatus" runat="server"></asp:Label>
+
+<asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
+   <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Sezac</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="Admin_Home.aspx" target="_self">Inicio</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Programas</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="AdminDependencias.aspx" target="_self">Crear</a></li>
+                            <li><a href="AdminDependenciasListado.aspx" target="_self">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Encargados</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="AdminEncargados.aspx" target="_self">Crear</a></li>
+                            <li><a href="AdminEncargadosListado.aspx" target="_self">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Organizaciones</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="AdminAniosFiscales.aspx" target="_self">Crear</a></li>
+                            <li><a href="AdminAniosFiscalesListado.aspx">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Beneficiarios</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="AdminAniosFiscales.aspx" target="_self">Crear</a></li>
+                            <li><a href="AdminAniosFiscalesListado.aspx">Historial</a></li>
+                            <li><a href="AdminAniosFiscalesListado.aspx">Evaluación</a></li>
+                            <li><a href="AdminAniosFiscalesListado.aspx">Vetados</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Busqueda</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="AdminAniosFiscales.aspx" target="_self">Crear</a></li>
+                            <li><a href="AdminAniosFiscalesListado.aspx">Historial</a></li>
+                            <li><a href="AdminAniosFiscalesListado.aspx">Evaluación</a></li>
+                            <li><a href="AdminAniosFiscalesListado.aspx">Vetados</a></li>
+                        </ul>
+                    </li>                        
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
+                    <li><a target="_blank">Salir</a></li>
+                </ul>
             </div>
         </div>
-        <div class="col col-3">
-            <asp:TextBox ID="bEvalBox" runat="server"></asp:TextBox>
-            <br />
-            <div class="beneCampos">
-                <asp:TextBox ID="RFCtb" runat="server"></asp:TextBox>
-                <br />
-                <asp:TextBox ID="nombreTB" runat="server"></asp:TextBox>
-                <br />
-                <asp:TextBox ID="paternoTB" runat="server"></asp:TextBox>
-                <br />
-                <asp:TextBox ID="maternoTB" runat="server"></asp:TextBox>
-                <br />
-                <asp:TextBox ID="correoTB" runat="server"></asp:TextBox>
-                <br />
-                <asp:ListBox ID="orgaList" runat="server"></asp:ListBox>
-                <br />
-                <asp:ListBox ID="progList" runat="server"></asp:ListBox>
-                <br />
-                <asp:DropDownList ID="ListaProg" runat="server"></asp:DropDownList>
-                <br />
-                <asp:Button Text="Guardar" runat="server" />
+    </nav>
+</asp:Content>
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderR" ID="oversoul" runat="server">
+    <div class="row">
+        <div class="col-md-1">
+            <p>
+                <label class="col-lg-2 control-label">Campos</label>
+            </p>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <select class="form-control" id="select">
+                    <option>R.F.C</option>
+                    <option>Nombre</option>
+                    <option>Apellido</option>
+                    <option>Organización</option>
+                </select>
+            </p>
+        </div>
+        <div class="col-md-5">
+            <p>
+                <input type="text" class="form-control" id="inputDef" placeholder="Introduzca el termino de busqueda..."/>
+            </p>
+        </div>
+        <div class="col-md-2">
+            <a href="#" class="btn btn-primary btn-lg">Buscar</a>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="well bs-component">
+            <form class="form-horizontal">
+            <fieldset>
+             <legend>Beneficiario</legend>
+                <div class="form-group">
+                              <label for="inputRFC" class="col-lg-2 control-label">R.F.C</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputRFC" placeholder="Registro federal de causantes" disabled="disabled" />
+                              </div>
+                          </div>
+                <div class="form-group">
+                              <label for="inputName" class="col-lg-2 control-label">Nombre</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputName" placeholder="Nombre" disabled="disabled" />
+                              </div>
+                          </div>
+                <div class="form-group">
+                              <label for="inputPaterno" class="col-lg-2 control-label">Apellido Paterno</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputPaterno" placeholder="Apellido Paterno" disabled="disabled" />
+                              </div>
+                          </div>
+                <div class="form-group">
+                              <label for="inputMaterno" class="col-lg-2 control-label">Apellido Materno</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputMaterno" placeholder="Apellido Materno" disabled="disabled" />
+                              </div>
+                          </div>
+            <div class="form-group">
+                <label for="textArea" class="col-lg-2 control-label">Org.</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="3" id="textArea" disabled="disabled"></textarea>
+                        <span class="help-block">Se muestran todos las organizaciones relacionadas al beneficiado.</span>
+                     </div>
             </div>
-        </div>
-        <div class="col col-4">
-            <asp:Image ImageUrl="~/images/loop.png" ID="bESearch" runat="server" ></asp:Image>
-        </div>
+            <div class="form-group">
+                <label for="textArea" class="col-lg-2 control-label">Programas</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="3" id="textArea2" disabled="disabled"></textarea>
+                        <span class="help-block">Se muestran todos los programas a los que el beneficiado pertenece.</span>
+                     </div>
+            </div>
+            <div class="form-group">
+                <label for="select" class="col-lg-2 control-label">Estado</label>
+            <div class="col-lg-10">
+                    <select class="form-control" id="select2">
+                        <option>Activo</option>
+                        <option>Vetado</option>
+                    </select>                   
+            </div>
+            </div>
+             <div class="col-lg-10 col-lg-offset-2">
+                 <br />
+                 <br />
+                 <button type="submit" class="btn btn-primary">confirmar</button>
 
+             </div>
+             </fieldset>
+            </form>
+        </div>
+    </div>
 
-    </div>
-    <!--Footer de Confirmación-->
-    <div class="confirm">
-        <br />
-        <br />
-        <br />        
-        <br />
-        <br />
-        <asp:Label Text="Empty" runat="server"></asp:Label>
-    </div>
 </asp:Content>
