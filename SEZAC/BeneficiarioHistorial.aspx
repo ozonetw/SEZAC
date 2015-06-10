@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BeneficiarioHome.aspx.cs" Inherits="SEZAC.BeneficiarioHome" MasterPageFile="~/Sezac.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BeneficiarioHistorial.aspx.cs" Inherits="SEZAC.BeneficiarioHistorial" MasterPageFile="~/Sezac.Master"%>
 <asp:Content ContentPlaceHolderID="navholder" ID="beneNav" runat="server">
    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,8 +43,42 @@
         </div>
     </nav>
 </asp:Content>
-<asp:Content ContentPlaceHolderID="ContentPlaceHolderR" ID="bHide" runat="server">
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderR" ID="benhist" runat="server">
+     <div>
+        <p class="lead">
+            Beneficiario > Historial.
+        </p>
+    </div>
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <label for="select" class="col-lg-2 control-label">Buscar</label>
+                <div class="col-lg-10">
+                    <select class="form-control" id="select">
+                        <option>Programa</option>
+                        <option>Organización</option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="panel panel-default">                            
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" id="inputDefault"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="#" class="btn btn-primary">Buscar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        </fieldset>
+    </form>
     <div>
-        <p class="lead">Bienvenido Beneficiario, selecciona la tarea a realizar del menu en la barra superior.</p>
-    </div> 
+        <asp:GridView ID="histoGrid" runat="server"></asp:GridView>        
+    </div>
+
 </asp:Content>

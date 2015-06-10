@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BeneficiarioHome.aspx.cs" Inherits="SEZAC.BeneficiarioHome" MasterPageFile="~/Sezac.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BeneficiarioEstado.aspx.cs" Inherits="SEZAC.BeneficiarioEstado" MasterPageFile="~/Sezac.Master" %>
 <asp:Content ContentPlaceHolderID="navholder" ID="beneNav" runat="server">
    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,8 +43,14 @@
         </div>
     </nav>
 </asp:Content>
-<asp:Content ContentPlaceHolderID="ContentPlaceHolderR" ID="bHide" runat="server">
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderR" ID="sabadoPerpetuo" runat="server">
     <div>
-        <p class="lead">Bienvenido Beneficiario, selecciona la tarea a realizar del menu en la barra superior.</p>
-    </div> 
+        <p class="lead">
+            Beneficiario > Estado.
+        </p>
+    </div>
+    <div>
+        <h1 id="estadoUS">Beneficiario Vetado</h1>
+
+    </div>
 </asp:Content>
