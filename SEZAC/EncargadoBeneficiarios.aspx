@@ -145,20 +145,6 @@
                                 <input type="text" runat="server" class="form-control" id="inputEmail" placeholder="Email" />
                              </div>
                           </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Organizaciones</div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <select class="form-control" runat="server" id="selectOrg">
-                                            <option>1</option>                                            
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4"><a href="#" class="btn btn-primary btn-lg">>></a></div>
-                                    <div class="col-md-4"><textarea class="form-control" rows="3" id="textArea" style="margin-left: -60px; margin-right: 0px; width: 180px;"></textarea></div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-group">
                           <div class="col-lg-10 col-lg-offset-2">
                             <button type="submit" runat="server" class="btn btn-primary" onserverclick="Unnamed_ServerClick" onclick="removeImage();">Confirmar</button>
