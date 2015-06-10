@@ -9,12 +9,10 @@ namespace SEZAC
 {
     public partial class AdminAniosFiscales : System.Web.UI.Page
     {
-     
+
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-        }
-
+        }  
 		protected void btnAnios_Click(object sender, EventArgs e)
 		{
             Mensaje.InnerText="";
@@ -41,5 +39,8 @@ namespace SEZAC
 
 			}
         }
+        }
+
+
+
     }
-}
