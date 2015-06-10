@@ -62,7 +62,7 @@ namespace SEZAC
 			try
 			{
 				FormsAuthentication.SignOut();
-				FormsAuthentication.RedirectToLoginPage();
+				Response.Redirect("login.aspx");
 			}
 			catch
 			{
