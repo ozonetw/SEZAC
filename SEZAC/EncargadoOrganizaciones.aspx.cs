@@ -14,11 +14,13 @@ namespace SEZAC
         {
             if (!IsPostBack)
             {
+              
                 O.Programa oPrograma = new O.Programa();
                 programas_drop.DataSource = oPrograma.ObtenerPrograma(0);
                 programas_drop.DataValueField = "Id";
                 programas_drop.DataTextField= "Descripcion";
                 programas_drop.DataBind();
+                
             }
         }
 
@@ -52,5 +54,5 @@ namespace SEZAC
 
             }
         }
-    }
+        }
 }

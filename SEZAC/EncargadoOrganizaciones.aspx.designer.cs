@@ -13,30 +13,39 @@ namespace SEZAC {
     public partial class EncargadoOrganizaciones {
         
         /// <summary>
-        /// Control programas_tb.
+        /// Control LoginName1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox programas_tb;
+        protected global::System.Web.UI.WebControls.LoginName LoginName1;
         
         /// <summary>
-        /// Control programas_drop.
+        /// Control btnsalir.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList programas_drop;
+        protected global::System.Web.UI.WebControls.LinkButton btnsalir;
         
         /// <summary>
-        /// Control CorfirmarOrg.
+        /// Control programas_d.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CorfirmarOrg;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect programas_d;
+        
+        /// <summary>
+        /// Control Mensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Mensaje;
     }
 }

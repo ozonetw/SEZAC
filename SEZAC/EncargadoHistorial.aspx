@@ -15,45 +15,39 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="Admin_Home.aspx" target="_self">Inicio</a></li>
+                    <li class="active"><a href="EncargadoHome.aspx" target="_self">Inicio</a></li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Programas</a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="AdminDependencias.aspx" target="_self">Crear</a></li>
-                            <li><a href="AdminDependenciasListado.aspx" target="_self">Listado</a></li>
+                            <li><a href="EncargadoProgramas.aspx" target="_self">Crear</a></li>                            
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Encargados</a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="AdminEncargados.aspx" target="_self">Crear</a></li>
-                            <li><a href="AdminEncargadosListado.aspx" target="_self">Listado</a></li>
+                            <li><a href="EncargadoEncargados.aspx" target="_self">Crear</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Organizaciones</a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="AdminAniosFiscales.aspx" target="_self">Crear</a></li>
-                            <li><a href="AdminAniosFiscalesListado.aspx">Listado</a></li>
+                            <li><a href="EncargadoOrganizaciones.aspx" target="_self">Crear</a></li>                            
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Beneficiarios</a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="AdminAniosFiscales.aspx" target="_self">Crear</a></li>
-                            <li><a href="AdminAniosFiscalesListado.aspx">Historial</a></li>
-                            <li><a href="AdminAniosFiscalesListado.aspx">Evaluación</a></li>
-                            <li><a href="AdminAniosFiscalesListado.aspx">Vetados</a></li>
+                            <li><a href="EncargadoBeneficiarios.aspx" target="_self">Crear</a></li>
+                            <li><a href="EncargadoHistorial.aspx">Historial</a></li>
+                            <li><a href="EncargadoEvaluar.aspx">Evaluación</a></li>
+                            <li><a href="EncargadoVetados.aspx">Vetados</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Busqueda</a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="AdminAniosFiscales.aspx" target="_self">Crear</a></li>
-                            <li><a href="AdminAniosFiscalesListado.aspx">Historial</a></li>
-                            <li><a href="AdminAniosFiscalesListado.aspx">Evaluación</a></li>
-                            <li><a href="AdminAniosFiscalesListado.aspx">Vetados</a></li>
+                            <li><a href="EncargadoBuscar.aspx" target="_self">Consulta</a></li>
                         </ul>
                     </li>                        
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
-                    <li><a target="_blank">Salir</a></li>
+                    <li><asp:LinkButton Text="Salir" runat="server" ID="btnsalir"></asp:LinkButton></li>
                 </ul>
             </div>
         </div>
@@ -77,23 +71,23 @@
                 </div>
             </div>
             <br />
+            <div class="form-group">
+                <label for="select" class="col-lg-2 control-label">Datos</label>                
+            </div>
+            <div>
+                <div class="col-md-2">
+            <p>
+                <select class="form-control" id="select_datos">
+                    <option>R.F.C</option>
+                    <option>Nombre</option>
+                    <option>Apellido</option>
+                    <option>Organización</option>
+                </select>
+            </p>
+        </div>
+            </div>
             <br />
             <br />
-            <div class="panel panel-default">                            
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <label class="col-lg-3">RFC/Nombre</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control" id="inputDefault"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="#" class="btn btn-primary">Buscar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
         </fieldset>
     </form>
     <div>
