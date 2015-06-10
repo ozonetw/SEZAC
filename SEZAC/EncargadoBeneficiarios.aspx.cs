@@ -37,7 +37,7 @@ namespace SEZAC
 				else
 				{
 					oUsuario.InsertarUsuario(eUsuario);
-					Mensaje.InnerText = "El beneficiario se creo exitosamente";
+					Mensaje.InnerText = "El beneficiario se creó exitosamente";
 				}
 			}
 			catch (Exception)

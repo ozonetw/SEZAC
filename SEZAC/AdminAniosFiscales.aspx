@@ -42,7 +42,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
-                    <li><asp:LinkButton Text="Salir" runat="server" ID="btnsalir" OnClick="btnsalir_Click"></asp:LinkButton></li>
+                    <li><asp:LinkButton Text="Salir" runat="server" ID="btnsalir" OnClick="btnsalir_Click" /></li>
                 </ul>
             </div>
         </div>
@@ -59,7 +59,7 @@
         <input class="form-control" runat="server" id ="CampoTexto" type="text" value="Por favor, ingrese el año fiscal a capturar." onfocus="javascript:borrar(this);"/>
     </div>
     <div>
-        <button type="submit" runat="server" id="btnAnios" onserverclick="btnAnios_Click">Confirmar</button>
+		<asp:Button ID="btnConfirmar" runat="server" Text="Confirmar" CssClass="btn btn-primary" OnClick="btnConfirmar_Click" />
     </div>
     <div>
         <p>

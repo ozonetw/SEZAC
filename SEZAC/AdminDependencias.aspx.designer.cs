@@ -40,13 +40,13 @@ namespace SEZAC {
         protected global::System.Web.UI.HtmlControls.HtmlInputText dependencia;
         
         /// <summary>
-        /// btnDependencias control.
+        /// btnConfirmar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnDependencias;
+        protected global::System.Web.UI.WebControls.Button btnConfirmar;
         
         /// <summary>
         /// Mensaje control.
