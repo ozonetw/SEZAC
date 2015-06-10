@@ -72,12 +72,6 @@
             Por favor ingrese los datos del encargado a registrar.
         </p>
     </div>
-    <div class="form-group">
-                            <label for="inputName" class="col-lg-2 control-label" onfocus="javascript:borrar(this);">Nombre</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" runat="server" id="Text1" placeholder="Nombre" onfocus="javascript:borrar(this);"/>
-                            </div>
-                        </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
