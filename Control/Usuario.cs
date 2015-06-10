@@ -38,6 +38,106 @@ namespace Sezac.Control
 
         #region Metodos
 
+		public bool ActualizarUsuario(Entidades.Usuario usuario)
+		{
+			Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+				Parametros = new List<Parametro>(),
+				Tipo = Definiciones.TipoSentencia.NoQuery,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Entero
+
+                #endregion
+            };
+
+			#region Establecer comando
+
+			switch (usuario.Tipo)
+			{
+				case Comun.Definiciones.TipoUsuario.Beneficiario:
+					sentencia.Comando = "UPDATE sezac.beneficiario SET nombres=@Nombre,apellidopaterno=@ApellidoPaterno,apellidomaterno=@ApellidoMaterno,contrasenia=@Contrasenia,correo=@Correo,imagen=@Imagen WHERE rfc=@Rfc";
+					#region Parametros
+					
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Nombre",
+							Tipo = DbType.String,
+							Valor = usuario.Nombre
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@ApellidoPaterno",
+							Tipo = DbType.String,
+							Valor = usuario.ApellidoPaterno
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@ApellidoMaterno",
+							Tipo = DbType.String,
+							Valor = usuario.ApellidoMaterno
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Contrasenia",
+							Tipo = DbType.String,
+							Valor = usuario.Contrasenia
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Correo",
+							Tipo = DbType.String,
+							Valor = usuario.Correo
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Imagen",
+							Tipo = DbType.Binary,
+							Valor = usuario.Imagen
+						}
+					);
+					sentencia.Parametros.Add(new Parametro()
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Rfc",
+							Tipo = DbType.String,
+							Valor = usuario.Login
+						}
+					);
+
+					#endregion
+					break;
+				default:
+					break;
+			}
+
+			#endregion
+			_planificador.Despachar(
+                #region Inicializar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
+            return true;
+		}
+
 		public byte[] CargarImagen(string rutaArchivo)
 		{
 			byte[] imagen = null;
