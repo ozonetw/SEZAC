@@ -36,8 +36,9 @@ namespace Sezac.Control
 
         #region Metodos
 
-		public DataTable Buscar(string item, Comun.Definiciones.TipoParametroBeneficiario tipoParametro)
+		public Entidades.Usuario Buscar(string item, Comun.Definiciones.TipoParametroBeneficiario tipoParametro)
         {
+			Entidades.Usuario usuario = new Entidades.Usuario();
 			Sentencia sentencia = new Sentencia()
             {
                 #region Inicializar
@@ -131,7 +132,100 @@ namespace Sezac.Control
                 #endregion
             );
 
-            return resultado;
+			#region Recuperar información
+
+            for (int indice = 0; indice < resultado.Rows.Count; indice++)
+            {
+                #region Establecer valores
+
+				//usuario.ApellidoMaterno = resultado.Rows[indice]["ApellidoMaterno"].ToString();
+				//usuario.ApellidoPaterno = resultado.Rows[indice]["ApellidoPaterno"].ToString();
+				//usuario.Correo = resultado.Rows[indice]["Correo"].ToString();
+				//usuario.Estatus = (Comun.Definiciones.TipoEstatusBeneficiario)int.Parse(resultado.Rows[indice]["Estatus"].ToString());
+				//usuario.Dependencia = new Entidades.Dependencia()
+				//{
+				//	Id = (resultado.Rows[indice]["DependenciaId"] == DBNull.Value) ? 0 : int.Parse(resultado.Rows[indice]["DependenciaId"].ToString()),
+				//	Descripcion = resultado.Rows[indice]["Dependencia"].ToString()
+				//};
+				//usuario.Imagen = (resultado.Rows[indice]["Imagen"] == DBNull.Value) ? null : (byte[])resultado.Rows[indice]["Imagen"];
+				//usuario.Login = login;
+				//usuario.Nombre = resultado.Rows[indice]["Nombres"].ToString();
+				//usuario.Tipo = (Comun.Definiciones.TipoUsuario)int.Parse(resultado.Rows[indice]["TipoUsuarioId"].ToString());
+
+                #endregion
+            }
+
+            #endregion
+            return usuario;
+        }
+
+		public Entidades.Historial Evaluar(string item)
+        {
+			Entidades.Historial historial = new Entidades.Historial();
+			Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+				Parametros = new List<Parametro>(),
+                Tipo = Definiciones.TipoSentencia.Query,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Conjunto
+
+                #endregion
+            };
+            
+			#region Establecer comando
+
+			switch (historial.Tipo)
+			{
+				case Comun.Definiciones.TipoHistorial.Beneficiario:
+					sentencia.Comando = "SELECT b.Rfc,TRIM(b.nombres||' '||b.apellidopaterno||' '||b.apellidomaterno) AS Nombre,b.Correo,eb.descripcion AS EstatusBeneficiario,o.Organizacion,o.Programa,o.Dependencia,o.AnioFiscal,o.Estatus AS EstatusPrograma FROM sezac.beneficiario b,sezac.estatusbeneficiario eb,sezac.organizacionesbeneficiarios ob,(SELECT o.Id,o.nombre AS Organizacion,p.nombre AS Programa,p.Dependencia,p.AnioFiscal,p.Estatus FROM sezac.organizacion o,(SELECT p.*,d.nombre AS Dependencia FROM sezac.programa p,sezac.dependencia d WHERE d.id=p.dependenciaid) p WHERE p.id=o.programaid) o WHERE eb.id=b.estatusbeneficiarioid AND ob.beneficiariorfc=b.rfc AND ob.organizacionid=o.id AND (b.nombres LIKE '%@Item%' OR b.apellidopaterno LIKE '%@Item%' OR b.apellidomaterno LIKE '%@Item%')";
+					sentencia.Parametros.Add(new Parametro()
+						#region Inicializar
+
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Item",
+							Tipo = DbType.String,
+							Valor = item.Replace(" ","%")
+						}
+
+						#endregion
+					);
+					break;
+				case Comun.Definiciones.TipoHistorial.Organizacion:
+					sentencia.Comando = "SELECT o.Id,o.nombre AS Organizacion,p.nombre AS Programa,p.Dependencia,p.AnioFiscal,p.Estatus FROM sezac.organizacion o,(SELECT p.*,d.nombre AS Dependencia FROM sezac.programa p,sezac.dependencia d WHERE d.id=p.dependenciaid) p WHERE p.id=o.programaid AND o.nombre LIKE '%@Item%'";
+					sentencia.Parametros.Add(new Parametro()
+						#region Inicializar
+
+						{
+							Direccion = ParameterDirection.Input,
+							Nombre = "@Item",
+							Tipo = DbType.String,
+							Valor = item.Replace(" ","%")
+						}
+
+						#endregion
+					);
+					break;
+				default:
+					break;
+			}
+
+			#endregion
+			//historial.Tipo = tipoHistorial;
+			historial.Datos = (DataTable)_planificador.Despachar(
+                #region Inicializar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
+            return historial;
         }
 
 		public string ObtenerEstatus(string rfc)
