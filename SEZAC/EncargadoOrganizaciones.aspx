@@ -80,7 +80,7 @@
         </select>
     </div>
     <div>
-        <button type="submit" runat="server" onserverclick="Unnamed4_Click" class="btn btn-primary">Confirmar</button>
+		<asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-primary" Text="Confirmar" OnClick="btnConfirmar_Click" />
     </div>
     <div>
         <br/>

@@ -59,7 +59,7 @@
         <input class="form-control" runat="server" id="dependencia" type="text" value="Por favor, ingrese el nombre de la dependencia a crear." onfocus="javascript:borrar(this);"/>
     </div>
     <div>
-        <button type="submit" runat="server" id="btnDependencias" onserverclick="btnDependencias_Click">Confirmar</button>
+		<asp:Button ID="btnConfirmar" runat="server" Text="Confirmar" OnClick="btnConfirmar_Click" CssClass="btn btn-primary" />
     </div>
     <div>
         <br/>

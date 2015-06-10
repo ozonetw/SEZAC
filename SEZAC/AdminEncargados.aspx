@@ -141,7 +141,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">                                
-                                <button runat="server"  type="submit" class="btn btn-default" id="Cancelar" onserverclick="Button1_Click" onclick="removeImage();">Confirmar</button>      
+								<asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-default" Text="Confirmar" OnClientClick="removeImage();" OnClick="btnConfirmar_Click" /> 
                             </div>
                         </div>
                     </fieldset>

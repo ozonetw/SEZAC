@@ -8,11 +8,12 @@ namespace SEZAC
 {
 	public partial class AdminAniosFiscales : Page
 	{
-
 		protected void Page_Load(object sender, EventArgs e)
 		{
+
 		}
-		protected void btnAnios_Click(object sender, EventArgs e)
+
+		protected void btnConfirmar_Click(object sender, EventArgs e)
 		{
 			Mensaje.InnerText = "";
 			try
