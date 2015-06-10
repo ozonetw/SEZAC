@@ -1,4 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminAniosFiscales.aspx.cs" Inherits="SEZAC.AdminAniosFiscales" MasterPageFile="~/Sezac.Master"%>
+<asp:Content ID="scripts" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function borrar(componente)
+        {
+            componente.value = "";
+        }
+    </script>
+</asp:Content>
 <asp:Content ContentPlaceHolderID="navholder" ID="AdminMenu" runat="server">
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -51,10 +59,16 @@
     </div>
     <div class="form-group">
         <label class="control-label" for="focusedInput">Año:</label>
-        <input class="form-control" id="focusedInput" type="text" value="Por favor, ingrese el año fiscal a capturar." />
+        <input class="form-control" runat="server" id ="CampoTexto" type="text" value="Por favor, ingrese el año fiscal a capturar." onfocus="javascript:borrar(this);"/>
     </div>
     <div>
-        <button type="submit" class="btn btn-primary">Confirmar</button>
+        <button type="submit" runat="server" id="btnAnios" onserverclick="btnAnios_Click">Confirmar</button>
+    </div>
+    <div>
+        <p>
+            <br/>
+                <label class="control-label text-success" runat="server" id="Mensaje"></label>
+            <br/>
+        </p>
     </div>
 </asp:Content>
-

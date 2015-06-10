@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminEncargados.aspx.cs" Inherits="SEZAC.AdminEncargados" MasterPageFile="~/Sezac.Master"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="true" CodeBehind="AdminEncargados.aspx.cs" Inherits="SEZAC.AdminEncargados" MasterPageFile="~/Sezac.Master" %>
+
 <asp:Content ContentPlaceHolderID="navholder" ID="AdminMenu" runat="server">
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -33,10 +34,12 @@
                             <li><a href="AdminAniosFiscales.aspx" target="_self">Crear</a></li>
                             <li><a href="AdminAniosFiscalesListado.aspx">Listado</a></li>
                         </ul>
-                    </li>                    
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
+                    <li><a>Bievenido,
+                        <asp:LoginName ID="LoginName1" runat="server" />
+                    </a></li>
                     <li><a target="_blank">Salir</a></li>
                 </ul>
             </div>
@@ -56,79 +59,86 @@
         <div class="row">
             <div class="col-lg-5">
                 <form class="form-horizontal">
-  <fieldset>
-    <legend>Imagen</legend>
-    <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Fotografía</label>
-      <div class="col-lg-10">
-        <asp:Image ID="foto" runat="server" />
-      </div>
-    </div>
-    <div class="form-group">
-        <div class="col-lg-10">
-            <asp:FileUpload id="fotoUp" runat="server" />
-        </div>
-    </div>    
-  </fieldset>
-</form>
+                    <fieldset>
+                        <legend>Imagen</legend>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-lg-2 control-label">Fotografía</label>
+                            <div class="col-lg-10">
+                                <asp:Image ID="foto" runat="server" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10">
+                                <asp:FileUpload ID="fotoUp" runat="server" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
             <div class="col-lg-5">
                 <form class="form-horizontal">
-                      <fieldset>
+                    <fieldset>
                         <legend>Datos</legend>
-                          <div class="form-group">
-                              <label for="inputName" class="col-lg-2 control-label">Nombre</label>
-                              <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputName" placeholder="Nombre" />
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="inputPaterno" class="col-lg-2 control-label">Apellido Paterno</label>
-                              <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputPaterno" placeholder="Apellido Paterno" />
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="inputMaterno" class="col-lg-2 control-label">Apellido Materno</label>
-                              <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputMaterno" placeholder="Apellido Materno" />
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="inputUser" class="col-lg-2 control-label">Usuario</label>
-                              <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputUser" placeholder="Usuario" />
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                              <div class="col-lg-10">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Password" />
-                                </div>
-                          </div>
                         <div class="form-group">
-                          <label for="select" class="col-lg-2 control-label">Dep.</label>
-                          <div class="col-lg-10">
-                            <select class="form-control" id="select">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
-                            </select>
-                          </div>
+                            <label for="inputName" class="col-lg-2 control-label">Nombre</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" runat="server" id="inputName" placeholder="Nombre" />
+                            </div>
                         </div>
                         <div class="form-group">
-                          <div class="col-lg-10 col-lg-offset-2">
-                            <button type="reset" class="btn btn-default">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Confirmar</button>
-                          </div>
+                            <label for="inputPaterno" class="col-lg-2 control-label">Apellido Paterno</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" runat="server" id="inputPaterno" placeholder="Apellido Paterno" />
+                            </div>
                         </div>
-                      </fieldset>
-                    </form>
+                        <div class="form-group">
+                            <label for="inputMaterno" class="col-lg-2 control-label">Apellido Materno</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" runat="server" id="inputMaterno" placeholder="Apellido Materno" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputUser" class="col-lg-2 control-label">Usuario</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" runat="server" id="inputUser" placeholder="Usuario" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                            <div class="col-lg-10">
+                                <input type="password" class="form-control" runat="server" id="inputPassword" placeholder="Password" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="select" class="col-lg-2 control-label">Dep.</label>
+                            <div class="col-lg-10">
+                                <select class="form-control" runat="server" id="select">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="reset" class="btn btn-default">Cancelar</button>
+                                <asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-primary" Text="Confirmar" OnClick="btnConfirmar_Click"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
         </div>
 
+    </div>
+    <div>
+        <p>
+            <br />
+            <label class="control-label text-success" runat="server" id="Mensaje"></label>
+            <br />
+        </p>
     </div>
 </asp:Content>
 

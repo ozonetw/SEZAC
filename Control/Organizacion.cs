@@ -99,7 +99,7 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-				Comando = "SELECT o.*,p.nombre AS Programa,p.dependenciaid,p.dependencia,p.aniofiscal FROM sezac.organizacion o,(SELECT p.*,d.nombre AS Dependencia FROM sezac.programa p,sezac.dependencia d WHERE d.id=p.dependenciaid) p WHERE p.id=o.programaid AND o.id=COALESCE(" + ((id == 0) ? "NULL" : id.ToString()) + ",o.id)",
+				Comando = "SELECT o.*,p.nombre AS Programa,p.dependenciaid,p.dependencia,p.aniofiscal,p.estatus FROM sezac.organizacion o,(SELECT p.*,d.nombre AS Dependencia FROM sezac.programa p,sezac.dependencia d WHERE d.id=p.dependenciaid) p WHERE p.id=o.programaid AND o.id=COALESCE(" + ((id == 0) ? "NULL" : id.ToString()) + ",o.id)",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
@@ -132,6 +132,7 @@ namespace Sezac.Control
 						{
 							Id = int.Parse(resultado.Rows[indice]["ProgramaId"].ToString()),
 							Descripcion = resultado.Rows[indice]["Programa"].ToString(),
+							Estatus = (Comun.Definiciones.TipoEstatusPrograma)int.Parse(resultado.Rows[indice]["Estatus"].ToString()),
 							Dependencia = new Entidades.Dependencia()
 							{
 								Id = int.Parse(resultado.Rows[indice]["DependenciaId"].ToString()),

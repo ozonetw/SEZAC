@@ -16,18 +16,18 @@ namespace SEZAC
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnDependencias_Click(object sender, EventArgs e)
         {
-            //Label2.Text = "";
+           // Label2.Text = "";
             try{
                 O.Dependencia oDependencia = new O.Dependencia();
                 E.Dependencia eDependencia = new E.Dependencia()
                 {
-                    //Descripcion = Text1.Value
+                    Descripcion = dependencia.Value
                 };
                 if (oDependencia.ExisteDependencia(eDependencia.Descripcion))
                 {
-                    //Label2.Text = "Ya Existe";
+               //     Label2.Text = "Ya Existe";
                 }
                 else
                 {
