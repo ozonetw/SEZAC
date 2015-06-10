@@ -63,7 +63,10 @@
     <Content Include="AdminDependenciasListado.aspx" />
     <Content Include="AdminEncargados.aspx" />
     <Content Include="Admin_Home.aspx" />
+    <Content Include="BeneficiarioEstado.aspx" />
+    <Content Include="BeneficiarioHistorial.aspx" />
     <Content Include="BeneficiarioHome.aspx" />
+    <Content Include="BeneficiarioModificar.aspx" />
     <Content Include="bootstrap.css" />
     <Content Include="EncargadoBeneficiarios.aspx" />
     <Content Include="EncargadoBuscar.aspx" />
@@ -148,12 +151,33 @@
     <Compile Include="Admin_Home.aspx.designer.cs">
       <DependentUpon>Admin_Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BeneficiarioEstado.aspx.cs">
+      <DependentUpon>BeneficiarioEstado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BeneficiarioEstado.aspx.designer.cs">
+      <DependentUpon>BeneficiarioEstado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BeneficiarioHistorial.aspx.cs">
+      <DependentUpon>BeneficiarioHistorial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BeneficiarioHistorial.aspx.designer.cs">
+      <DependentUpon>BeneficiarioHistorial.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BeneficiarioHome.aspx.cs">
       <DependentUpon>BeneficiarioHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BeneficiarioHome.aspx.designer.cs">
       <DependentUpon>BeneficiarioHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BeneficiarioModificar.aspx.cs">
+      <DependentUpon>BeneficiarioModificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BeneficiarioModificar.aspx.designer.cs">
+      <DependentUpon>BeneficiarioModificar.aspx</DependentUpon>
     </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>

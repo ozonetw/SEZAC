@@ -10,7 +10,7 @@
 namespace SEZAC {
     
     
-    public partial class EncargadoHistorial {
+    public partial class BeneficiarioHistorial {
         
         /// <summary>
         /// Control LoginName1.

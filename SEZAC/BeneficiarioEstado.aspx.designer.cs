@@ -10,7 +10,7 @@
 namespace SEZAC {
     
     
-    public partial class EncargadoHistorial {
+    public partial class BeneficiarioEstado {
         
         /// <summary>
         /// Control LoginName1.
@@ -20,14 +20,5 @@ namespace SEZAC {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LoginName LoginName1;
-        
-        /// <summary>
-        /// Control histoGrid.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView histoGrid;
     }
 }

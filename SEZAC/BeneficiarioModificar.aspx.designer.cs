@@ -10,7 +10,7 @@
 namespace SEZAC {
     
     
-    public partial class EncargadoHistorial {
+    public partial class BeneficiarioModificar {
         
         /// <summary>
         /// Control LoginName1.
@@ -22,12 +22,21 @@ namespace SEZAC {
         protected global::System.Web.UI.WebControls.LoginName LoginName1;
         
         /// <summary>
-        /// Control histoGrid.
+        /// Control foto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView histoGrid;
+        protected global::System.Web.UI.WebControls.Image foto;
+        
+        /// <summary>
+        /// Control fotoUp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fotoUp;
     }
 }
