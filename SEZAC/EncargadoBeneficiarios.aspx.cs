@@ -33,14 +33,16 @@ namespace SEZAC
                     ApellidoPaterno = inputPaterno.Value,
                     ApellidoMaterno = inputMaterno.Value,
                     Contrasenia = pass1.Value,
+                    Correo = inputEmail.Value,
                     // = new E.Dependencia()
                     //{
                       //  Id = int.Parse(select.Value)
                     //},
+                    Estatus = O.Comun.Definiciones.TipoEstatusBeneficiario.Activo,
                     Imagen = (fotoUp.HasFile) ? fotoUp.FileBytes : null,
                     Login = inputRFC.Value,
                     Nombre = inputName.Value,
-                    Tipo = O.Comun.Definiciones.TipoUsuario.Encargado
+                    Tipo = O.Comun.Definiciones.TipoUsuario.Beneficiario
                 };
                 if (oUsuario.ExisteUsuario(eUsuario.Login, eUsuario.Tipo))
                 {
