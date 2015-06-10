@@ -22,7 +22,7 @@ namespace SEZAC
 
 		protected void Button1_Click(object sender, EventArgs e)
 		{
-
+            
 			Mensaje.InnerText = "";
 			try
 			{
