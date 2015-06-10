@@ -20,7 +20,7 @@
 			Beneficiario,
 			Organizacion
 		};
-		public enum TipoParametroBeneficiario
+		public enum TipoParametroBusqueda
 		{
 			RFC,
 			Nombre,
