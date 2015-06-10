@@ -56,6 +56,7 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="EncargadoBeneficiarios.aspx" target="_self">Crear</a></li>
                             <li><a href="EncargadoHistorial.aspx">Historial</a></li>
+                            <li><a href="EncargadoBeneficiarioOrganizacion.aspx">Asignación</a></li>
                             <li><a href="EncargadoEvaluar.aspx">Evaluación</a></li>
                             <li><a href="EncargadoVetados.aspx">Vetados</a></li>
                         </ul>

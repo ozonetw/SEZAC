@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminBeneficiarioOrganizacion.aspx.cs" Inherits="SEZAC.AdminBeneficiarioOrganizacion" MasterPageFile="~/Sezac.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoBeneficiarioOrganizacion.aspx.cs" Inherits="SEZAC.AdminBeneficiarioOrganizacion" MasterPageFile="~/Sezac.Master" %>
 
 <asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
@@ -36,6 +36,7 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="EncargadoBeneficiarios.aspx" target="_self">Crear</a></li>
                             <li><a href="EncargadoHistorial.aspx">Historial</a></li>
+                            <li><a href="EncargadoBeneficiarioOrganizacion.aspx">Asignación</a></li>
                             <li><a href="EncargadoEvaluar.aspx">Evaluación</a></li>
                             <li><a href="EncargadoVetados.aspx">Vetados</a></li>
                         </ul>

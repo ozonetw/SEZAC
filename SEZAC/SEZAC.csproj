@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminAniosFiscales.aspx" />
-    <Content Include="AdminBeneficiarioOrganizacion.aspx" />
+    <Content Include="EncargadoBeneficiarioOrganizacion.aspx" />
     <Content Include="AdminDependencias.aspx" />
     <Content Include="AdminDependenciasListado.aspx" />
     <Content Include="AdminEncargados.aspx" />
@@ -124,12 +124,12 @@
     <Compile Include="AdminAniosFiscales.aspx.designer.cs">
       <DependentUpon>AdminAniosFiscales.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminBeneficiarioOrganizacion.aspx.cs">
-      <DependentUpon>AdminBeneficiarioOrganizacion.aspx</DependentUpon>
+    <Compile Include="EncargadoBeneficiarioOrganizacion.aspx.cs">
+      <DependentUpon>EncargadoBeneficiarioOrganizacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminBeneficiarioOrganizacion.aspx.designer.cs">
-      <DependentUpon>AdminBeneficiarioOrganizacion.aspx</DependentUpon>
+    <Compile Include="EncargadoBeneficiarioOrganizacion.aspx.designer.cs">
+      <DependentUpon>EncargadoBeneficiarioOrganizacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminDependencias.aspx.cs">
       <DependentUpon>AdminDependencias.aspx</DependentUpon>
