@@ -1,21 +1,20 @@
 ﻿using System;
+using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using E = Sezac.Control.Entidades;
 using O = Sezac.Control;
 
-
 namespace SEZAC
 {
-    public partial class AdminAniosFiscales : System.Web.UI.Page
-    {
+	public partial class AdminAniosFiscales : Page
+	{
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-        }  
+		protected void Page_Load(object sender, EventArgs e)
+		{
+		}
 		protected void btnAnios_Click(object sender, EventArgs e)
 		{
-            Mensaje.InnerText="";
+			Mensaje.InnerText = "";
 			try
 			{
 				O.AnioFiscal oAnioFiscal = new O.AnioFiscal();
@@ -23,24 +22,34 @@ namespace SEZAC
 				{
 					Anio = int.Parse(CampoTexto.Value)
 				};
-                if (oAnioFiscal.ExisteAnioFiscal(eAnioFiscal.Anio))
-                {
-                    Mensaje.InnerText = "Ya existe";
-                  
-                }
-                else
-                {
-                    oAnioFiscal.InsertarAnioFiscal(eAnioFiscal);
-                    Mensaje.InnerText = "Se ha creado exitosamente";
-                }
-            }
-			catch(Exception)
+				if (oAnioFiscal.ExisteAnioFiscal(eAnioFiscal.Anio))
+				{
+					Mensaje.InnerText = "Ya existe";
+
+				}
+				else
+				{
+					oAnioFiscal.InsertarAnioFiscal(eAnioFiscal);
+					Mensaje.InnerText = "Se ha creado exitosamente";
+				}
+			}
+			catch (Exception)
 			{
 
 			}
-        }
-        }
+		}
 
-
-
-    }
+		protected void btnsalir_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				FormsAuthentication.SignOut();
+				FormsAuthentication.RedirectToLoginPage();
+			}
+			catch
+			{
+				throw;
+			}
+		}
+	}
+}
