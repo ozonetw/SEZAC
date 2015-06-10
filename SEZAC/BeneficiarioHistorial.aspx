@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BeneficiarioHistorial.aspx.cs" Inherits="SEZAC.BeneficiarioHistorial" MasterPageFile="~/Sezac.Master"%>
 <asp:Content ContentPlaceHolderID="navholder" ID="beneNav" runat="server">
-   <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
             <div class="navbar-header">
