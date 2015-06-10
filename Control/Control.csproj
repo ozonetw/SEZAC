@@ -37,6 +37,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Beneficiario.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Comun\Definiciones.cs" />
     <Compile Include="AnioFiscal.cs" />
     <Compile Include="Entidades\AnioFiscal.cs" />
@@ -55,9 +58,6 @@
     </Compile>
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Beneficiario.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Persistencia\Persistencia.csproj">
