@@ -1,6 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoOrganizaciones.aspx.cs" Inherits="SEZAC.EncargadoOrganizaciones" MasterPageFile="~/Sezac.Master"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminBeneficiarioOrganizacion.aspx.cs" Inherits="SEZAC.AdminBeneficiarioOrganizacion" MasterPageFile="~/Sezac.Master" %>
+
 <asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
-    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+   <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
             <div class="navbar-header">
@@ -53,30 +54,40 @@
         </div>
     </nav>
 </asp:Content>
-<asp:Content ContentPlaceHolderID="ContentPlaceHolderR" ID="league" runat="server">
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderR" ID="AdminDep" runat="server">
     <div>
         <p class="lead">
-            Encargado > Creación de Organizaciones y asignación de programas.
+            Encargado > Asignación de organización a beneficiario.
         </p>
     </div>
     <div class="form-group">
-        <label class="control-label" for="focusedInput">Nombre:</label>
-        <input class="form-control" runat="server" id="inputOrganizacion" type="text" value="Por favor, ingrese el nombre de la organización." />
+        <label class="col-lg-2 control-label">Org.</label>
+        <div class="col-lg-10">
+            <select class="form-control" id="orgselect">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </div>
     </div>
     <div class="form-group">
-        <label class="control-label" for="focusedInput">Programa:</label>
-        <select class="form-control" id="selectPrograma" runat="server">
-            <option>Seleccione el programa aplicable de la lista.</option>
-            <option>2</option>
-            <option>3</option>
-        </select>
+        <label class="col-lg-2 control-label">Beneficiario</label>
+        <div class="col-lg-10">
+            <select class="form-control" id="benselect">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </div>
     </div>
-    <div>
-        <button type="submit" class="btn btn-primary">Confirmar</button>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <br />
+        <br />
+        <br />
+        <button type="submit" class="btn btn-primary" id="inscribir">Inscribir</button>
+      </div>
     </div>
-    <div>
-        <br/>
-        <label runat="server" class="control-label text-success" id="Mensaje"></label>
-        <br/>
-    </div>
+    
 </asp:Content>
+ 
