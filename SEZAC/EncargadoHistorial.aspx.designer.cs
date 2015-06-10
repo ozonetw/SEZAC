@@ -13,30 +13,21 @@ namespace SEZAC {
     public partial class EncargadoHistorial {
         
         /// <summary>
-        /// Control encargadohistdrop.
+        /// Control LoginName1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList encargadohistdrop;
+        protected global::System.Web.UI.WebControls.LoginName LoginName1;
         
         /// <summary>
-        /// Control gridviewer.
+        /// Control histoGrid.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridviewer;
-        
-        /// <summary>
-        /// Control histoserach.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox histoserach;
+        protected global::System.Web.UI.WebControls.GridView histoGrid;
     }
 }

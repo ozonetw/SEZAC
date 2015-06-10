@@ -14,22 +14,22 @@ namespace SEZAC
 
 		protected void Button1_Click(object sender, EventArgs e)
 		{
-            Label2.Text="";
+            //Label2.Text="";
 			try
 			{
 				O.AnioFiscal oAnioFiscal = new O.AnioFiscal();
 				E.AnioFiscal eAnioFiscal = new E.AnioFiscal()
 				{
-					Anio = int.Parse(TextBox1.Text)
+					//Anio = int.Parse(TextBox1.Text)
 				};
                 if (oAnioFiscal.ExisteAnioFiscal(eAnioFiscal.Anio))
                 {
-                    Label2.Text = "Ese año ya existe";
+                    //Label2.Text = "Ese año ya existe";
                 }
                 else
                 {
                     oAnioFiscal.InsertarAnioFiscal(eAnioFiscal);
-                    Label2.Text = "Año guardado exitosaente";
+                    //Label2.Text = "Año guardado exitosaente";
                 }
             }
 			catch(Exception)
