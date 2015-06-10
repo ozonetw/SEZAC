@@ -55,7 +55,7 @@
     </Compile>
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vetados.cs">
+    <Compile Include="Beneficiario.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
