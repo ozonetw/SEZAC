@@ -138,19 +138,10 @@ namespace Sezac.Control
             {
                 #region Establecer valores
 
-				//usuario.ApellidoMaterno = resultado.Rows[indice]["ApellidoMaterno"].ToString();
-				//usuario.ApellidoPaterno = resultado.Rows[indice]["ApellidoPaterno"].ToString();
-				//usuario.Correo = resultado.Rows[indice]["Correo"].ToString();
-				//usuario.Estatus = (Comun.Definiciones.TipoEstatusBeneficiario)int.Parse(resultado.Rows[indice]["Estatus"].ToString());
-				//usuario.Dependencia = new Entidades.Dependencia()
-				//{
-				//	Id = (resultado.Rows[indice]["DependenciaId"] == DBNull.Value) ? 0 : int.Parse(resultado.Rows[indice]["DependenciaId"].ToString()),
-				//	Descripcion = resultado.Rows[indice]["Dependencia"].ToString()
-				//};
-				//usuario.Imagen = (resultado.Rows[indice]["Imagen"] == DBNull.Value) ? null : (byte[])resultado.Rows[indice]["Imagen"];
-				//usuario.Login = login;
-				//usuario.Nombre = resultado.Rows[indice]["Nombres"].ToString();
-				//usuario.Tipo = (Comun.Definiciones.TipoUsuario)int.Parse(resultado.Rows[indice]["TipoUsuarioId"].ToString());
+				usuario.Correo = resultado.Rows[indice]["Correo"].ToString();
+				usuario.Estatus = (Comun.Definiciones.TipoEstatusBeneficiario)int.Parse(resultado.Rows[indice]["Estatus"].ToString());
+				usuario.Login = resultado.Rows[indice]["Rfc"].ToString();
+				usuario.Nombre = resultado.Rows[indice]["Nombre"].ToString();
 
                 #endregion
             }
