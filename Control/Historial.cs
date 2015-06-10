@@ -1,12 +1,8 @@
 ﻿using Sezac.Persistencia.Comun;
 using Sezac.Persistencia.Entidades;
 using Sezac.Persistencia.Reglas;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sezac.Control
 {
@@ -61,7 +57,7 @@ namespace Sezac.Control
 			switch (historial.Tipo)
 			{
 				case Comun.Definiciones.TipoHistorial.Beneficiario:
-					sentencia.Comando = "SELECT b.Rfc,b.nombres||' '||b.apellidopaterno||' '||b.apellidomaterno AS Nombre,b.Correo,eb.descripcion AS EstatusBeneficiario,o.Organizacion,o.Programa,o.Dependencia,o.AnioFiscal,o.Estatus AS EstatusPrograma FROM sezac.beneficiario b,sezac.estatusbeneficiario eb,sezac.organizacionesbeneficiarios ob,(SELECT o.Id,o.nombre AS Organizacion,p.nombre AS Programa,p.Dependencia,p.AnioFiscal,p.Estatus FROM sezac.organizacion o,(SELECT p.*,d.nombre AS Dependencia FROM sezac.programa p,sezac.dependencia d WHERE d.id=p.dependenciaid) p WHERE p.id=o.programaid) o WHERE eb.id=b.estatusbeneficiarioid AND ob.beneficiariorfc=b.rfc AND ob.organizacionid=o.id AND (b.nombres LIKE '%@Item%' OR b.apellidopaterno LIKE '%@Item%' OR b.apellidomaterno LIKE '%@Item%')";
+					sentencia.Comando = "SELECT b.Rfc,TRIM(b.nombres||' '||b.apellidopaterno||' '||b.apellidomaterno) AS Nombre,b.Correo,eb.descripcion AS EstatusBeneficiario,o.Organizacion,o.Programa,o.Dependencia,o.AnioFiscal,o.Estatus AS EstatusPrograma FROM sezac.beneficiario b,sezac.estatusbeneficiario eb,sezac.organizacionesbeneficiarios ob,(SELECT o.Id,o.nombre AS Organizacion,p.nombre AS Programa,p.Dependencia,p.AnioFiscal,p.Estatus FROM sezac.organizacion o,(SELECT p.*,d.nombre AS Dependencia FROM sezac.programa p,sezac.dependencia d WHERE d.id=p.dependenciaid) p WHERE p.id=o.programaid) o WHERE eb.id=b.estatusbeneficiarioid AND ob.beneficiariorfc=b.rfc AND ob.organizacionid=o.id AND (b.nombres LIKE '%@Item%' OR b.apellidopaterno LIKE '%@Item%' OR b.apellidomaterno LIKE '%@Item%')";
 					sentencia.Parametros.Add(new Parametro()
 						#region Inicializar
 

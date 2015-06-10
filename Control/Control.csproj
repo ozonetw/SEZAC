@@ -37,6 +37,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Beneficiario.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Comun\Definiciones.cs" />
     <Compile Include="AnioFiscal.cs" />
     <Compile Include="Entidades\AnioFiscal.cs" />
