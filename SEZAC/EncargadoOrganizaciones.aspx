@@ -61,7 +61,7 @@
     </div>
     <div class="form-group">
         <label class="control-label" for="focusedInput">Nombre:</label>
-        <input class="form-control" id="focusedInput" type="text" value="Por favor, ingrese el nombre de la organización." />
+        <input class="form-control" runat="server" id="inputOrganizacion" type="text" value="Por favor, ingrese el nombre de la organización." />
     </div>
     <div class="form-group">
         <label class="control-label" for="focusedInput">Programa:</label>
