@@ -58,5 +58,43 @@ namespace SEZAC
 
             }
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Mensaje.InnerText = "El encargado se creo exitosamente";
+            //Mensaje.InnerText = "";
+            Response.Write("holi");
+            try
+            {
+                O.Usuario oUsuario = new O.Usuario();
+                E.Usuario eUsuario = new E.Usuario()
+                {
+                    ApellidoPaterno = inputPaterno.Value,
+                    ApellidoMaterno = inputMaterno.Value,
+                    Contrasenia = inputPassword.Value,
+                    Dependencia = new E.Dependencia()
+                    {
+                        Id = int.Parse(select.Value)
+                    },
+                    Imagen = (fotoUp.HasFile) ? fotoUp.FileBytes : null,
+                    Login = inputUser.Value,
+                    Nombre = inputName.Value,
+                    Tipo = O.Comun.Definiciones.TipoUsuario.Encargado
+                };
+                if (oUsuario.ExisteUsuario(eUsuario.Login, eUsuario.Tipo))
+                {
+                    Mensaje.InnerText = "El encargado ya existe";
+                }
+                else
+                {
+                    oUsuario.InsertarUsuario(eUsuario);
+                    Mensaje.InnerText = "El encargado se creo exitosamente";
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }

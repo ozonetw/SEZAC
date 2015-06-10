@@ -76,7 +76,7 @@
                 </form>
             </div>
             <div class="col-lg-5">
-                <form class="form-horizontal">
+                <form  class="form-horizontal">
                     <fieldset>
                         <legend>Datos</legend>
                         <div class="form-group">
@@ -123,12 +123,17 @@
                         </div>
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
-                                <button type="reset" class="btn btn-default">Cancelar</button>
-                                <asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-primary" Text="Confirmar" OnClick="btnConfirmar_Click"/>
+                                
+                                <asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-primary" Text="Confirmar" onserverclick="btnConfirmar_Click" Width="118px"/>
+                                <button runat="server"  type="submit" class="btn btn-default" id="Cancelar" onserverclick="Button1_Click">Cancelar</button>
+
+                                
                             </div>
                         </div>
                     </fieldset>
                 </form>
+                 <button runat="server" type="submit" class="btn btn-default" id="Button1" onserverclick="Button1_Click">Cancelar</button>
+                 
             </div>
         </div>
 
