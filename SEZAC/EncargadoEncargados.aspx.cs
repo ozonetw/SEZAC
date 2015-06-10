@@ -28,7 +28,6 @@ namespace SEZAC
         {
 
             Mensaje.InnerText = "";
-            Response.Write("holi");
             try
             {
                 O.Usuario oUsuario = new O.Usuario();
