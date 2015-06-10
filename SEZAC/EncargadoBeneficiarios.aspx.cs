@@ -10,9 +10,10 @@ namespace SEZAC
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+
 		}
 
-		protected void Unnamed_ServerClick(object sender, EventArgs e)
+		protected void btnConfirmar_Click(object sender, EventArgs e)
 		{
 			Mensaje.InnerText = "";
 			try
