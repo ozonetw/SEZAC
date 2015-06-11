@@ -1,5 +1,13 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoHistorial.aspx.cs" Inherits="SEZAC.EncargadoHistorial" MasterPageFile="~/Sezac.Master" %>
 
+<asp:Content ID="scripts" ContentPlaceHolderID="head" runat="server">
+    <script>
+    	function borrar(componente) {
+    		componente.value = "";
+    	}
+    </script>
+</asp:Content>
+
 <asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
 	<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -85,6 +93,7 @@
 						<asp:ListItem Value="2" Text="Apellido Paterno" />
 						<asp:ListItem Value="3" Text="Apellido Materno" />
 					</asp:DropDownList>
+					<input class="form-control" runat="server" id="textoBusqueda" type="text" value="Ingrese su búsqueda." onfocus="javascript:borrar(this);" />
 				</div>
 			</div>
 			<br />
