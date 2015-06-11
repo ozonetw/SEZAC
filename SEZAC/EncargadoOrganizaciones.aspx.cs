@@ -19,7 +19,6 @@ namespace SEZAC
 				selectPrograma.DataValueField = "Id";
 				selectPrograma.DataTextField = "Descripcion";
 				selectPrograma.DataBind();
-
 			}
 		}
 

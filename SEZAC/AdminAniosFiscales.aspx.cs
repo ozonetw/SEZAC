@@ -16,6 +16,7 @@ namespace SEZAC
 		protected void btnConfirmar_Click(object sender, EventArgs e)
 		{
 			Mensaje.InnerText = "";
+
 			try
 			{
 				O.AnioFiscal oAnioFiscal = new O.AnioFiscal();
@@ -23,10 +24,10 @@ namespace SEZAC
 				{
 					Anio = int.Parse(CampoTexto.Value)
 				};
+
 				if (oAnioFiscal.ExisteAnioFiscal(eAnioFiscal.Anio))
 				{
 					Mensaje.InnerText = "Ya existe";
-
 				}
 				else
 				{
