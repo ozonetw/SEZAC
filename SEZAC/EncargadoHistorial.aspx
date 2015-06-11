@@ -85,16 +85,23 @@
 			</div>
 			<br />
 			<div class="form-group">
-				<label for="select" class="col-lg-2 control-label">Datos</label>
-				<div class="col-md-2">
-					<asp:DropDownList ID="tipoParametro" runat="server" CssClass="form-control">
-						<asp:ListItem Value="0" Text="R.F.C." Selected="True" />
-						<asp:ListItem Value="1" Text="Nombre" />
-						<asp:ListItem Value="2" Text="Apellido Paterno" />
-						<asp:ListItem Value="3" Text="Apellido Materno" />
-					</asp:DropDownList>
-					<input class="form-control" runat="server" id="textoBusqueda" type="text" value="Ingrese su búsqueda." onfocus="javascript:borrar(this);" />
-				</div>
+                <div class="row">
+				    <label for="select" class="col-lg-2 control-label">Datos</label>
+				    <div class="col-md-2">
+					    <asp:DropDownList ID="tipoParametro" runat="server" CssClass="form-control">
+						    <asp:ListItem Value="0" Text="R.F.C." Selected="True" />
+						    <asp:ListItem Value="1" Text="Nombre" />
+						    <asp:ListItem Value="2" Text="Apellido Paterno" />
+						    <asp:ListItem Value="3" Text="Apellido Materno" />
+					    </asp:DropDownList>		
+				    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" runat="server" id="textoBusqueda" type="text" value="Ingrese su búsqueda." onfocus="javascript:borrar(this);" />
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="btn btn-primary">Buscar</a>
+                    </div>
+                </div>                             
 			</div>
 			<br />
 			<br />
