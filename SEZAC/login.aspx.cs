@@ -20,7 +20,9 @@ namespace SEZAC
 
 			if (e.Authenticated)
 				Session["Usuario"] = usuario.ObtenerUsuario(((Login)sender).UserName);
-		}
+                Session["eee"] = usuario.ObtenerUsuario(((Login)sender).UserName).Imagen;
+            // Image img = usuario.ObtenerUsuario.
+        }
 
 		protected void Login1_LoggedIn(object sender, EventArgs e)
 		{
