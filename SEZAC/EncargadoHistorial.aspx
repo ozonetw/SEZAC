@@ -108,6 +108,6 @@
 		</fieldset>
 	</div>
 	<div>
-		<asp:GridView ID="histoGrid" runat="server"></asp:GridView>
+		<asp:GridView ID="histoGrid" runat="server" EmptyDataText="No hay registros que coincidan con los parámetros de búsqueda suministrados" />
 	</div>
 </asp:Content>
