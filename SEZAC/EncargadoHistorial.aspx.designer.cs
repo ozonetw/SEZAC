@@ -49,13 +49,13 @@ namespace SEZAC {
         protected global::System.Web.UI.WebControls.DropDownList tipoParametro;
         
         /// <summary>
-        /// CampoTexto control.
+        /// textoBusqueda control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText CampoTexto;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText textoBusqueda;
         
         /// <summary>
         /// histoGrid control.

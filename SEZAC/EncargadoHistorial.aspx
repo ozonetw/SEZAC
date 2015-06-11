@@ -93,7 +93,7 @@
 						<asp:ListItem Value="2" Text="Apellido Paterno" />
 						<asp:ListItem Value="3" Text="Apellido Materno" />
 					</asp:DropDownList>
-					<input class="form-control" runat="server" id="CampoTexto" type="text" value="Por favor, ingrese el año fiscal a capturar." onfocus="javascript:borrar(this);" />
+					<input class="form-control" runat="server" id="textoBusqueda" type="text" value="Ingrese su búsqueda." onfocus="javascript:borrar(this);" />
 				</div>
 			</div>
 			<br />
