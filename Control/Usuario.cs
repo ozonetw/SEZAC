@@ -58,7 +58,7 @@ namespace Sezac.Control
 			switch (usuario.Tipo)
 			{
 				case Comun.Definiciones.TipoUsuario.Beneficiario:
-					sentencia.Comando = "UPDATE sezac.beneficiario SET nombres=@Nombre,apellidopaterno=@ApellidoPaterno,apellidomaterno=@ApellidoMaterno,contrasenia=@Contrasenia,correo=@Correo,imagen=@Imagen WHERE rfc=@Rfc";
+					sentencia.Comando = "UPDATE sezac.beneficiario SET nombres=@Nombre,apellidopaterno=@ApellidoPaterno,apellidomaterno=@ApellidoMaterno,correo=@Correo,imagen=@Imagen WHERE rfc=@Rfc";
 					#region Parametros
 					
 					sentencia.Parametros.Add(new Parametro()

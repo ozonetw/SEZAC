@@ -96,10 +96,10 @@
 					    </asp:DropDownList>		
 				    </div>
                     <div class="col-md-6">
-                        <input class="form-control" runat="server" id="textoBusqueda" type="text" value="Ingrese su búsqueda." onfocus="javascript:borrar(this);" />
+						<input class="form-control" runat="server" id="textoBusqueda" type="text" value="Ingrese su búsqueda" onfocus="javascript:borrar(this);" />
                     </div>
                     <div class="col-md-2">
-                        <a href="#" class="btn btn-primary">Buscar</a>
+						<asp:Button ID="btnBuscar" runat="server" class="btn btn-primary" Text="Buscar" OnClick="btnBuscar_Click" />
                     </div>
                 </div>                             
 			</div>
@@ -108,6 +108,6 @@
 		</fieldset>
 	</div>
 	<div>
-		<asp:GridView ID="histoGrid" runat="server"></asp:GridView>
+		<asp:GridView ID="histoGrid" runat="server" EmptyDataText="No hay registros que coincidan con los parámetros de búsqueda suministrados" />
 	</div>
 </asp:Content>
