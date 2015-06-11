@@ -47,7 +47,7 @@
         </p>
     </div>
     <div>
-        <h1 id="estadoUS">Beneficiario Vetado</h1>
+        <h1 id="estadoUS"><label runat="server" class="control-label text-success" id="Mensaje"></label></h1>
 
     </div>
 </asp:Content>
