@@ -66,7 +66,6 @@ namespace SEZAC
 
 		protected void btnBuscar_Click(object sender, EventArgs e)
 		{
-			//'%@Item%'
 			try
 			{
 				O.Historial oHistorial = new O.Historial();

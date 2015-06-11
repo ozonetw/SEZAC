@@ -56,68 +56,34 @@ namespace Sezac.Control
 			switch (tipoParametroBusqueda)
 			{
 				case Comun.Definiciones.TipoParametroBusqueda.RFC:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.rfc LIKE '%@Item%'";
-					sentencia.Parametros.Add(new Parametro()
-						#region Inicializar
-
-						{
-							Direccion = ParameterDirection.Input,
-							Nombre = "@Item",
-							Tipo = DbType.String,
-							Valor = item.Replace(" ","%")
-						}
-
-						#endregion
-					);
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.rfc LIKE @Item";
 					break;
 				case Comun.Definiciones.TipoParametroBusqueda.Nombre:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.nombres LIKE '%@Item%'";
-					sentencia.Parametros.Add(new Parametro()
-						#region Inicializar
-
-						{
-							Direccion = ParameterDirection.Input,
-							Nombre = "@Item",
-							Tipo = DbType.String,
-							Valor = item.Replace(" ","%")
-						}
-
-						#endregion
-					);
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.nombres LIKE @Item";
 					break;
 				case Comun.Definiciones.TipoParametroBusqueda.ApellidoPaterno:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidopaterno LIKE '%@Item%'";
-					sentencia.Parametros.Add(new Parametro()
-						#region Inicializar
-
-						{
-							Direccion = ParameterDirection.Input,
-							Nombre = "@Item",
-							Tipo = DbType.String,
-							Valor = item.Replace(" ","%")
-						}
-
-						#endregion
-					);
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidopaterno LIKE @Item";
 					break;
 				case Comun.Definiciones.TipoParametroBusqueda.ApellidoMaterno:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidomaterno LIKE '%@Item%'";
-					sentencia.Parametros.Add(new Parametro()
-						#region Inicializar
-
-						{
-							Direccion = ParameterDirection.Input,
-							Nombre = "@Item",
-							Tipo = DbType.String,
-							Valor = item.Replace(" ","%")
-						}
-
-						#endregion
-					);
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidomaterno LIKE @Item";
 					break;
 				default:
 					break;
 			}
+
+			sentencia.Parametros.Add(new Parametro()
+				#region Inicializar
+
+				{
+					Direccion = ParameterDirection.Input,
+					Nombre = "@Item",
+					Tipo = DbType.String,
+					Valor = "%" + item.Replace(" ","%") + "%"
+				}
+
+				#endregion
+			);
+					
 
 			#endregion
 
@@ -361,7 +327,7 @@ namespace Sezac.Control
             return resultado.Rows[0]["Descripcion"].ToString();
         }
 
-        public DataTable ObtenerVetados()
+		public DataTable ObtenerVetados(string item, Comun.Definiciones.TipoParametroBusqueda tipoParametroBusqueda)
         {
 			Sentencia sentencia = new Sentencia()
             {
@@ -375,6 +341,46 @@ namespace Sezac.Control
 
                 #endregion
             };
+
+			#region Establecer comando
+
+			if (!string.IsNullOrEmpty(item))
+			{
+				switch (tipoParametroBusqueda)
+				{
+					case Comun.Definiciones.TipoParametroBusqueda.RFC:
+						sentencia.Comando += " AND UPPER(rfc) LIKE @Item";
+						break;
+					case Comun.Definiciones.TipoParametroBusqueda.Nombre:
+						sentencia.Comando += " AND UPPER(nombres) LIKE @Item";
+						break;
+					case Comun.Definiciones.TipoParametroBusqueda.ApellidoPaterno:
+						sentencia.Comando += " AND UPPER(apellidopaterno) LIKE @Item";
+						break;
+					case Comun.Definiciones.TipoParametroBusqueda.ApellidoMaterno:
+						sentencia.Comando += " AND UPPER(apellidomaterno) LIKE @Item";
+						break;
+					default:
+						break;
+				}
+
+				sentencia.Parametros = new List<Parametro>();
+				sentencia.Parametros.Add(new Parametro()
+					#region Inicializar
+
+					{
+						Direccion = ParameterDirection.Input,
+						Nombre = "@Item",
+						Tipo = DbType.String,
+						Valor = "%" + item.ToUpper().Replace(" ", "%") + "%"
+					}
+
+					#endregion
+				);
+			}
+
+			#endregion
+
 			DataTable resultado = (DataTable)_planificador.Despachar(
                 #region Inicializar
 
