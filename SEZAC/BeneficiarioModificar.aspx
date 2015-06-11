@@ -1,4 +1,23 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BeneficiarioModificar.aspx.cs" Inherits="SEZAC.BeneficiarioModificar" MasterPageFile="~/Sezac.Master" %>
+<asp:Content ID="scripts" ContentPlaceHolderID="head" runat="server">
+	<script>
+		function imagePreview(input) {
+			if (input.files && input.files[0]) {
+				var fildr = new FileReader();
+				fildr.onload = function (e) {
+					$('#imgPre').attr('src', e.target.result)
+				}
+				fildr.readAsDataURL(input.files[0]);
+			}
+		}
+		function removeImage() {
+			$('#imgPre').attr('src', this.removeImage)
+		}
+		function borrar(componente) {
+			componente.value = "";
+		}
+	</script>
+</asp:Content>
 <asp:Content ContentPlaceHolderID="navholder" ID="beneNav" runat="server">
    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -52,7 +71,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
-                <form class="form-horizontal">
+                <div class="form-horizontal">
   <fieldset>
     <legend>Imagen</legend>
     <div class="form-group">
@@ -67,43 +86,50 @@
         </div>
     </div>    
   </fieldset>
-</form>
+</div>
             </div>
             <div class="col-lg-5">
-                <form class="form-horizontal">
+                <div class="form-horizontal">
                       <fieldset>
                         <legend>Datos</legend>
                           <div class="form-group">
                               <label for="inputName" class="col-lg-2 control-label">Nombre</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputName" placeholder="Nombre" />
+                                <input type="text" class="form-control" runat="server" id="inputName" placeholder="Nombre" />
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="inputPaterno" class="col-lg-2 control-label">Apellido Paterno</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputPaterno" placeholder="Apellido Paterno" />
+                                <input type="text" class="form-control" runat="server" id="inputPaterno" placeholder="Apellido Paterno" />
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="inputMaterno" class="col-lg-2 control-label">Apellido Materno</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputMaterno" placeholder="Apellido Materno" />
+                                <input type="text" class="form-control" runat="server" id="inputMaterno" placeholder="Apellido Materno" />
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputEmail" placeholder="Email" />
+                                <input type="text" class="form-control" runat="server" id="inputEmail" placeholder="Email" />
                              </div>
                           </div>
                         <div class="form-group">
                           <div class="col-lg-10 col-lg-offset-2">
-                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                            <asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-primary" OnClientClick="removeImage();" Text="Confirmar" OnClick ="btnConfirmar_Click" />
                           </div>
                         </div>
                       </fieldset>
-                    </form>
+                    </div>
+                    <div>
+					<p>
+						<br />
+						<label class="control-label text-success" runat="server" id="Mensaje"></label>
+						<br />
+					</p>
+				</div>
             </div>
         </div>
 

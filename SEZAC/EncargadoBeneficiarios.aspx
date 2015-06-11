@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoBeneficiarios.aspx.cs" Inherits="SEZAC.EncargadoBeneficiarios" MasterPageFile="~/Sezac.Master" %>
-
 <asp:Content ID="scripts" ContentPlaceHolderID="head" runat="server">
 	<script>
 		function imagePreview(input) {
@@ -16,9 +15,6 @@
 		}
 		function borrar(componente) {
 			componente.value = "";
-			$('#inputName').val("");
-			$('#inputPaterno').val("");
-			$('#inputMaterno').val("");
 		}
 	</script>
 </asp:Content>
