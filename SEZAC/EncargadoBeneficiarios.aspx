@@ -119,19 +119,19 @@
 						<div class="form-group">
 							<label for="inputName" class="col-lg-2 control-label">Nombre</label>
 							<div class="col-lg-10">
-								<input type="text" runat="server" class="form-control" id="inputName" name="inputName" placeholder="Nombre" />
+								<input type="text" runat="server" class="form-control" id="inputName" name="inputName" placeholder="Nombre" onfocus="javascript:borrar(this);"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputPaterno" class="col-lg-2 control-label">Apellido Paterno</label>
 							<div class="col-lg-10">
-								<input type="text" runat="server" class="form-control" id="inputPaterno" name="inputPaterno" placeholder="Apellido Paterno" />
+								<input type="text" runat="server" class="form-control" id="inputPaterno" name="inputPaterno" placeholder="Apellido Paterno" onfocus="javascript:borrar(this);"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputMaterno" class="col-lg-2 control-label">Apellido Materno</label>
 							<div class="col-lg-10">
-								<input type="text" runat="server" class="form-control" id="inputMaterno" name="inputMaterno" placeholder="Apellido Materno" />
+								<input type="text" runat="server" class="form-control" id="inputMaterno" name="inputMaterno" placeholder="Apellido Materno" onfocus="javascript:borrar(this);"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -143,7 +143,7 @@
 						<div class="form-group">
 							<label for="inputEmail" class="col-lg-2 control-label">Email</label>
 							<div class="col-lg-10">
-								<input type="text" runat="server" class="form-control" id="inputEmail" placeholder="Email" />
+								<input type="text" runat="server" class="form-control" id="inputEmail" placeholder="Email" onfocus="javascript:borrar(this);"/>
 							</div>
 						</div>
 						<div class="form-group">

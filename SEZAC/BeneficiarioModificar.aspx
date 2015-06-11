@@ -95,25 +95,25 @@
                           <div class="form-group">
                               <label for="inputName" class="col-lg-2 control-label">Nombre</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" runat="server" id="inputName" placeholder="Nombre" />
+                                <input type="text" class="form-control" runat="server" id="inputName" placeholder="Nombre" onfocus="javascript:borrar(this);"/>
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="inputPaterno" class="col-lg-2 control-label">Apellido Paterno</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" runat="server" id="inputPaterno" placeholder="Apellido Paterno" />
+                                <input type="text" class="form-control" runat="server" id="inputPaterno" placeholder="Apellido Paterno" onfocus="javascript:borrar(this);"/>
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="inputMaterno" class="col-lg-2 control-label">Apellido Materno</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" runat="server" id="inputMaterno" placeholder="Apellido Materno" />
+                                <input type="text" class="form-control" runat="server" id="inputMaterno" placeholder="Apellido Materno" onfocus="javascript:borrar(this);"/>
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" runat="server" id="inputEmail" placeholder="Email" />
+                                <input type="text" class="form-control" runat="server" id="inputEmail" placeholder="Email" onfocus="javascript:borrar(this);"/>
                              </div>
                           </div>
                         <div class="form-group">
