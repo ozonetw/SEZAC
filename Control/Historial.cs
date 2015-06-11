@@ -54,7 +54,7 @@ namespace Sezac.Control
             
 			#region Establecer comando
 
-			switch (historial.Tipo)
+			switch (tipoHistorial)
 			{
 				case Comun.Definiciones.TipoHistorial.Beneficiario:
 					#region determinar parámetro
