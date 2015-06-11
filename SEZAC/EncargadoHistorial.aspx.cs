@@ -13,15 +13,7 @@ namespace SEZAC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-			if (!IsPostBack)
-			{
-				O.Historial oHistorial = new O.Historial();
-				E.Historial eHistorial = new E.Historial();
 
-				eHistorial = oHistorial.ObtenerHistorialInscripciones("MEVR790403", (Definiciones.TipoHistorial)int.Parse(tipoHistorial.SelectedItem.Value), (Definiciones.TipoParametroBusqueda)int.Parse(tipoParametro.SelectedItem.Value));
-				histoGrid.DataSource = eHistorial.Datos;
-				histoGrid.DataBind();
-			}
         }
 
 		protected void btnsalir_Click(object sender, EventArgs e)
@@ -70,6 +62,24 @@ namespace SEZAC
 			tipoParametro.DataValueField = "Id";
 			tipoParametro.DataTextField = "Descripcion";
 			tipoParametro.DataBind();
+		}
+
+		protected void btnBuscar_Click(object sender, EventArgs e)
+		{
+			//'%@Item%'
+			try
+			{
+				O.Historial oHistorial = new O.Historial();
+				E.Historial eHistorial = new E.Historial();
+
+				eHistorial = oHistorial.ObtenerHistorialInscripciones((string.IsNullOrEmpty(textoBusqueda.Value)) ? "----" : textoBusqueda.Value, (Definiciones.TipoHistorial)int.Parse(tipoHistorial.SelectedItem.Value), (Definiciones.TipoParametroBusqueda)int.Parse(tipoParametro.SelectedItem.Value));
+				histoGrid.DataSource = eHistorial.Datos;
+				histoGrid.DataBind();
+			}
+			catch
+			{
+				throw;
+			}
 		}
     }
 }
