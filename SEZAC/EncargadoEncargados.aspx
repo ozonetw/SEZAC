@@ -114,25 +114,25 @@
 						<div class="form-group">
 							<label for="inputName" class="col-lg-2 control-label">Nombre</label>
 							<div class="col-lg-10">
-								<input type="text" class="form-control" runat="server" id="inputNombre" placeholder="Nombre" />
+								<input type="text" class="form-control" runat="server" id="inputNombre" placeholder="Nombre" onfocus="javascript:borrar(this);"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputPaterno" class="col-lg-2 control-label">Apellido Paterno</label>
 							<div class="col-lg-10">
-								<input type="text" class="form-control" runat="server" id="inputPaterno" placeholder="Apellido Paterno" />
+								<input type="text" class="form-control" runat="server" id="inputPaterno" placeholder="Apellido Paterno" onfocus="javascript:borrar(this);"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputMaterno" class="col-lg-2 control-label">Apellido Materno</label>
 							<div class="col-lg-10">
-								<input type="text" class="form-control" runat="server" id="inputMaterno" placeholder="Apellido Materno" />
+								<input type="text" class="form-control" runat="server" id="inputMaterno" placeholder="Apellido Materno" onfocus="javascript:borrar(this);"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputUser" class="col-lg-2 control-label">Usuario</label>
 							<div class="col-lg-10">
-								<input type="text" class="form-control" id="inputUser" runat="server" placeholder="Usuario" />
+								<input type="text" class="form-control" id="inputUser" runat="server" placeholder="Usuario" onfocus="javascript:borrar(this);"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -162,11 +162,7 @@
 				</div>
 			</div>
 			<div>
-				<p>
-					<br />
 					<label class="control-label text-success" runat="server" id="Mensaje"></label>
-					<br />
-				</p>
 			</div>
 		</div>
 	</div>
