@@ -91,7 +91,7 @@
 			</div>
 			<div class="col-md-5">
 				<p>
-					<input type="text" runat="server" class="form-control" id="inputDef" placeholder="Introduzca el termino de busqueda..." onfocus="javascript:borrar(this);" />
+					<input type="text" runat="server" class="form-control" id="inputDef" placeholder="Introduzca el término de busqueda..." onfocus="javascript:borrar(this);" />
 				</p>
 			</div>
 			<div class="col-md-2">

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Sezac.Control.Comun;
+using System;
 using System.Web.Security;
 using System.Web.UI;
+using E = Sezac.Control.Entidades;
+using O = Sezac.Control;
 
 namespace SEZAC
 {
@@ -17,6 +20,21 @@ namespace SEZAC
 			{
 				FormsAuthentication.SignOut();
 				Response.Redirect("login.aspx");
+			}
+			catch
+			{
+				throw;
+			}
+		}
+
+		protected void btnBuscar_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				O.Beneficiario oBeneficiario = new O.Beneficiario();
+
+				usrGrid.DataSource = oBeneficiario.Buscar(inputDef.Value, (Definiciones.TipoParametroBusqueda)int.Parse(tipoParametro.SelectedItem.Value));
+				usrGrid.DataBind();
 			}
 			catch
 			{

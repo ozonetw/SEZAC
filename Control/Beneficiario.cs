@@ -36,13 +36,14 @@ namespace Sezac.Control
 
         #region Metodos
 
-		public DataTable/*Entidades.Usuario*/ Buscar(string item, Comun.Definiciones.TipoParametroBusqueda tipoParametroBusqueda)
+		public DataTable Buscar(string item, Comun.Definiciones.TipoParametroBusqueda tipoParametroBusqueda)
         {
 			Entidades.Usuario usuario = new Entidades.Usuario();
 			Sentencia sentencia = new Sentencia()
             {
                 #region Inicializar
 
+				Parametros = new List<Parametro>(),
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
@@ -56,16 +57,16 @@ namespace Sezac.Control
 			switch (tipoParametroBusqueda)
 			{
 				case Comun.Definiciones.TipoParametroBusqueda.RFC:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.rfc LIKE @Item";
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario b,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.rfc LIKE @Item";
 					break;
 				case Comun.Definiciones.TipoParametroBusqueda.Nombre:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.nombres LIKE @Item";
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario b,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.nombres LIKE @Item";
 					break;
 				case Comun.Definiciones.TipoParametroBusqueda.ApellidoPaterno:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidopaterno LIKE @Item";
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario b,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidopaterno LIKE @Item";
 					break;
 				case Comun.Definiciones.TipoParametroBusqueda.ApellidoMaterno:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidomaterno LIKE @Item";
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario b,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidomaterno LIKE @Item";
 					break;
 				default:
 					break;
@@ -83,7 +84,6 @@ namespace Sezac.Control
 
 				#endregion
 			);
-					
 
 			#endregion
 
@@ -98,22 +98,6 @@ namespace Sezac.Control
                 #endregion
             );
 
-			#region Recuperar información
-
-			//for (int indice = 0; indice < resultado.Rows.Count; indice++)
-			//{
-			//	#region Establecer valores
-
-			//	usuario.Correo = resultado.Rows[indice]["Correo"].ToString();
-			//	usuario.Estatus = (Comun.Definiciones.TipoEstatusBeneficiario)int.Parse(resultado.Rows[indice]["Estatus"].ToString());
-			//	usuario.Login = resultado.Rows[indice]["Rfc"].ToString();
-			//	usuario.Nombre = resultado.Rows[indice]["Nombre"].ToString();
-
-			//	#endregion
-			//}
-
-            #endregion
-            //return usuario;
 			return resultado;
         }
 
