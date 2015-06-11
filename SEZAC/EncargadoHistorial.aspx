@@ -96,7 +96,7 @@
 					    </asp:DropDownList>		
 				    </div>
                     <div class="col-md-6">
-						<input class="form-control" runat="server" id="textoBusqueda" type="text" value="Ingrese su búsqueda." onfocus="javascript:borrar(this);" />
+						<input class="form-control" runat="server" id="textoBusqueda" type="text" value="Ingrese su búsqueda" onfocus="javascript:borrar(this);" />
                     </div>
                     <div class="col-md-2">
 						<asp:Button ID="btnBuscar" runat="server" class="btn btn-primary" Text="Buscar" OnClick="btnBuscar_Click" />

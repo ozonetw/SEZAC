@@ -1,5 +1,13 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EncargadoEvaluar.aspx.cs" Inherits="SEZAC.EncargadoEvaluar" MasterPageFile="~/Sezac.Master" %>
 
+<asp:Content ID="scripts" ContentPlaceHolderID="head" runat="server">
+	<script>
+		function borrar(componente) {
+			componente.value = "";
+		}
+	</script>
+</asp:Content>
+
 <asp:Content ContentPlaceHolderID="navholder" ID="encargadoNav" runat="server">
 	<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -67,46 +75,100 @@
 		</div>
 		<div class="col-md-2">
 			<p>
-				<select class="form-control" id="select">
-					<option>R.F.C</option>
-					<option>Nombre</option>
-					<option>Apellido</option>
-					<option>Organización</option>
-				</select>
+				<asp:DropDownList ID="tipoParametro" runat="server" CssClass="form-control" Enabled="false">
+					<asp:ListItem Value="0" Text="R.F.C." Selected="True" />
+					<asp:ListItem Value="1" Text="Nombre" />
+					<asp:ListItem Value="2" Text="Apellido Paterno" />
+					<asp:ListItem Value="3" Text="Apellido Materno" />
+				</asp:DropDownList>
 			</p>
 		</div>
 		<div class="col-md-5">
 			<p>
-				<input type="text" class="form-control" id="inputDef" placeholder="Introduzca el término de busqueda..." />
+				<input type="text" runat="server" class="form-control" id="inputDef" placeholder="Introduzca el término de busqueda..." onfocus="javascript:borrar(this);" />
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="#" class="btn btn-primary btn-lg">Buscar</a>
+			<asp:Button ID="btnBuscar" runat="server" class="btn btn-primary btn-lg" Text="Buscar" OnClick="btnBuscar_Click" />
 		</div>
 	</div>
+	<br />
 	<div class="col-lg-10">
 		<div class="well bs-component">
-			<div class="form-horizontal">
+			<div class="form-horizontal" style="width:100%;">
 				<fieldset>
 					<legend>Programas</legend>
 					<div class="form-group">
 						<div>
-							<asp:GridView ID="programaGrid" runat="server"></asp:GridView>
+							<asp:GridView ID="programaGrid" runat="server" EmptyDataText="No hay registros que coincidan con los parámetros de búsqueda suministrados" AutoGenerateColumns="false" BorderColor="Gray" BorderStyle="Solid">
+								<Columns>
+									<asp:TemplateField>
+										<HeaderTemplate>
+											<table>
+												<tr>
+													<td style="width:100px;text-align:left;">
+														<asp:Label runat="server" Text="R.F.C." />
+													</td>
+													<td style="width:240px;text-align:left;">
+														<asp:Label runat="server" Text="Nombre" />
+													</td>
+													<td style="width:180px;text-align:left;">
+														<asp:Label runat="server" Text="Correo" />
+													</td>
+													<td style="width:280px;text-align:left;">
+														<asp:Label runat="server" Text="Organizacion" />
+													</td>
+													<td style="width:280px;text-align:left;">
+														<asp:Label runat="server" Text="Programa" />
+													</td>
+													<td>
+														<asp:Label runat="server" Text="Estatus" />
+													</td>
+												</tr>
+											</table>
+										</HeaderTemplate>
+										<ItemTemplate>
+											<table>
+												<tr>
+													<td style="width:100px;text-align:left;">
+														<asp:Label ID="lblRFC" runat="server" Text='<%# HttpUtility.HtmlEncode(Convert.ToString( Eval("Rfc"))) %>' />
+													</td>
+													<td style="width:240px;text-align:left;">
+														<asp:Label runat="server" Text='<%# HttpUtility.HtmlEncode(Convert.ToString( Eval("BeneficiarioNombre"))) %>' />
+													</td>
+													<td style="width:180px;text-align:left;">
+														<asp:Label runat="server" Text='<%# HttpUtility.HtmlEncode(Convert.ToString( Eval("Correo"))) %>' />
+													</td>
+													<td style="width:280px;text-align:left;">
+														<asp:Label runat="server" Text='<%# HttpUtility.HtmlEncode(Convert.ToString( Eval("Organizacion"))) %>' />
+													</td>
+													<td style="width:280px;text-align:left;">
+														<asp:Label runat="server" Text='<%# HttpUtility.HtmlEncode(Convert.ToString( Eval("Programa"))) %>' />
+														<asp:Label ID="lblProgramaId" runat="server" Text='<%# HttpUtility.HtmlEncode(Convert.ToString( Eval("ProgramaId"))) %>' Visible="false" />
+													</td>
+													<td>
+														<asp:CheckBox ID="chbEstatusPrograma" runat="server" Checked='<%# (HttpUtility.HtmlEncode(Convert.ToString( Eval("ProgramaEstatus"))) == "NoCompletado") ? false : true %>' />
+													</td>
+												</tr>
+											</table>
+										</ItemTemplate>
+									</asp:TemplateField>
+								</Columns>
+							</asp:GridView>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="select" class="col-lg-2 control-label">Estado</label>
+						<label for="select" class="col-lg-2 control-label">Estado del Benef.</label>
 						<div class="col-lg-10">
-							<select class="form-control" id="select2">
-								<option>Activo</option>
-								<option>Vetado</option>
-							</select>
+							<asp:DropDownList ID="estatusBenef" runat="server" CssClass="form-control" Enabled="false">
+								<asp:ListItem Value="1" Text="ACTIVO" Selected="True" />
+								<asp:ListItem Value="2" Text="VETADO" />
+							</asp:DropDownList>
 						</div>
 					</div>
 					<div class="col-lg-10 col-lg-offset-2">
 						<br />
-						<br />
-						<button type="submit" class="btn btn-primary">Evaluar</button>
+						<asp:Button ID="btnEvaluar" runat="server" CssClass="btn btn-primary" Text="Evaluar" OnClick="btnEvaluar_Click" />
 					</div>
 				</fieldset>
 			</div>

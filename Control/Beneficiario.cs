@@ -129,29 +129,27 @@ namespace Sezac.Control
 					esBeneficiarioVetado = true;
 			}
 
-			if (esBeneficiarioVetado)
-				sentencias.Add( new Sentencia()
-					{
-						#region Inicializar
-
-						Comando = "UPDATE sezac.beneficiario SET estatusbeneficiarioid=2 WHERE rfc=" +  evaluaciones[0].Rfc,
-						Tipo = Definiciones.TipoSentencia.NoQuery,
-						TipoComando = CommandType.Text,
-						TipoTransaccion = Definiciones.TipoTransaccion.Continuar,
-						TipoResultado = Definiciones.TipoResultado.Entero
-
-						#endregion
-					}
-				);
-
-			if (sentencias.Count > 0)
-				if (sentencias.Count == 1)
-					sentencias[0].TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion;
-				else 
+			sentencias.Add( new Sentencia()
 				{
-					sentencias[0].TipoTransaccion = Definiciones.TipoTransaccion.Iniciar;
-					sentencias[sentencias.Count - 1].TipoTransaccion = Definiciones.TipoTransaccion.Finalizar;
+					#region Inicializar
+
+					Comando = "UPDATE sezac.beneficiario SET estatusbeneficiarioid=" + ((esBeneficiarioVetado) ? "2" : "1") + " WHERE rfc='" +  evaluaciones[0].Rfc + "'",
+					Tipo = Definiciones.TipoSentencia.NoQuery,
+					TipoComando = CommandType.Text,
+					TipoTransaccion = Definiciones.TipoTransaccion.Continuar,
+					TipoResultado = Definiciones.TipoResultado.Entero
+
+					#endregion
 				}
+			);
+
+			if (sentencias.Count == 1)
+				sentencias[0].TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion;
+			else 
+			{
+				sentencias[0].TipoTransaccion = Definiciones.TipoTransaccion.Iniciar;
+				sentencias[sentencias.Count - 1].TipoTransaccion = Definiciones.TipoTransaccion.Finalizar;
+			}
 
 			#endregion
 
@@ -243,12 +241,32 @@ namespace Sezac.Control
             );
         }
 
-		public List<Entidades.Evaluacion> ObtenerDatosEvaluacion(string item, Comun.Definiciones.TipoParametroBusqueda tipoParametroBusqueda)
+		public List<Entidades.Evaluacion> ObtenerDatosEvaluacion(string item)
         {
 
-			Historial historial = new Historial();
 			List<Entidades.Evaluacion> evaluaciones = new List<Entidades.Evaluacion>();
-			DataTable datos = historial.ObtenerHistorialInscripciones(item, Comun.Definiciones.TipoHistorial.Beneficiario, tipoParametroBusqueda).Datos;
+			Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+				Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,b.EstatusBeneficiarioId,eb.descripcion AS EstatusBeneficiario,o.Organizacion,o.ProgramaId,o.Programa,o.Dependencia,o.AnioFiscal,o.Estatus AS EstatusPrograma FROM sezac.beneficiario b,sezac.estatusbeneficiario eb,sezac.organizacionesbeneficiarios ob,(SELECT o.Id,o.nombre AS Organizacion,p.id AS ProgramaId,p.nombre AS Programa,p.Dependencia,p.AnioFiscal,p.Estatus FROM sezac.organizacion o,(SELECT p.*,d.nombre AS Dependencia FROM sezac.programa p,sezac.dependencia d WHERE d.id=p.dependenciaid) p WHERE p.id=o.programaid) o WHERE eb.id=b.estatusbeneficiarioid AND ob.beneficiariorfc=b.rfc AND ob.organizacionid=o.id AND UPPER(b.rfc)='" + item + "'",
+				Tipo = Definiciones.TipoSentencia.Query,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Conjunto
+
+                #endregion
+            };
+			DataTable datos = (DataTable)_planificador.Despachar(
+                #region Inicializar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
 
 			#region Recuperar información
 
@@ -261,7 +279,7 @@ namespace Sezac.Control
 						#region Inicializar
 
 						AnioFiscal = int.Parse(datos.Rows[indice]["AnioFiscal"].ToString()),
-						BeneficiarioEstatus = (Comun.Definiciones.TipoEstatusBeneficiario)int.Parse(datos.Rows[indice]["EstatusBeneficiario"].ToString()),
+						BeneficiarioEstatus = (Comun.Definiciones.TipoEstatusBeneficiario)int.Parse(datos.Rows[indice]["EstatusBeneficiarioId"].ToString()),
 						BeneficiarioNombre = datos.Rows[indice]["Nombre"].ToString(),
 						Correo = datos.Rows[indice]["Correo"].ToString(),
 						Dependencia = datos.Rows[indice]["Dependencia"].ToString(),
@@ -289,7 +307,7 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-				Comando = "SELECT eb.Descripcion FROM sezac.beneficiario b,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.rfc='" + rfc + "'",
+				Comando = "SELECT eb.Descripcion FROM sezac.beneficiario b,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND UPPER(b.rfc)='" + rfc.ToUpper() + "'",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
