@@ -339,7 +339,7 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-				Comando = "SELECT eb.Descripcion FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.rfc='" + rfc + "'",
+				Comando = "SELECT eb.Descripcion FROM sezac.beneficiario b,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.rfc='" + rfc + "'",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
