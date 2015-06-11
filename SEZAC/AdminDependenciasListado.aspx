@@ -33,6 +33,9 @@
                     </li>                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <asp:Image ID="logImage" runat="server"/>
+                    </li>
                     <li><a>Bievenido, <asp:LoginName ID="LoginName1" runat="server" /></a></li>
                     <li><asp:LinkButton Text="Salir" runat="server" ID="btnsalir" OnClick="btnsalir_Click"></asp:LinkButton></li>
                 </ul>

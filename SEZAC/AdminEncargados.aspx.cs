@@ -12,14 +12,30 @@ namespace SEZAC
 		{
 			if (!IsPostBack)
 			{
-				O.Dependencia oDependencia = new O.Dependencia();
+                E.Usuario usuario = (E.Usuario)Session["Usuario"];
+                O.Dependencia oDependencia = new O.Dependencia();
 
 				select.DataSource = oDependencia.ObtenerDependencia(0);
 				select.DataTextField = "Descripcion";
 				select.DataValueField = "Id";
 				select.DataBind();
-			}
-		}
+
+                switch (usuario.Tipo)
+                {
+                    case Sezac.Control.Comun.Definiciones.TipoUsuario.Administrador:
+                        logImage.ImageUrl = "~/images/circle_sm.png";
+                        break;
+                    case Sezac.Control.Comun.Definiciones.TipoUsuario.Beneficiario:
+                        logImage.ImageUrl = "~/images/circle_b.png";
+                        break;
+                    case Sezac.Control.Comun.Definiciones.TipoUsuario.Encargado:
+                        logImage.ImageUrl = "~/images/circle_c.png";
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
 		protected void btnConfirmar_Click(object sender, EventArgs e)
 		{

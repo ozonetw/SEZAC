@@ -16,13 +16,13 @@ namespace SEZAC
                 switch (usuario.Tipo)
                 {
                     case Sezac.Control.Comun.Definiciones.TipoUsuario.Administrador:
-                        logImage.ImageUrl = "~/ images / circle_sm.png";
+                        logImage.ImageUrl = "~/images/circle_sm.png";
                         break;
                     case Sezac.Control.Comun.Definiciones.TipoUsuario.Beneficiario:
-                        logImage.ImageUrl = "~/ images / circle_b.png";
+                        logImage.ImageUrl = "~/images/circle_b.png";
                         break;
                     case Sezac.Control.Comun.Definiciones.TipoUsuario.Encargado:
-                        logImage.ImageUrl = "~/ images / circle_c.png";
+                        logImage.ImageUrl = "~/images/circle_c.png";
                         break;
                     default:
                         break;

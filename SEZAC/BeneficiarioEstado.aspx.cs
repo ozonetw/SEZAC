@@ -11,11 +11,28 @@ namespace SEZAC
 		{
             if (!IsPostBack)
             {
+
                 O.Beneficiario oBeneficiario = new O.Beneficiario();
                 E.Usuario eUsuario = (E.Usuario)Session["Usuario"];
                 Mensaje.InnerText = oBeneficiario.ObtenerEstatus(eUsuario.Login);
+
+                switch (eUsuario.Tipo)
+                {
+                    case Sezac.Control.Comun.Definiciones.TipoUsuario.Administrador:
+                        logImage.ImageUrl = "~/images/circle_sm.png";
+                        break;
+                    case Sezac.Control.Comun.Definiciones.TipoUsuario.Beneficiario:
+                        logImage.ImageUrl = "~/images/circle_b.png";
+                        break;
+                    case Sezac.Control.Comun.Definiciones.TipoUsuario.Encargado:
+                        logImage.ImageUrl = "~/images/circle_c.png";
+                        break;
+                    default:
+                        break;
+                }
             }
-		}
+
+        }
 
 		protected void btnsalir_Click(object sender, EventArgs e)
 		{
