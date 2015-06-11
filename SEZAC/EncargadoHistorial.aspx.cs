@@ -4,6 +4,7 @@ using System.Data;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using E = Sezac.Control.Entidades;
 using O = Sezac.Control;
 
 namespace SEZAC
@@ -14,9 +15,12 @@ namespace SEZAC
         {
 			if (!IsPostBack)
 			{
-				O.Historial historial = new O.Historial();
+				O.Historial oHistorial = new O.Historial();
+				E.Historial eHistorial = new E.Historial();
 
-				//historial.ObtenerHistorialInscripciones()
+				eHistorial = oHistorial.ObtenerHistorialInscripciones("MEVR790403", (Definiciones.TipoHistorial)int.Parse(tipoHistorial.SelectedItem.Value), (Definiciones.TipoParametroBusqueda)int.Parse(tipoParametro.SelectedItem.Value));
+				histoGrid.DataSource = eHistorial.Datos;
+				histoGrid.DataBind();
 			}
         }
 
