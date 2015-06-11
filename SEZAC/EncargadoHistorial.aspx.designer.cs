@@ -31,6 +31,33 @@ namespace SEZAC {
         protected global::System.Web.UI.WebControls.LinkButton btnsalir;
         
         /// <summary>
+        /// tipoHistorial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList tipoHistorial;
+        
+        /// <summary>
+        /// tipoParametro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList tipoParametro;
+        
+        /// <summary>
+        /// textoBusqueda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText textoBusqueda;
+        
+        /// <summary>
         /// histoGrid control.
         /// </summary>
         /// <remarks>

@@ -1,5 +1,6 @@
 ﻿using Sezac.Control;
 using System;
+using System.IO;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 
@@ -20,7 +21,8 @@ namespace SEZAC
 
 			if (e.Authenticated)
 				Session["Usuario"] = usuario.ObtenerUsuario(((Login)sender).UserName);
-		}
+
+        }
 
 		protected void Login1_LoggedIn(object sender, EventArgs e)
 		{

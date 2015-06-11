@@ -56,7 +56,7 @@ namespace Sezac.Control
 			switch (tipoParametroBusqueda)
 			{
 				case Comun.Definiciones.TipoParametroBusqueda.RFC:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(b.nombres||' '||b.apellidopaterno||' '||b.apellidomaterno) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.rfc LIKE '%@Item%'";
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.rfc LIKE '%@Item%'";
 					sentencia.Parametros.Add(new Parametro()
 						#region Inicializar
 
@@ -71,7 +71,7 @@ namespace Sezac.Control
 					);
 					break;
 				case Comun.Definiciones.TipoParametroBusqueda.Nombre:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(b.nombres||' '||b.apellidopaterno||' '||b.apellidomaterno) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.nombres LIKE '%@Item%'";
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.nombres LIKE '%@Item%'";
 					sentencia.Parametros.Add(new Parametro()
 						#region Inicializar
 
@@ -86,7 +86,7 @@ namespace Sezac.Control
 					);
 					break;
 				case Comun.Definiciones.TipoParametroBusqueda.ApellidoPaterno:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(b.nombres||' '||b.apellidopaterno||' '||b.apellidomaterno) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidopaterno LIKE '%@Item%'";
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidopaterno LIKE '%@Item%'";
 					sentencia.Parametros.Add(new Parametro()
 						#region Inicializar
 
@@ -101,7 +101,7 @@ namespace Sezac.Control
 					);
 					break;
 				case Comun.Definiciones.TipoParametroBusqueda.ApellidoMaterno:
-					sentencia.Comando = "SELECT b.Rfc,TRIM(b.nombres||' '||b.apellidopaterno||' '||b.apellidomaterno) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidomaterno LIKE '%@Item%'";
+					sentencia.Comando = "SELECT b.Rfc,TRIM(CONCAT(b.nombres,' ',b.apellidopaterno,' ',b.apellidomaterno)) AS Nombre,b.Correo,eb.Descripcion AS Estatus FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.apellidomaterno LIKE '%@Item%'";
 					sentencia.Parametros.Add(new Parametro()
 						#region Inicializar
 
@@ -209,6 +209,34 @@ namespace Sezac.Control
 			return true;
 		}
 
+		public bool ExisteInscripcion(int organizacionId, string rfc)
+        {
+			Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+				Comando = "SELECT * FROM sezac.organizacionesbeneficiarios WHERE organizacionid=" + organizacionId + " AND beneficiariorfc='" + rfc + "'",
+                Tipo = Definiciones.TipoSentencia.Query,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Entero
+
+                #endregion
+            };
+			DataTable resultado = (DataTable)_planificador.Despachar(
+                #region Ejecutar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
+
+            return resultado.Rows.Count > 0;
+        }
+
 		public bool InscribirEnOrganizacion(int organizacionId, string rfc)
 		{
 			Sentencia sentencia = new Sentencia()
@@ -237,6 +265,33 @@ namespace Sezac.Control
 			);
             return true;
 		}
+
+		public DataTable ObtenerBeneficiario(string rfc)
+        {
+            Sentencia sentencia = new Sentencia()
+            {
+                #region Inicializar
+
+				Comando = "SELECT rfc AS Id,TRIM(CONCAT(nombres,' ',apellidopaterno,' ',apellidomaterno)) AS Descripcion FROM beneficiario WHERE rfc=COALESCE(" + ((string.IsNullOrEmpty(rfc)) ? "NULL" : rfc) + ",rfc)",
+                Tipo = Definiciones.TipoSentencia.Query,
+                TipoComando = CommandType.Text,
+                TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
+                TipoResultado = Definiciones.TipoResultado.Conjunto
+
+                #endregion
+            };
+            
+			return (DataTable)_planificador.Despachar(
+                #region Inicializar
+
+                _conexion, new List<Sentencia>() 
+                { 
+                    sentencia
+                }
+
+                #endregion
+            );
+        }
 
 		public List<Entidades.Evaluacion> ObtenerDatosEvaluacion(string item, Comun.Definiciones.TipoParametroBusqueda tipoParametroBusqueda)
         {
@@ -284,7 +339,7 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-				Comando = "SELECT eb.Descripcion FROM sezac.beneficiario,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.rfc='" + rfc + "'",
+				Comando = "SELECT eb.Descripcion FROM sezac.beneficiario b,sezac.estatusbeneficiario eb WHERE eb.id=b.estatusbeneficiarioid AND b.rfc='" + rfc + "'",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
@@ -312,7 +367,7 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-				Comando = "SELECT Rfc,TRIM(nombres||' '||apellidopaterno||' '||apellidomaterno) AS Nombre,Correo FROM sezac.beneficiario WHERE estatusbeneficiarioid=2",
+				Comando = "SELECT Rfc,TRIM(CONCAT(nombres,' ',apellidopaterno,' ',apellidomaterno)) AS Nombre,Correo FROM sezac.beneficiario WHERE estatusbeneficiarioid=2",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,
