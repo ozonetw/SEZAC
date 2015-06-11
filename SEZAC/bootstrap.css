@@ -6731,3 +6731,9 @@ input:focus,
 .panel-default .panel-footer {
   color: #98978b;
 }
+
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 35%;
+      margin: auto;
+  }

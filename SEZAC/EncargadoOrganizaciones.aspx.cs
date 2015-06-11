@@ -19,13 +19,13 @@ namespace SEZAC
 				selectPrograma.DataValueField = "Id";
 				selectPrograma.DataTextField = "Descripcion";
 				selectPrograma.DataBind();
-
 			}
 		}
 
-		protected void Unnamed4_Click(object sender, EventArgs e)
+		protected void btnConfirmar_Click(object sender, EventArgs e)
 		{
 			Mensaje.InnerText = "";
+
 			try
 			{
 				O.Organizacion oOrganizacion = new O.Organizacion();
@@ -39,14 +39,13 @@ namespace SEZAC
 				};
 				if (oOrganizacion.ExisteOrganizacion(eOrganizacion.Descripcion))
 				{
-					Mensaje.InnerText = "ya existe la organizacion";
+					Mensaje.InnerText = "Ya existe la organización";
 				}
 				else
 				{
 					oOrganizacion.InsertarOrganizacion(eOrganizacion);
-					Mensaje.InnerText = "La organizacion se ha creado exitosamente";
+					Mensaje.InnerText = "La organización se ha creado exitosamente";
 				}
-
 			}
 			catch (Exception)
 			{

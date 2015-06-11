@@ -58,13 +58,13 @@ namespace SEZAC {
         protected global::System.Web.UI.HtmlControls.HtmlSelect selectAño;
         
         /// <summary>
-        /// Confirmar control.
+        /// btnConfirmar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton Confirmar;
+        protected global::System.Web.UI.WebControls.Button btnConfirmar;
         
         /// <summary>
         /// Mensaje control.

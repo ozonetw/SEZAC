@@ -13,7 +13,7 @@ namespace SEZAC
 
 		}
 
-		protected void btnDependencias_Click(object sender, EventArgs e)
+		protected void btnConfirmar_Click(object sender, EventArgs e)
 		{
 			Mensaje.InnerText = "";
 			try

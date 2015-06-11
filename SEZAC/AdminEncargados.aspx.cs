@@ -13,6 +13,7 @@ namespace SEZAC
 			if (!IsPostBack)
 			{
 				O.Dependencia oDependencia = new O.Dependencia();
+
 				select.DataSource = oDependencia.ObtenerDependencia(0);
 				select.DataTextField = "Descripcion";
 				select.DataValueField = "Id";
@@ -20,7 +21,7 @@ namespace SEZAC
 			}
 		}
 
-		protected void Button1_Click(object sender, EventArgs e)
+		protected void btnConfirmar_Click(object sender, EventArgs e)
 		{
             
 			Mensaje.InnerText = "";
@@ -48,7 +49,7 @@ namespace SEZAC
 				else
 				{
 					oUsuario.InsertarUsuario(eUsuario);
-					Mensaje.InnerText = "El encargado se creo exitosamente";
+					Mensaje.InnerText = "El encargado se creó exitosamente";
 				}
 			}
 			catch (Exception)

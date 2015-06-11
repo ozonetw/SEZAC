@@ -446,7 +446,9 @@ namespace Sezac.Control
             {
                 #region Inicializar
 
-                Comando = "SELECT * FROM sezac.usuario WHERE Usuario='" + login + "' AND Contrasenia='" + password + "'",
+                Comando = "SELECT usuario AS Login FROM sezac.usuario WHERE UPPER(usuario)='" + login + "' AND contrasenia='" + password + "'" +
+						  "UNION " +
+						  "SELECT rfc AS Login FROM sezac.beneficiario WHERE UPPER(rfc)='" + login + "' AND contrasenia='" + password + "'",
                 Tipo = Definiciones.TipoSentencia.Query,
                 TipoComando = CommandType.Text,
                 TipoTransaccion = Definiciones.TipoTransaccion.NoTransaccion,

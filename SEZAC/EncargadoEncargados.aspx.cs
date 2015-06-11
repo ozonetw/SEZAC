@@ -18,9 +18,9 @@ namespace SEZAC
 				selectDependencias.DataValueField = "Id";
 				selectDependencias.DataBind();
 			}
-
 		}
-		protected void ButtonEncargados_Click(object sender, EventArgs e)
+
+		protected void btnConfirmar_Click(object sender, EventArgs e)
 		{
 
 			Mensaje.InnerText = "";
@@ -43,12 +43,12 @@ namespace SEZAC
 				};
 				if (oUsuario.ExisteUsuario(eUsuario.Login, eUsuario.Tipo))
 				{
-					Mensaje.InnerText = "El encargado ya existe";
+					Mensaje.InnerText = "<br />El encargado ya existe";
 				}
 				else
 				{
 					oUsuario.InsertarUsuario(eUsuario);
-					Mensaje.InnerText = "El encargado se creo exitosamente";
+					Mensaje.InnerText = "<br />El encargado se creó exitosamente";
 				}
 			}
 			catch (Exception)
