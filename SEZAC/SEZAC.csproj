@@ -82,6 +82,8 @@
     <Content Include="images\b6.jpg" />
     <Content Include="images\b7.jpg" />
     <Content Include="images\b8.jpg" />
+    <Content Include="images\circle.png" />
+    <Content Include="images\circle_sm.png" />
     <Content Include="images\loop.png" />
     <Content Include="images\sezac_small.png" />
     <Content Include="js\bjqs-1.3.js" />
