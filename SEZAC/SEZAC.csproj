@@ -83,6 +83,8 @@
     <Content Include="images\b7.jpg" />
     <Content Include="images\b8.jpg" />
     <Content Include="images\circle.png" />
+    <Content Include="images\circle_b.png" />
+    <Content Include="images\circle_c.png" />
     <Content Include="images\circle_sm.png" />
     <Content Include="images\loop.png" />
     <Content Include="images\sezac_small.png" />
@@ -285,6 +287,10 @@
       <Project>{86123be5-23b2-41bd-8639-beba5e133ea4}</Project>
       <Name>Control</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\" />
+    <Folder Include="vendor\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

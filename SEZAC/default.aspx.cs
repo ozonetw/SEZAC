@@ -17,6 +17,7 @@ namespace Sezac.IU
 
 				Usuario usuario = (Usuario)Session["Usuario"];
 
+                /*
 				switch (usuario.Tipo)
 				{
 					case Definiciones.TipoUsuario.Administrador:
@@ -31,6 +32,7 @@ namespace Sezac.IU
 					default:
 						break;
 				}
+                */
 			}
 		}
 	}
